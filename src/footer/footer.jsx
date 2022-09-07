@@ -32,7 +32,7 @@ export function FootEr(props) {
         }
     ]
     return (
-        <footer >
+        <footer className="footer">
             <div className="footer-rows">
                 {footerInformation.map((item) => {
                     return (

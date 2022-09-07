@@ -4,6 +4,11 @@
     font-family: 'Inter', sans-serif;
 }
 
+.footer {
+    background-color: #FFCE87;
+    padding: 0px 10px 20px 10px;
+}
+
 .footer-rows {
     display: flex;
     flex-direction: row;
