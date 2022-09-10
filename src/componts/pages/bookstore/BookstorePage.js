@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react"
-import { collection, getDocs, query, orderBy, where } from 'firebase/firestore'
-
+import { collection, getDocs, query, where } from 'firebase/firestore'
 import { CategoryRadioButtonContainer } from "./CategoryRadioButton"
 import { db } from '../../../api/firebase'
+import { categoriesOfBooks } from "../../../utils/categoriesOfBooks"
 
 export const BookstorePage = () => {
-    const categoriesOfBook = ['all', 'classic', 'crime', 'programming']
     const sortOptions = ['author', 'title', 'price']
     const [checkedCategoryOfBook, setCheckedCategoryOfBook] = useState('all')
     const [selectedSortOption, setSelectedSortOption] = useState('title')
@@ -13,7 +12,6 @@ export const BookstorePage = () => {
         minPrice: 0,
         maxPrice: 400
     })
-    const [myquery, setQuery] = useState('')
     const [booksList, setBooksList] = useState([])
     useEffect(() => {
         const collectionRef = collection(db, 'books')
@@ -61,7 +59,7 @@ export const BookstorePage = () => {
     return (
         <main>
             <form className="CategoryButtonsContainer">
-                {categoriesOfBook.map(category =>
+                {categoriesOfBooks.map(category =>
                     <CategoryRadioButtonContainer key={category} category={category}
                         checkedCategoryOfBook={checkedCategoryOfBook} setCheckedCategoryOfBook={setCheckedCategoryOfBook}
                     />)}
