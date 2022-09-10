@@ -1,0 +1,1 @@
+export const categoriesOfBooks = ['all', 'classic', 'crime', 'programming']
