@@ -11,7 +11,8 @@ export const CategoryRadioButtonContainer = ({ category, checkedCategoryOfBook, 
                     value={category}
                     checked={checkedCategoryOfBook === category}
                     onChange={(event) => handleChange(event)} />
-                {category}</label>
+                {category}
+            </label>
         </>
     )
 }

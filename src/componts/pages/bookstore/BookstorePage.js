@@ -1,14 +1,45 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { collection, getDocs, query, orderBy, where } from 'firebase/firestore'
+
 import { CategoryRadioButtonContainer } from "./CategoryRadioButton"
+import { db } from '../../../api/firebase'
 
 export const BookstorePage = () => {
-    const categoriesOfBook = ['all', 'classic', 'crime', 'fantasy']
-    const sortOptions = ['autor', 'title', 'price']
+    const categoriesOfBook = ['all', 'classic', 'crime', 'programming']
+    const sortOptions = ['author', 'title', 'price']
     const [checkedCategoryOfBook, setCheckedCategoryOfBook] = useState('all')
     const [selectedSortOption, setSelectedSortOption] = useState('title')
     const [selectedPriceRange, setSelectedPriceRange] = useState({
         minPrice: 0,
-        maxPrice: 100
+        maxPrice: 400
+    })
+    const [myquery, setQuery] = useState('')
+    const [booksList, setBooksList] = useState([])
+    useEffect(() => {
+        const collectionRef = collection(db, 'books')
+        getDocs(query(collectionRef,
+            where('price', '>=', selectedPriceRange.minPrice),
+            where('price', '<=', selectedPriceRange.maxPrice),
+            where('category', 'array-contains', checkedCategoryOfBook))).then(querySnapshot => {
+                const booksList = querySnapshot.docs.map(doc => ({
+                    ...doc.data(),
+                    id: doc.id
+                }))
+                setBooksList(booksList)
+            })
+
+    }, [selectedPriceRange, checkedCategoryOfBook])
+
+    console.log(booksList)
+
+    const booksListElement = booksList.map((book) => {
+        return (
+            <article key={book.id}>
+                <h3>{book.title}</h3>
+                <p>by {book.author}</p>
+                <p>{book.price}</p>
+            </article>
+        )
     })
     const handleOptionChange = (event) => {
         setSelectedSortOption(event.currentTarget.value)
@@ -27,7 +58,6 @@ export const BookstorePage = () => {
             [partOfPrice]: +event.currentTarget.value
         })
     }
-    console.log(selectedPriceRange)
     return (
         <main>
             <form className="CategoryButtonsContainer">
@@ -60,7 +90,19 @@ export const BookstorePage = () => {
                             onChange={event => handlePriceChange(event, 'maxPrice')} />
                     </label>
                 </div>
+                <div>
+                    <label htmlFor='serchbar'>Serch
+                        <input
+                            type='text'
+                            placeholder='e.g. Hello World!'
+                        // onChange={event => performQuery(event.target.value)}
+                        />
+                    </label>
+                </div>
             </form>
+            <section>
+                {booksListElement}
+            </section>
         </main >
     )
 }
