@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { collection, getDocs, query, where } from 'firebase/firestore'
+import { collection, getDocs, orderBy, query, where, get } from 'firebase/firestore'
 import { CategoryRadioButtonContainer } from "./CategoryRadioButton"
 import { db } from '../../../api/firebase'
 import { categoriesOfBooks } from "../../../utils/categoriesOfBooks"
@@ -15,18 +15,23 @@ export const BookstorePage = () => {
     const [booksList, setBooksList] = useState([])
     useEffect(() => {
         const collectionRef = collection(db, 'books')
+        console.log(selectedSortOption)
         getDocs(query(collectionRef,
             where('price', '>=', selectedPriceRange.minPrice),
             where('price', '<=', selectedPriceRange.maxPrice),
-            where('category', 'array-contains', checkedCategoryOfBook))).then(querySnapshot => {
+            where('category', 'array-contains', checkedCategoryOfBook
+            ))).then(querySnapshot => {
                 const booksList = querySnapshot.docs.map(doc => ({
                     ...doc.data(),
                     id: doc.id
                 }))
+                if (selectedSortOption !== 'price') {
+                    booksList.sort((a, b) => a[selectedSortOption].localeCompare(b[selectedSortOption]))
+                }
                 setBooksList(booksList)
             })
 
-    }, [selectedPriceRange, checkedCategoryOfBook])
+    }, [selectedPriceRange, checkedCategoryOfBook, selectedSortOption])
 
     console.log(booksList)
 
