@@ -1,15 +1,18 @@
 import React from 'react';
-import { Footer, FooterRows, FooterColumns, Subject, SubSubject, FooterLine, SubjectCopyright } from './Footer.styled.jsx'
+import { StyledFooter, FooterRows, FooterColumns, Subject, SubSubject, FooterLine, SubjectCopyright } from './Footer.styled.js'
+import { categoriesOfBooks } from '../utils/categoriesOfBooks'
+import { FaTwitter, FaFacebook, FaLinkedin } from 'react-icons/fa'
+
 
 const footerInformation = [
     {
         id: 1,
-        Group: 'Policy',
+        Group: 'Terms/policy',
         subGroups: [
             {
                 Id: 1,
                 subject: 'Policy',
-                link: './Regulamin'
+                link: 'policy'
             }
         ]
     },
@@ -20,21 +23,19 @@ const footerInformation = [
             {
                 Id: 1,
                 subject: 'Classics',
-                link: './classics'
+                link: 'classics'
             },
             {
                 Id: 2,
                 subject: 'Crime',
-                link: './Crime'
+                link: 'crime'
 
             },
             {
                 Id: 3,
-                subject: 'Fantasy',
-                link: './Fantasy'
-
+                subject: 'Programming',
+                link: 'programming'
             }
-
         ]
     },
     {
@@ -43,14 +44,13 @@ const footerInformation = [
         subGroups: [
             {
                 Id: 1,
-                subject: 'email',
+                subject: 'someone@example.com',
                 link: 'mailto:someone@example.com'
             },
             {
                 Id: 2,
-                subject: 'telephone',
-                link: '12345678'
-
+                subject: '+123 456 776',
+                link: 'tel:12345678'
             }
         ]
     },
@@ -60,12 +60,12 @@ const footerInformation = [
         subGroups: [
             {
                 Id: 1,
-                subject: 'fb',
+                subject: 'Fb',
                 link: 'https://www.facebook.com/groups/332561337957584'
             },
             {
                 Id: 2,
-                subject: 'instagram',
+                subject: 'Instagram',
                 link: 'https://www.instagram.com/kasia2/'
 
             }
@@ -73,9 +73,12 @@ const footerInformation = [
     }
 ]
 
+
 export function FootEr() {
+    const backGroundColor = '#FFCE87';
+
     return (
-        <Footer>
+        <StyledFooter bg={backGroundColor}>
             <FooterRows>
                 {footerInformation.map((item) => {
                     return (
@@ -95,6 +98,6 @@ export function FootEr() {
             <FooterRows>
                 <SubjectCopyright>Copyright by CODEBUSTERS</SubjectCopyright>
             </FooterRows>
-        </Footer >
+        </StyledFooter >
     )
 }
