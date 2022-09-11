@@ -1,8 +1,8 @@
 import { auth } from "../api/firebase";
 import { AuthForm } from "./AuthForm";
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
-import { firebaseErrors } from "../utils/firebaseErrors";
-import { getFormData } from "../utils/getFormData";
+import { firebaseErrors } from "../errors/firebaseErrors";
+import { getFormData } from "../errors/getFormData";
 
 export const Register = () => {
   const handleRegister = (e) => {
@@ -20,8 +20,8 @@ export const Register = () => {
 
   return (
     <>
-      <h2>Zarejestruj się:</h2>
-      <AuthForm submitText="Zarejestruj się" onSubmit={handleRegister} />
+      <h2>Register:</h2>
+      <AuthForm submitText="Register" onSubmit={handleRegister} />
     </>
   );
 };

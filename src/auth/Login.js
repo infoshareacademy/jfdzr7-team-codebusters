@@ -1,8 +1,8 @@
 import { signInWithEmailAndPassword } from "@firebase/auth";
 import { auth } from "../api/firebase";
 import { AuthForm } from "./AuthForm";
-import { firebaseErrors } from "../utils/firebaseErrors";
-import { getFormData } from "../utils/getFormData";
+import { firebaseErrors } from "../errors/firebaseErrors";
+import { getFormData } from "../errors/getFormData";
 
 export const Login = () => {
   const handleLogin = (e) => {
@@ -19,8 +19,8 @@ export const Login = () => {
 
   return (
     <>
-      <h2>Zaloguj się:</h2>
-      <AuthForm submitText="Zaloguj się" onSubmit={handleLogin} />
+      <h2>Log in:</h2>
+      <AuthForm submitText="Log in" onSubmit={handleLogin} />
     </>
   );
 };

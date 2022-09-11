@@ -1,9 +1,10 @@
 export const firebaseErrors = {
-  "auth/invalid-email": "E-mail jest nieprawidłowy.",
-  "auth/weak-password": "Hasło powinno zawierać conajmniej 6 znaków.",
-  "auth/email-already-in-use": "Konto z takim adresem e-mail już istnieje.",
-  "auth/user-not-found": "Taki użytkownik nie istnieje.",
-  "auth/wrong-password": "Wprowadzono nieprawidłowe hasło.",
-  "auth/network-request-failed":
-    "Coś poszło nie tak... Sprawdź swoje połączenie internetowe.",
-};
+  'auth/invalid-email': 'E-mail is invalid',
+  'auth/weak-password': 'Password should be at least 6 characters',
+  'auth/email-already-in-use':
+    'Account registered for this e-mail is already in use',
+  'auth/user-not-found': 'User account does not exist',
+  'auth/wrong-password': 'Provided wrong password',
+  'auth/network-request-failed':
+    'Something went wrong... Check you internet connection.',
+}
