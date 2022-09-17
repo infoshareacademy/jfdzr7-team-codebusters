@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { BooksSearchContext } from '../../../context/BooksSearchContext'
-import { StyledLabel } from './Wrapper'
+import { StyledSearchContainer } from './StyledSearchContainer'
 
 export const PriceBar = () => {
     const { selectedPriceRange, setSelectedPriceRange } = useContext(BooksSearchContext)
@@ -30,7 +30,7 @@ export const PriceBar = () => {
     }
     return (
         <div>
-            <StyledLabel htmlFor="priceRangeInput">
+            <StyledSearchContainer htmlFor="priceRangeInput">
                 <p>Price:</p>
                 <p>from</p>
                 <input type='text' pattern={[0 - 9]}
@@ -45,7 +45,7 @@ export const PriceBar = () => {
                     onChange={event => handlePriceChange(event.currentTarget.value, 'maxPrice')}
                     onBlur={event => checkPriceChange(event.currentTarget.value, 'maxPrice')}
                 />
-            </StyledLabel>
+            </StyledSearchContainer>
         </div>
     )
 }

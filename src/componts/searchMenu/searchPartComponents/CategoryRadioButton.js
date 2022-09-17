@@ -1,4 +1,7 @@
-export const CategoryRadioButton = ({ className, category, checkedCategoryOfBook, setCheckedCategoryOfBook }) => {
+import { BooksSearchContext } from "../../../context/BooksSearchContext"
+import { useContext } from "react"
+export const CategoryRadioButton = ({ className, category }) => {
+    const { checkedCategoryOfBook, setCheckedCategoryOfBook } = useContext(BooksSearchContext)
     const handleChange = (event) => {
         setCheckedCategoryOfBook(event.currentTarget.value)
     }

@@ -1,9 +1,9 @@
 import { useContext } from "react"
-import { BooksSearchContext } from "../../context/BooksSearchContext"
+import { BooksListContext } from "../../context/BooksListContext"
 import { BookCard } from "./BookCard"
 
 export const BooksListElement = ({ className }) => {
-    const { booksList } = useContext(BooksSearchContext)
+    const { booksList } = useContext(BooksListContext)
     return (
         <section className={className}>
             {booksList.map((book) => {

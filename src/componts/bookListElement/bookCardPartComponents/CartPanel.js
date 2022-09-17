@@ -1,24 +1,23 @@
-import { increaseCount, decreaseCount } from "./CartPanelFunctions"
-import { StyledButton } from "./StyledButton"
 import minus from '../../../img/icons/minus.png'
 import plus from '../../../img/icons/plus.png'
 import cart from '../../../img/icons/shopping-cart.png'
 import { useState } from "react"
+import { increaseCount, decreaseCount } from "./CartPanelFunctions"
+import { StyledButton } from "./StyledButton"
 import { StyledCountInput } from "./StyledCountInput"
 import { Wrapper } from "./Wrapper"
-
 
 export const CartPanel = ({ className, quantity }) => {
     const [count, setCount] = useState(0)
     const handleCounterClickButton = (event, cb) => {
         event.preventDefault()
-        cb()
+        cb(count, setCount, quantity)
     }
     const isPanelDisabled = quantity === 0;
     return (
         <form className={className}>
             <Wrapper>
-                <StyledButton onClick={(event) => { handleCounterClickButton(event, decreaseCount(count, setCount)) }} disabled={isPanelDisabled}>
+                <StyledButton onClick={(event) => { handleCounterClickButton(event, decreaseCount) }} disabled={isPanelDisabled}>
                     <img src={minus} alt='minus button' />
                 </StyledButton>
                 <StyledCountInput
@@ -34,7 +33,7 @@ export const CartPanel = ({ className, quantity }) => {
                     }}
                     disabled={isPanelDisabled}
                 />
-                <StyledButton onClick={(event) => { handleCounterClickButton(event, increaseCount(count, setCount, quantity)) }} disabled={isPanelDisabled}>
+                <StyledButton onClick={(event) => { handleCounterClickButton(event, increaseCount, count, setCount, quantity) }} disabled={isPanelDisabled}>
                     <img src={plus} alt='plus button' />
                 </StyledButton>
             </Wrapper>

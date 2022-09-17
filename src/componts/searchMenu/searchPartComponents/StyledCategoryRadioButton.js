@@ -4,7 +4,6 @@ import { CategoryRadioButton } from "./CategoryRadioButton";
 export const StyledCategoryRadioButton = styled(CategoryRadioButton)`
   opacity: 0;
   position: fixed;
-  width: 0;
   + label {
     padding: 10px;
     font-size: 20px;
