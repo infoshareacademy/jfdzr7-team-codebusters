@@ -1,8 +1,8 @@
 import { signInWithEmailAndPassword } from "@firebase/auth";
 import { auth } from "../api/firebase";
 import { AuthForm } from "./AuthForm";
-import { firebaseErrors } from "../errors/firebaseErrors";
-import { getFormData } from "../errors/getFormData";
+import { firebaseErrors } from "../utils/firebaseErrors"
+import { getFormData } from "../utils/getFormData";
 
 export const Login = () => {
   const handleLogin = (e) => {

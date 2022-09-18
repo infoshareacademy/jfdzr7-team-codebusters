@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledFooter, FooterRows, FooterColumns, Subject, SubSubject, FooterLine, SubjectCopyright } from './Footer.styled.js'
 import { categoriesOfBooks } from '../utils/categoriesOfBooks'
-import { FaTwitter, FaFacebook, FaLinkedin } from 'react-icons/fa'
+// import { FaTwitter, FaFacebook, FaLinkedin } from 'react-icons/fa'
 
 
 const footerInformation = [
@@ -44,8 +44,8 @@ const footerInformation = [
         subGroups: [
             {
                 Id: 1,
-                subject: 'someone@example.com',
-                link: 'mailto:someone@example.com'
+                subject: 'jfdzr7.code.busters@gmail.com',
+                link: 'mailto:jfdzr7.code.busters@gmail.com'
             },
             {
                 Id: 2,
@@ -61,12 +61,12 @@ const footerInformation = [
             {
                 Id: 1,
                 subject: 'Fb',
-                link: 'https://www.facebook.com/groups/332561337957584'
+                link: 'https://www.facebook.com/'
             },
             {
                 Id: 2,
                 subject: 'Instagram',
-                link: 'https://www.instagram.com/kasia2/'
+                link: 'https://www.instagram.com/'
 
             }
         ]

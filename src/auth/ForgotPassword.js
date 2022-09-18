@@ -1,7 +1,7 @@
 import { sendPasswordResetEmail } from "@firebase/auth";
 import { auth } from "../api/firebase";
 import { AuthForm } from "./AuthForm";
-import { firebaseErrors } from "../errors/firebaseErrors";
+import { firebaseErrors } from "../utils/firebaseErrors"
 
 export const ForgotPassword = () => {
   const handlePasswordReset = (e) => {

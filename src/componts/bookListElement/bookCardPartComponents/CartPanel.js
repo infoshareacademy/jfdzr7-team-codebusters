@@ -28,7 +28,7 @@ export const CartPanel = ({ className, quantity }) => {
                     onBlur={(event) => {
                         if (count >= quantity) {
                             setCount(quantity)
-                            alert('w magazynie znajduje się tylko ' + quantity + ' sztuk')
+                            alert('There are ' + quantity + ' books in stock')
                         }
                     }}
                     disabled={isPanelDisabled}
@@ -42,5 +42,4 @@ export const CartPanel = ({ className, quantity }) => {
             </StyledButton>
         </form>
     )
-
 } 
