@@ -1,10 +1,11 @@
 import './index.css'
-import { FootEr } from './footer/Footer'
-import { Contact } from "./components/contact/Contact"
-import { BookstorePage } from './componts/pages/bookstore/BookstorePage';
-import { Register } from './auth/Register'
-import { Login } from './auth/Login'
-import { ForgotPassword } from './auth/ForgotPassword';
+import { Contact } from './components/pages/contact/Contact'
+import { Footer } from './components/footer/Footer';
+import { BookstorePage } from './components/pages/bookstore/BookstorePage'
+import { Register } from './components/auth/Register';
+import { ForgotPassword } from './components/auth/ForgotPassword';
+import { Login } from './components/auth/Login';
+
 import './App.css';
 
 export const App = () => {
@@ -12,10 +13,10 @@ export const App = () => {
     <div className="App">
       <Contact />
       {/* <BookstorePage /> */}
-      {/* <Register />
-      <ForgotPassword />
-      <Login /> */}
-      <FootEr />
+      {/* <Register /> */}
+      {/* <ForgotPassword /> */}
+      {/* <Login /> */}
+      <Footer />
     </div>
   );
 }

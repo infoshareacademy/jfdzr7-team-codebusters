@@ -1,8 +1,5 @@
 import React from 'react';
 import { StyledFooter, FooterRows, FooterColumns, Subject, SubSubject, FooterLine, SubjectCopyright } from './Footer.styled.js'
-import { categoriesOfBooks } from '../utils/categoriesOfBooks'
-// import { FaTwitter, FaFacebook, FaLinkedin } from 'react-icons/fa'
-
 
 const footerInformation = [
     {
@@ -74,11 +71,9 @@ const footerInformation = [
 ]
 
 
-export function FootEr() {
-    const backGroundColor = '#FFCE87';
-
+export function Footer() {
     return (
-        <StyledFooter bg={backGroundColor}>
+        <StyledFooter>
             <FooterRows>
                 {footerInformation.map((item) => {
                     return (

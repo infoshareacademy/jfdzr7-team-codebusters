@@ -1,8 +1,8 @@
-import { auth } from "../api/firebase";
+import { auth } from "../../api/firebase";
 import { AuthForm } from "./AuthForm";
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
-import { firebaseErrors } from "../utils/firebaseErrors"
-import { getFormData } from "../utils/getFormData";
+import { firebaseErrors } from "../../utils/firebaseErrors"
+import { getFormData } from "../../utils/getFormData";
 
 export const Register = () => {
   const handleRegister = (e) => {
