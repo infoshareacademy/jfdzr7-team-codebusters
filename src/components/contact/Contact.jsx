@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { StyledAddress, StyledButton, StyledContainer, StyledH2, ContactBackground } from './Contact.styled';
+import { StyledButton, StyledContainer, StyledH2, ContactBackground } from './Contact.styled';
 import { InputField } from './InputField';
 import { TextareaField } from './TextareaField';
 import emailjs from '@emailjs/browser';

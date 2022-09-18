@@ -55,13 +55,6 @@ export const StyledH2 = styled.h2`
     color: #FFF2E0
 `;
 
-
-export const StyledAddress = styled.div`
-    margin-top:105px;
-    margin-left:20px;
-    font-size: 14px;
-`;
-
 export const ContactBackground = styled.div`
     background-image: url(${background});
     background-position: center;
