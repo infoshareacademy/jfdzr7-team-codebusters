@@ -7,7 +7,7 @@ export const BookCard = ({ className, title, author, price, cover, quantity }) =
     return (
         <StyledArticle className={className} isDisable={quantity === 0}>
             <StyledCover cover={cover} />
-            <StyledInfoPanel title={title} author={title} price={price} />
+            <StyledInfoPanel title={title} author={author} price={price} />
             <StyledCartPanel quantity={quantity} />
         </StyledArticle >
     )
