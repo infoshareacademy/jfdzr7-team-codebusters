@@ -13,7 +13,6 @@ export const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        e.preventDefault();
         emailjs.sendForm(
             'service_63ullf7',
             'template_6u0hm8a',
@@ -24,7 +23,6 @@ export const Contact = () => {
             }, (error) => {
                 console.log(error.text);
             });
-
         alert('Message has been sent!');
         setEmail('');
         setMessage('');
@@ -43,6 +41,5 @@ export const Contact = () => {
                 </form>
             </StyledContainer >
         </ContactBackground >
-
     );
 };
