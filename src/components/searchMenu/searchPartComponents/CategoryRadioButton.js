@@ -1,4 +1,4 @@
-import { BooksSearchContext } from "../../../providers/BooksSearchContext"
+import { BooksSearchContext } from "../../../providers/BooksSearchProvider"
 import { useContext } from "react"
 export const CategoryRadioButton = ({ className, category }) => {
     const { searchConditions, setSearchConditions } = useContext(BooksSearchContext)

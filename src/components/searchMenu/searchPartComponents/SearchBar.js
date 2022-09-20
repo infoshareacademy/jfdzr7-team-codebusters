@@ -1,6 +1,6 @@
 import magnifying from '../../../img/icons/magnifying.png'
 import { useContext } from "react"
-import { BooksSearchContext } from "../../../providers/BooksSearchContext"
+import { BooksSearchContext } from "../../../providers/BooksSearchProvider"
 import { StyledSearchBar } from "./StyledSearchBar"
 import { TextInput } from "./TextInput"
 import { deboubceQuery } from "./utils/debouceQuery"
