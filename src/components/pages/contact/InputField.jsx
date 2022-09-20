@@ -2,7 +2,6 @@ import { StyledInput } from "./Contact.styled";
 
 export const InputField = ({ title, type, value, setValue, name }) => {
     return (
-        <>
             <label>{title}<br />
                 <StyledInput
                     type={type}
@@ -10,7 +9,6 @@ export const InputField = ({ title, type, value, setValue, name }) => {
                     name={name}
                     onChange={(e) => { setValue(e.target.value) }}
                 />
-            </label><br />
-        </>
+            </label>
     );
 };

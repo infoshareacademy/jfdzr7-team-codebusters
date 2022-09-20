@@ -11,7 +11,7 @@ import './App.css';
 export const App = () => {
   return (
     <div className="App">
-      {/* <Contact /> */}
+      <Contact />
       <BookstorePage />
       {/* <Register /> */}
       {/* <ForgotPassword /> */}
