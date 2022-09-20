@@ -13,7 +13,6 @@ export const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        e.preventDefault();
         emailjs.sendForm(
             'service_63ullf7',
             'template_6u0hm8a',
