@@ -3,9 +3,9 @@ import { getCover } from "../../../utils/getCover"
 
 export const Cover = ({ className, cover }) => {
     const [coverURL, setCoverURL] = useState('')
-    getCover({ cover, setCoverURL })
     useEffect(() => {
-    }, [coverURL])
+        getCover({ cover, setCoverURL })
+    }, [])
     return (
         <div className={className} aria-hidden={true}>
             <img src={coverURL} alt='cover' />
