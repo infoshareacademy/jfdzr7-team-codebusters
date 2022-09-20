@@ -11,8 +11,7 @@ export const Contact = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const sendEmail = () => {
         emailjs.sendForm(
             'service_63ullf7',
             'template_6u0hm8a',
@@ -23,7 +22,12 @@ export const Contact = () => {
             }, (error) => {
                 console.log(error.text);
             });
+    }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        sendEmail();
+        
         alert('Message has been sent!');
         setEmail('');
         setMessage('');
