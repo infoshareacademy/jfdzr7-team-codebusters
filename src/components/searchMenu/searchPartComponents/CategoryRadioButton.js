@@ -1,9 +1,12 @@
 import { BooksSearchContext } from "../../../context/BooksSearchContext"
 import { useContext } from "react"
 export const CategoryRadioButton = ({ className, category }) => {
-    const { checkedCategoryOfBook, setCheckedCategoryOfBook } = useContext(BooksSearchContext)
+    const { searchConditions, setSearchConditions } = useContext(BooksSearchContext)
     const handleChange = (event) => {
-        setCheckedCategoryOfBook(event.currentTarget.value)
+        setSearchConditions({
+            ...searchConditions,
+            checkedCategoryOfBook: event.currentTarget.value
+        })
     }
     return (
         <>
@@ -11,7 +14,7 @@ export const CategoryRadioButton = ({ className, category }) => {
                 id={'categoryOfBook-' + category}
                 name={'CategoryOfBook'}
                 value={category}
-                checked={checkedCategoryOfBook === category}
+                checked={searchConditions.checkedCategoryOfBook === category}
                 onChange={(event) => handleChange(event)} />
             <label htmlFor={'categoryOfBook-' + category}>{category}</label>
         </>
