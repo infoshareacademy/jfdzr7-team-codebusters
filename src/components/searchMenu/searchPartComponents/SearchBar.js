@@ -4,7 +4,7 @@ import { useContext } from "react"
 import { BooksSearchContext } from "../../../context/BooksSearchContext"
 
 export const SearchBar = ({ className }) => {
-    const { setSearchText } = useContext(BooksSearchContext)
+    const { searchConditions, setSearchConditions } = useContext(BooksSearchContext)
     const deboubceQuery = (query, wait) => {
         let timeout
         return searchTerm => {
@@ -17,7 +17,10 @@ export const SearchBar = ({ className }) => {
         }
     }
     const performQuery = deboubceQuery(searchTerm => {
-        setSearchText(searchTerm)
+        setSearchConditions({
+            ...searchConditions,
+            searchText: searchTerm
+        })
     }, 500)
     return (
         <div className={className}>

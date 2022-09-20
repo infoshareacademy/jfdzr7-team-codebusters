@@ -3,29 +3,40 @@ import { BooksSearchContext } from '../../../context/BooksSearchContext'
 import { StyledSearchContainer } from './StyledSearchContainer'
 
 export const PriceBar = () => {
-    const { selectedPriceRange, setSelectedPriceRange } = useContext(BooksSearchContext)
+    const { searchConditions, setSearchConditions } = useContext(BooksSearchContext)
+    const selectedPriceRange = searchConditions.selectedPriceRange
+
     const checkPriceChange = (currentValue, partOfPrice) => {
         if (partOfPrice === 'minPrice' &&
             +currentValue > selectedPriceRange.maxPrice) {
             currentValue = selectedPriceRange.maxPrice
-            setSelectedPriceRange({
-                ...selectedPriceRange,
-                [partOfPrice]: +currentValue
+            setSearchConditions({
+                ...searchConditions,
+                selectedPriceRange: {
+                    ...selectedPriceRange,
+                    [partOfPrice]: +currentValue
+                }
             })
         }
         if (partOfPrice === 'maxPrice' &&
             +currentValue < selectedPriceRange.minPrice) {
             currentValue = selectedPriceRange.minPrice
-            setSelectedPriceRange({
-                ...selectedPriceRange,
-                [partOfPrice]: +currentValue
+            setSearchConditions({
+                ...searchConditions,
+                selectedPriceRange: {
+                    ...selectedPriceRange,
+                    [partOfPrice]: +currentValue
+                }
             })
         }
     }
     const handlePriceChange = (currentValue, partOfPrice) => {
-        setSelectedPriceRange({
-            ...selectedPriceRange,
-            [partOfPrice]: +currentValue
+        setSearchConditions({
+            ...searchConditions,
+            selectedPriceRange: {
+                ...selectedPriceRange,
+                [partOfPrice]: +currentValue
+            }
         })
     }
     return (
