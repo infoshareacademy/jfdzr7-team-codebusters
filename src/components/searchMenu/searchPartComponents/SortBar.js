@@ -22,13 +22,6 @@ export const SortBar = () => {
                 callback={handleOptionChange}
                 sortOptions={sortOptions}
             />
-            {/* <label htmlFor='sortOptionsList'>Order by: </label>
-            <select
-                name={'sortOptionsList'}
-                value={selectedSortOption}
-                onChange={event => handleOptionChange(event)}>
-                {sortOptions.map(option => <option key={option} value={option}>{option}</option>)}
-            </select> */}
         </StyledSearchContainer>
     )
 }
