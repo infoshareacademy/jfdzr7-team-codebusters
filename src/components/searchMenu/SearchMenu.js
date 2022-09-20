@@ -1,5 +1,5 @@
 import { Wrapper } from "./searchPartComponents/Wrapper"
-import { StyledSearchBar } from "./searchPartComponents/StyledSearchBar"
+import { SearchBar } from "./searchPartComponents/SearchBar"
 import { PriceBar } from "./searchPartComponents/PriceBar"
 import { SortBar } from "./searchPartComponents/SortBar"
 import { StyledCategoryBar } from "./searchPartComponents/StyledCategoryBar"
@@ -31,7 +31,7 @@ export const SearchMenu = () => {
                 <Wrapper>
                     <SortBar />
                     <PriceBar />
-                    <StyledSearchBar />
+                    <SearchBar />
                 </Wrapper>
             </form>
         </BooksSearchContext.Provider>
