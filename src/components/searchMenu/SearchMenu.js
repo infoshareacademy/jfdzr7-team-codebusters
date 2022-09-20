@@ -5,8 +5,8 @@ import { SortBar } from "./searchPartComponents/SortBar"
 import { StyledCategoryBar } from "./searchPartComponents/StyledCategoryBar"
 import { useState, useEffect, useContext } from "react"
 import { getBooksList } from "../../utils/getBooksList"
-import { BooksSearchContext } from "../../context/BooksSearchContext"
-import { BooksListContext } from "../../context/BooksListContext"
+import { BooksSearchContext } from "../../providers/BooksSearchContext"
+import { BooksListContext } from "../../providers/BooksListProvider"
 
 export const SearchMenu = () => {
     const [searchConditions, setSearchConditions] = useState({

@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { BooksSearchContext } from '../../../context/BooksSearchContext'
+import { BooksSearchContext } from '../../../providers/BooksSearchContext'
 import { SelectInput } from './SelectInput'
 import { StyledSearchContainer } from './StyledSearchContainer'
 import { sortOptions } from './utils/sortOptions'

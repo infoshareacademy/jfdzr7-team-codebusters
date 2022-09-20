@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { BooksSearchContext } from '../../../context/BooksSearchContext'
+import { BooksSearchContext } from '../../../providers/BooksSearchContext'
 import { PriceInput } from './PriceInput'
 import { StyledSearchContainer } from './StyledSearchContainer'
 
