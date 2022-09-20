@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { BooksSearchContext } from '../../../context/BooksSearchContext'
-import { NumberInput } from './NumberInput'
+import { PriceInput } from './PriceInput'
 import { StyledSearchContainer } from './StyledSearchContainer'
 
 export const PriceBar = () => {
@@ -10,13 +10,13 @@ export const PriceBar = () => {
         <div>
             <StyledSearchContainer>
                 <p>Price:</p>
-                <NumberInput
+                <PriceInput
                     name='MinPriceInput'
                     labelText='from '
                     value={selectedPriceRange.minPrice}
                     partOfPrice='minPrice'
                 />
-                <NumberInput
+                <PriceInput
                     name='MaxPriceInput'
                     labelText='to '
                     value={selectedPriceRange.maxPrice}

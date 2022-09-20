@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { BooksSearchContext } from '../../../context/BooksSearchContext'
 
-export const NumberInput = ({ name, labelText, value, partOfPrice }) => {
+export const PriceInput = ({ name, labelText, value, partOfPrice }) => {
     const { searchConditions, setSearchConditions } = useContext(BooksSearchContext)
     const selectedPriceRange = searchConditions.selectedPriceRange
     const checkPriceChange = (currentValue, partOfPrice) => {
