@@ -13,7 +13,7 @@ export const CategoryRadioButton = ({ className, category }) => {
                 value={category}
                 checked={checkedCategoryOfBook === category}
                 onChange={(event) => handleChange(event)} />
-            <label htmlFor={'categoryOfBook-' + category}> {category}</label>
+            <label htmlFor={'categoryOfBook-' + category}>{category}</label>
         </>
     )
 }

@@ -70,7 +70,6 @@ const footerInformation = [
     }
 ]
 
-
 export function Footer() {
     return (
         <StyledFooter>
