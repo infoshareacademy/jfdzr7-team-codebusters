@@ -5,7 +5,6 @@ import shoppingCart from "../../img/icons/shopping-cart.png"
 import { StyledHeader } from "./StyledHeader"
 import { StyledNavigation } from "./StyledNavigation"
 import { StyledNavLink } from "./StyledNavLink"
-import { Link } from "react-router-dom"
 import { LogInPanel } from "./LogInPanel"
 import { StyledAccountMenu } from "./StyledAccountMenu"
 
@@ -15,7 +14,7 @@ export const Navigation = () => {
         <StyledHeader>
             <div className="logoContainer">
                 <img src={ghostbusters} alt={"logo"} />
-                <p>Ghostbusters</p>
+                <p>Codebusters</p>
             </div>
             <StyledNavigation>
                 <StyledNavLink to="/">Home</StyledNavLink>
@@ -26,7 +25,7 @@ export const Navigation = () => {
             {isAuth ?
                 <StyledAccountMenu /> :
                 <LogInPanel />}
-            <img height="30px" src={shoppingCart} alt='shopping cart' class='shoppingCartIcon' />
+            <img height="30px" src={shoppingCart} alt='shopping cart' className='shoppingCartIcon' />
         </StyledHeader>
     )
 }

@@ -17,22 +17,4 @@ export const StyledHeader = styled.header`
     .shoppingCartIcon{
         padding-left: 30px;
     }
-    .submenu{
-        position: absolute;
-        display: none;
-        padding: 10px 20px;
-        font-size: 20px;
-        background-color: #F9D9AA;
-        right: 0;
-        gap: 10px;
-    }
-
-    .submenu div button{
-        margin-left: 10px;
-    }
-
-    .AccountMenu:hover .submenu{
-        display: flex;
-        flex-flow: column;
-    }
 `
