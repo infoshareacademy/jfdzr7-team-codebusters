@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
-export const StyledSearchContainer = styled.label`
+export const StyledSearchContainer = styled.div`
     padding: 5px 20px;
-    font-size: 16px;
     font-weight: bold;
     background-color: #FFF2E0;
     border: 2px solid black;
     display: flex;
     align-items: center;
     gap: 10px;
-    p{
+    p, label{
         margin: 0;
         font-size: 18px;
     }

@@ -15,7 +15,6 @@ export const App = () => {
   const PagePlaceholder = () => <p>Hello World!</p>
   return (
     <div className="App">
-
       <BrowserRouter>
         <AuthContext.Provider value={{
           isAuth, setIsAuth,
