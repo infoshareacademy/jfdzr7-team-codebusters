@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
     })
     const isAuth = !!user
     const isAdmin = user?.isAdmin
-    const isUser = isAuth && user?.isAdmin
+    const isUser = isAuth && !user?.isAdmin
     return (
         <AuthContext.Provider value={{
             user, setUser,
