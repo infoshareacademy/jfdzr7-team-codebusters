@@ -9,25 +9,28 @@ import { AuthContext } from './../../providers/AuthProvider';
 
 export const Routing = () => {
     const { isAuth, isAdmin, isUser } = useContext(AuthContext)
-    const PagePlaceholder = () => <p>Hello World!</p>
     return (
         <main>
             <Routes>
-                <Route path="/" element={<PagePlaceholder />} />
-                <Route path="/about" element={<PagePlaceholder />} />
+                <Route path="/" element={<p>Home Page</p>} />
+                <Route path="/about" element={<p>About us page</p>} />
                 <Route path="/books" element={<BookstorePage />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route element={<ProtectedRoute isAllowed={!isAuth} />} >
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                 </Route>
+                <Route element={<ProtectedRoute isAllowed={isAuth} />} >
+                    <Route path="/account" element={<p>Account</p>} />
+                </Route>
                 <Route element={<ProtectedRoute isAllowed={isAdmin} />}>
-                    {/* Here every page available only for admin */}
-                    <Route path="/admin" element={<p>Admin</p>} />
+                    <Route path="/orders" element={<p>Admin orders</p>} />
+                    <Route path="/warehouse" element={<p>Admin Warehouse</p>} />
+                    <Route path="/addNewBook" element={<p>Admin add new book</p>} />
                 </Route>
                 <Route element={<ProtectedRoute isAllowed={isUser} />}>
-                    {/* Here every page available only for log in user */}
-                    <Route path="/user" element={<p>user</p>} />
+                    <Route path="/messages" element={<p>user message</p>} />
+                    <Route path="/orderHistory" element={<p>user orderHistory</p>} />
                 </Route>
                 <Route path="/cart" element={<p>cos napewno kupie</p>} />
             </Routes>
