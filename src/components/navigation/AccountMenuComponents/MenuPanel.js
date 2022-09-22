@@ -1,0 +1,15 @@
+import { useContext } from "react"
+import { AuthContext } from "../../../providers/AuthProvider"
+import { StyledAccountManagmentPanel } from "./StyledAccountManagmentPanel"
+import { StyledLinksPanel } from "./StyledLinksPanel"
+import { userAccountMenuLinks, adminAccountMenuLinks } from "./utils/accauntMenuLinksList"
+
+export const MenuPanel = ({ className }) => {
+    const { isAdmin } = useContext(AuthContext)
+    return (
+        <div class={className}>
+            <StyledAccountManagmentPanel />
+            <StyledLinksPanel linksList={isAdmin ? adminAccountMenuLinks : userAccountMenuLinks} />
+        </div>
+    )
+}

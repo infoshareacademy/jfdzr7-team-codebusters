@@ -1,9 +1,13 @@
 import { useContext } from "react"
 import { AuthContext } from "../../providers/AuthProvider"
 import ghostbusters from "../../img/ghostbusters.png"
+import shoppingCart from "../../img/icons/shopping-cart.png"
 import { StyledHeader } from "./StyledHeader"
 import { StyledNavigation } from "./StyledNavigation"
 import { StyledNavLink } from "./StyledNavLink"
+import { Link } from "react-router-dom"
+import { LogInPanel } from "./LogInPanel"
+import { StyledAccountMenu } from "./StyledAccountMenu"
 
 export const Navigation = () => {
     const { isAuth } = useContext(AuthContext)
@@ -11,7 +15,7 @@ export const Navigation = () => {
         <StyledHeader>
             <div className="logoContainer">
                 <img src={ghostbusters} alt={"logo"} />
-                <h1>Ghostbusters</h1>
+                <p>Ghostbusters</p>
             </div>
             <StyledNavigation>
                 <StyledNavLink to="/">Home</StyledNavLink>
@@ -20,14 +24,9 @@ export const Navigation = () => {
                 <StyledNavLink to="/contact">Contact</StyledNavLink>
             </StyledNavigation>
             {isAuth ?
-                <div className="AccountMenu">
-                    <p>Account</p>
-                </div> :
-                <div className="loginPanel">
-                    <StyledNavLink to="/login">Log In</StyledNavLink>
-                    <StyledNavLink to="/register">Register</StyledNavLink>
-                </div>}
-
+                <StyledAccountMenu /> :
+                <LogInPanel />}
+            <img height="30px" src={shoppingCart} alt='shopping cart' class='shoppingCartIcon' />
         </StyledHeader>
     )
 }
