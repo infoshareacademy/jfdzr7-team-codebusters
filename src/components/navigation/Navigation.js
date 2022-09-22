@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { AuthContext } from "../../context/AuthContext"
+import { AuthContext } from "../../providers/AuthProvider"
 import ghostbusters from "../../img/ghostbusters.png"
 import { StyledHeader } from "./StyledHeader"
 import { StyledNavigation } from "./StyledNavigation"

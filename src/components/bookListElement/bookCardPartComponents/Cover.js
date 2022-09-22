@@ -3,12 +3,6 @@ import { getCover } from "../../../utils/getCover"
 
 export const Cover = ({ className, cover }) => {
     const [coverURL, setCoverURL] = useState('')
-<<<<<<< HEAD
-    useEffect(() => {
-        getCover({ cover, setCoverURL })
-    }, [])
-=======
->>>>>>> develop
     useEffect(() => {
         getCover({ cover, setCoverURL })
     }, [cover])
