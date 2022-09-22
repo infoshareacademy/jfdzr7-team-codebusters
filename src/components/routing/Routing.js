@@ -17,7 +17,7 @@ export const Routing = () => {
                 <Route path="/about" element={<PagePlaceholder />} />
                 <Route path="/books" element={<BookstorePage />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route element={<ProtectedRoute isAllowed={isAuth} />} >
+                <Route element={<ProtectedRoute isAllowed={!isAuth} />} >
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                 </Route>
