@@ -6,7 +6,8 @@ export const OrderSearchContext = createContext({})
 
 export const OrderSearchProvider = ({ children }) => {
     const [searchConditions, setSearchConditions] = useState({
-        status: 'all'
+        checkedOption: 'all',
+        searchText: ''
     })
     const { setOrderList } = useContext(OrderListContext)
     useEffect(() => {

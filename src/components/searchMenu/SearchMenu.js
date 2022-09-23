@@ -14,7 +14,7 @@ export const SearchMenu = () => {
                 <Wrapper>
                     <SortBar />
                     <PriceBar />
-                    <SearchBar />
+                    <SearchBar context={BooksSearchContext} />
                 </Wrapper>
             </form>
         </BookSearchProvider >
