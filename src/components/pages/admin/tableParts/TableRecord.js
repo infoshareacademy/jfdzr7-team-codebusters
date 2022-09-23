@@ -35,7 +35,7 @@ export const TableRecord = ({ className, order, index }) => {
 
     return (
         <div className={className} onClick={event => handleClick(event)} >
-            <p onClick={event => handleClick(event)}>{index + 1}</p>
+            <p>{index + 1}</p>
             <p>{order.orderDate.getDay() + '-' + order.orderDate.getMonth() + '-' + order.orderDate.getFullYear()}</p>
             <p>{username}</p>
             <p>{order.orderValue}</p>
