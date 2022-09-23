@@ -8,6 +8,7 @@ import { SelectInput } from "./SelectInput"
 import { getUsername } from './../../../../utils/getUsername'
 import { doc, updateDoc } from 'firebase/firestore'
 import { db } from "../../../../api/firebase"
+import { dateToString } from "../../../../utils/dateToString"
 
 export const TableRecord = ({ className, order, index }) => {
     const handleClick = (event) => {
@@ -41,7 +42,7 @@ export const TableRecord = ({ className, order, index }) => {
     return (
         <div className={className} onClick={event => handleClick(event)} >
             <p>{index + 1}</p>
-            <p>{order.orderDate.getDay() + '-' + order.orderDate.getMonth() + '-' + order.orderDate.getFullYear()}</p>
+            <p>{dateToString(order.orderDate)}</p>
             <p>{username}</p>
             <p>{order.orderValue}</p>
             {
