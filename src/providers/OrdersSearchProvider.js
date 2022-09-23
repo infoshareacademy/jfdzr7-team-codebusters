@@ -5,9 +5,15 @@ import { getOrderList } from "../utils/getOrderList"
 export const OrderSearchContext = createContext({})
 
 export const OrderSearchProvider = ({ children }) => {
+    const monthAgoDate = new Date()
+    monthAgoDate.setMonth(monthAgoDate.getMonth() - 1)
     const [searchConditions, setSearchConditions] = useState({
         checkedOption: 'all',
-        searchText: ''
+        searchText: '',
+        orderDate: {
+            dateStart: monthAgoDate,
+            dateEnd: new Date()
+        }
     })
     const { setOrderList } = useContext(OrderListContext)
     useEffect(() => {
