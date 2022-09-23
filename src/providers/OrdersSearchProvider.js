@@ -5,13 +5,15 @@ import { getOrderList } from "../utils/getOrderList"
 export const OrderSearchContext = createContext({})
 
 export const OrderSearchProvider = ({ children }) => {
-    const [orderSearchConditions, setOrderSearchConditions] = useState({})
+    const [searchConditions, setSearchConditions] = useState({
+        status: 'all'
+    })
     const { setOrderList } = useContext(OrderListContext)
     useEffect(() => {
         getOrderList(setOrderList)
     }, [setOrderList])
     return (
-        <OrderSearchContext.Provider value={{ orderSearchConditions, setOrderSearchConditions }}>
+        <OrderSearchContext.Provider value={{ searchConditions, setSearchConditions }}>
             {children}
         </OrderSearchContext.Provider>
     )

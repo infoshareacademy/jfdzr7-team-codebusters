@@ -1,9 +1,11 @@
-import { OrderSearchProvider } from "../../providers/OrdersSearchProvider"
+import { OrderSearchContext, OrderSearchProvider } from "../../providers/OrdersSearchProvider"
+import { StyledCategoryBar } from "./searchPartComponents/StyledCategoryBar"
+import { statusOptions } from './searchPartComponents/utils/statusOptions'
 
 export const SearchOrderMenu = () => {
     return (
         <OrderSearchProvider>
-            <div>Search Order Menu</div>
+            <StyledCategoryBar options={statusOptions} context={OrderSearchContext} />
         </OrderSearchProvider>
     )
 }
