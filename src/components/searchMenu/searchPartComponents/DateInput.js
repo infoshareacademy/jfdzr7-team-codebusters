@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { OrderSearchContext } from "../../../providers/OrdersSearchProvider"
+import { dateToString } from "../../../utils/dateToString"
 
 export const DateInput = ({ className, name, date, labelText = "" }) => {
     const { searchConditions, setSearchConditions } = useContext(OrderSearchContext)
@@ -11,13 +12,6 @@ export const DateInput = ({ className, name, date, labelText = "" }) => {
                 [name]: new Date(event.target.value)
             }
         })
-    }
-    const dateToString = (date) => {
-        const year = date.getFullYear()
-        const month = date.getMonth() < 9 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1
-        const day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
-        const dateString = `${year}-${month}-${day}`
-        return dateString
     }
     const today = new Date()
     return (
