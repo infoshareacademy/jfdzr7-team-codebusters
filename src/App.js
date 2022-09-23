@@ -10,8 +10,8 @@ export const App = () => {
   return (
     <div className="App">
       {/* <Contact /> */}
-      <BookstorePage />
-      {/* <StyledOrdersPage /> */}
+      {/* <BookstorePage /> */}
+      <StyledOrdersPage />
     </div>
   );
 }
