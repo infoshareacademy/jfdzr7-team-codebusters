@@ -17,8 +17,8 @@ export const OrderSearchProvider = ({ children }) => {
     })
     const { setOrderList } = useContext(OrderListContext)
     useEffect(() => {
-        getOrderList(setOrderList)
-    }, [setOrderList])
+        getOrderList({ setOrderList, ...searchConditions })
+    }, [setOrderList, searchConditions])
     return (
         <OrderSearchContext.Provider value={{ searchConditions, setSearchConditions }}>
             {children}

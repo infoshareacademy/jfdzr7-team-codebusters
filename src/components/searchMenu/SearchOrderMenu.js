@@ -1,6 +1,5 @@
 import { OrderSearchContext, OrderSearchProvider } from "../../providers/OrdersSearchProvider"
 import { Wrapper } from "./searchPartComponents/Wrapper"
-
 import { SearchBar } from "./searchPartComponents/SearchBar"
 import { StyledCategoryBar } from "./searchPartComponents/StyledCategoryBar"
 import { StyledDateBar } from "./searchPartComponents/StyledDateBar"
