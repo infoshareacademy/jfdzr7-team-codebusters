@@ -9,6 +9,8 @@ import { getUsername } from './../../../../utils/getUsername'
 import { doc, updateDoc } from 'firebase/firestore'
 import { db } from "../../../../api/firebase"
 import { dateToString } from "../../../../utils/dateToString"
+import { ChangeStatusInput } from "./ChangeStatusInput"
+import { StatusInfo } from "./StatusInfo"
 
 export const TableRecord = ({ className, order, index }) => {
     const handleClick = (event) => {
@@ -16,21 +18,15 @@ export const TableRecord = ({ className, order, index }) => {
         const detailPanelIsHidden = detailPanel.style.display === 'none'
         detailPanel.style.display = detailPanelIsHidden ? 'block' : 'none'
     }
+    console.log(order)
+    const [statusInput, setStatusInput] = useState(order.status)
+    const [testOrder, setTestOrder] = useState(order)
+    console.log(testOrder)
     const [isEditStatusActive, setIsEditStatusActive] = useState(false)
-    const [orderStatus, setOrderStatus] = useState(order.status)
+
     const changeEditStatus = (event) => {
         setIsEditStatusActive(!isEditStatusActive)
         event.stopPropagation()
-    }
-    const cancelStatusChange = (event) => {
-        setOrderStatus(order.status)
-        changeEditStatus(event)
-    }
-    const confirmStatusChange = (event) => {
-        changeEditStatus(event)
-        const docRef = doc(db, 'orders', order.id)
-        const newObj = { ...order, status: orderStatus }
-        updateDoc(docRef, newObj)
     }
 
     const [username, setUsername] = useState('')
@@ -47,21 +43,8 @@ export const TableRecord = ({ className, order, index }) => {
             <p>{order.orderValue}</p>
             {
                 isEditStatusActive ?
-                    <Wrapper>
-                        <SelectInput labelText=''
-                            name='orderStatus'
-                            value={orderStatus}
-                            callback={event => setOrderStatus(event.target.value)}
-                            statusOptions={['waiting', 'active', 'sent']}
-                            onClickCallback={event => event.stopPropagation()}
-                        />
-                        <img src={check} height="20px" alt="check" onClick={event => confirmStatusChange(event)} />
-                        <img src={cancel} height="20px" alt="cancel" onClick={event => cancelStatusChange(event)} />
-                    </Wrapper> :
-                    <Wrapper>
-                        <p>{orderStatus}</p>
-                        <img src={pencil} height="20px" alt="edit" onClick={event => changeEditStatus(event)} />
-                    </Wrapper>
+                    <ChangeStatusInput order={order} statusInput={statusInput} isEditStatusActive={isEditStatusActive} setStatusInput={setStatusInput} setIsEditStatusActive={setIsEditStatusActive} /> :
+                    <StatusInfo status={statusInput} isEditStatusActive={isEditStatusActive} setIsEditStatusActive={setIsEditStatusActive} />
             }
             <StyledOrderDetail positions={order.positions} />
         </div >
