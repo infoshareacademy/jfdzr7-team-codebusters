@@ -6,6 +6,8 @@ import cancel from "./../../../../img/icons/cancel.png"
 import check from "./../../../../img/icons/check.png"
 import { SelectInput } from "./SelectInput"
 import { getUsername } from './../../../../utils/getUsername'
+import { doc, updateDoc } from 'firebase/firestore'
+import { db } from "../../../../api/firebase"
 
 export const TableRecord = ({ className, order, index }) => {
     const handleClick = (event) => {
@@ -25,6 +27,9 @@ export const TableRecord = ({ className, order, index }) => {
     }
     const confirmStatusChange = (event) => {
         changeEditStatus(event)
+        const docRef = doc(db, 'orders', order.id)
+        const newObj = { ...order, status: orderStatus }
+        updateDoc(docRef, newObj)
     }
 
     const [username, setUsername] = useState('')
