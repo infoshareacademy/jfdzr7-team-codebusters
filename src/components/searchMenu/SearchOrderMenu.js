@@ -1,5 +1,9 @@
+import { OrderSearchProvider } from "../../providers/OrdersSearchProvider"
+
 export const SearchOrderMenu = () => {
     return (
-        <div>Search Order Menu</div>
+        <OrderSearchProvider>
+            <div>Search Order Menu</div>
+        </OrderSearchProvider>
     )
 }

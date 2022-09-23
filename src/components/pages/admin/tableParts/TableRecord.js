@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { StyledOrderDetail } from "./StyledOrderDetail"
 import pencil from "./../../../../img/icons/pencil.png"
 import { Wrapper } from "./Wrapper"
 import cancel from "./../../../../img/icons/cancel.png"
 import check from "./../../../../img/icons/check.png"
 import { SelectInput } from "./SelectInput"
+import { getUsername } from './../../../../utils/getUsername'
 
 export const TableRecord = ({ className, order, index }) => {
     const handleClick = (event) => {
@@ -25,11 +26,18 @@ export const TableRecord = ({ className, order, index }) => {
     const confirmStatusChange = (event) => {
         changeEditStatus(event)
     }
+
+    const [username, setUsername] = useState('')
+
+    useEffect(() => {
+        getUsername(setUsername, order.userID)
+    }, [order.userID])
+
     return (
         <div className={className} onClick={event => handleClick(event)} >
             <p onClick={event => handleClick(event)}>{index + 1}</p>
-            <p>{order.orderDate.getDate() + '-' + order.orderDate.getMonth() + '-' + order.orderDate.getFullYear()}</p>
-            <p>{order.userID}</p>
+            <p>{order.orderDate.getDay() + '-' + order.orderDate.getMonth() + '-' + order.orderDate.getFullYear()}</p>
+            <p>{username}</p>
             <p>{order.orderValue}</p>
             {
                 isEditStatusActive ?
@@ -49,7 +57,7 @@ export const TableRecord = ({ className, order, index }) => {
                         <img src={pencil} height="20px" alt="edit" onClick={event => changeEditStatus(event)} />
                     </Wrapper>
             }
-            <StyledOrderDetail />
+            <StyledOrderDetail positions={order.positions} />
         </div >
     )
 }
