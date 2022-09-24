@@ -11,9 +11,11 @@ font-weight: bold;
 `;
 
 export const StyledInput = styled.input`
+    display: block;
+    margin: 10px 0 0;
     width: 300px;
-    margin-bottom: 10px;
-    margin-top: 2px;
+    // margin-bottom: 10px;
+    // margin-top: 2px;
     padding: 5px 20px;
     font-size: 16px;
     font-weight: bold;
@@ -23,10 +25,12 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledTextarea = styled.textarea`
+    display: block;
+    margin: 10px 0 0;
     height: 130px;
     width: 300px;
-    margin-bottom: 10px;
-    margin-top: 2px;
+    // margin-bottom: 10px;
+    // margin-top: 2px;
     padding: 5px 20px;
     font-size: 16px;
     font-weight: bold;
