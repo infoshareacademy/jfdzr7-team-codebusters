@@ -3,15 +3,24 @@ import { OrderListContext } from "./../../providers/OrderListProvider"
 import { StyledTableHeader } from "./tableParts/StyledTableHeader"
 import { StyledTableRecord } from "./tableParts/StyledTableRecord"
 
-export const OrdersTable = ({ className }) => {
+export const OrdersTable = ({ className, headers }) => {
     const { orderList } = useContext(OrderListContext)
-    const Element = orderList.map((order, index) => {
-        return <StyledTableRecord key={index} order={order} statusik={order.status} index={index} />
-    })
+    const numberOfColumns = headers.length
     return (
         <div className={className}>
-            <StyledTableHeader />
-            {Element}
+            <StyledTableHeader
+                headers={headers}
+                numberOfColumns={numberOfColumns}
+            />
+            {
+                orderList.map((order, index) => {
+                    return <StyledTableRecord
+                        key={index}
+                        order={order}
+                        index={index}
+                        numberOfColumns={numberOfColumns} />
+                })
+            }
         </div>
     )
 }

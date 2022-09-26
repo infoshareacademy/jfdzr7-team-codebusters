@@ -1,11 +1,7 @@
-export const TableHeader = ({ className }) => {
+export const TableHeader = ({ className, headers }) => {
     return (
         <div className={className}>
-            <span>lp</span>
-            <span>Date</span>
-            <span>User</span>
-            <span>Cost</span>
-            <span>Status</span>
+            {headers.map((header, index) => <h3 key={index}>{header}</h3>)}
         </div>
     )
 }

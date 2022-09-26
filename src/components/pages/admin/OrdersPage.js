@@ -9,7 +9,9 @@ export const OrdersPage = ({ className }) => {
             <OrderListProvider>
                 <SearchOrderMenu />
                 <StyledDecorationBar />
-                <StyledOrdersTable />
+                <StyledOrdersTable
+                    headers={['lp', 'date', 'user', 'cost', 'status']}
+                />
             </OrderListProvider>
         </div>
     )
