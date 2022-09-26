@@ -1,4 +1,4 @@
-import pencil from "./../../../../img/icons/pencil.png"
+import pencil from "./../../../img/icons/pencil.png"
 import { Wrapper } from "./Wrapper"
 
 export const StatusInfoPanel = ({ status, isEditStatusActive, setIsEditStatusActive }) => {

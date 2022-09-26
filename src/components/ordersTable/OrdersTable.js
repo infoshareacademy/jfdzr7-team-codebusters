@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { OrderListContext } from "../../../providers/OrderListProvider"
+import { OrderListContext } from "./../../providers/OrderListProvider"
 import { StyledTableHeader } from "./tableParts/StyledTableHeader"
 import { StyledTableRecord } from "./tableParts/StyledTableRecord"
 

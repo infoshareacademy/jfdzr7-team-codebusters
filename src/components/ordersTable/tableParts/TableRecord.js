@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { StyledOrderDetail } from "./StyledOrderDetail"
-import { getUsername } from './../../../../utils/getUsername'
-import { dateToString } from "../../../../utils/dateToString"
+import { getUsername } from './../../../utils/getUsername'
+import { dateToString } from "./../../../utils/dateToString"
 import { StatusChangePanel } from "./StatusChangePanel"
 import { StatusInfoPanel } from "./StatusInfoPanel"
 import { expandOrHideOrderDetails } from "./expandOrHideOrderDetails"

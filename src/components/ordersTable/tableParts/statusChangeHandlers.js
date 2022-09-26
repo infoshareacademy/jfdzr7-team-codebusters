@@ -1,5 +1,5 @@
 import { doc, updateDoc } from 'firebase/firestore'
-import { db } from "../../../../api/firebase"
+import { db } from "./../../../api/firebase"
 
 export const changeEditStatus = (event, isEditStatusActive, setIsEditStatusActive) => {
     setIsEditStatusActive(!isEditStatusActive)
