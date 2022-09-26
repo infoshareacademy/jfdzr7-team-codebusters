@@ -4,7 +4,7 @@ import { getUsername } from './../../../utils/getUsername'
 import { dateToString } from "./../../../utils/dateToString"
 import { StatusChangePanel } from "./StatusChangePanel"
 import { StatusInfoPanel } from "./StatusInfoPanel"
-import { expandOrHideOrderDetails } from "./expandOrHideOrderDetails"
+import { expandOrHideOrderDetails } from "../utils/expandOrHideOrderDetails"
 
 export const TableRecord = ({ className, order, index }) => {
     const [isEditStatusActive, setIsEditStatusActive] = useState(false)
