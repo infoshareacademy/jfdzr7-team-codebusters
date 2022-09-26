@@ -1,16 +1,9 @@
 import { useState, useEffect } from "react"
 import { StyledOrderDetail } from "./StyledOrderDetail"
-import pencil from "./../../../../img/icons/pencil.png"
-import { Wrapper } from "./Wrapper"
-import cancel from "./../../../../img/icons/cancel.png"
-import check from "./../../../../img/icons/check.png"
-import { SelectInput } from "./SelectInput"
 import { getUsername } from './../../../../utils/getUsername'
-import { doc, updateDoc } from 'firebase/firestore'
-import { db } from "../../../../api/firebase"
 import { dateToString } from "../../../../utils/dateToString"
-import { ChangeStatusInput } from "./ChangeStatusInput"
-import { StatusInfo } from "./StatusInfo"
+import { StatusChangePanel } from "./StatusChangePanel"
+import { StatusInfoPanel } from "./StatusInfoPanel"
 
 export const TableRecord = ({ className, order, index }) => {
     const handleClick = (event) => {
@@ -18,16 +11,7 @@ export const TableRecord = ({ className, order, index }) => {
         const detailPanelIsHidden = detailPanel.style.display === 'none'
         detailPanel.style.display = detailPanelIsHidden ? 'block' : 'none'
     }
-    console.log(order)
-    const [statusInput, setStatusInput] = useState(order.status)
-    const [testOrder, setTestOrder] = useState(order)
-    console.log(testOrder)
     const [isEditStatusActive, setIsEditStatusActive] = useState(false)
-
-    const changeEditStatus = (event) => {
-        setIsEditStatusActive(!isEditStatusActive)
-        event.stopPropagation()
-    }
 
     const [username, setUsername] = useState('')
 
@@ -43,8 +27,8 @@ export const TableRecord = ({ className, order, index }) => {
             <p>{order.orderValue}</p>
             {
                 isEditStatusActive ?
-                    <ChangeStatusInput order={order} statusInput={statusInput} isEditStatusActive={isEditStatusActive} setStatusInput={setStatusInput} setIsEditStatusActive={setIsEditStatusActive} /> :
-                    <StatusInfo status={statusInput} isEditStatusActive={isEditStatusActive} setIsEditStatusActive={setIsEditStatusActive} />
+                    <StatusChangePanel order={order} isEditStatusActive={isEditStatusActive} setIsEditStatusActive={setIsEditStatusActive} /> :
+                    <StatusInfoPanel status={order.status} isEditStatusActive={isEditStatusActive} setIsEditStatusActive={setIsEditStatusActive} />
             }
             <StyledOrderDetail positions={order.positions} />
         </div >

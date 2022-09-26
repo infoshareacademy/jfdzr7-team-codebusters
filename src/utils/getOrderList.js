@@ -1,6 +1,5 @@
 import { collection, getDocs, query, where, orderBy } from 'firebase/firestore'
 import { db } from '../api/firebase'
-import { getDoc, doc } from 'firebase/firestore'
 
 export const getOrderList = ({ setOrderList, checkedOption, orderDate, searchText }) => {
     const collectionRef = collection(db, 'orders')
