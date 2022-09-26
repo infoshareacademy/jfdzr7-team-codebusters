@@ -14,8 +14,6 @@ export const StyledInput = styled.input`
     display: block;
     margin: 10px 0 0;
     width: 300px;
-    // margin-bottom: 10px;
-    // margin-top: 2px;
     padding: 5px 20px;
     font-size: 16px;
     font-weight: bold;
@@ -29,8 +27,6 @@ export const StyledTextarea = styled.textarea`
     margin: 10px 0 0;
     height: 130px;
     width: 300px;
-    // margin-bottom: 10px;
-    // margin-top: 2px;
     padding: 5px 20px;
     font-size: 16px;
     font-weight: bold;
@@ -65,4 +61,4 @@ export const ContactBackground = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     height: 95vh;    
-        `;
+`;

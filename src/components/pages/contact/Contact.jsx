@@ -46,6 +46,5 @@ export const Contact = () => {
                 </form>
             </StyledContainer >
         </ContactBackground >
-
     );
 };
