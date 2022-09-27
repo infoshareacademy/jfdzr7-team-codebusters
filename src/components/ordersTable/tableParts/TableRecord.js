@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { StyledOrderDetail } from "./StyledOrderDetail"
-import { getUsername } from './../../../utils/getUsername'
+import { getUserData } from '../../../utils/gerUserData'
 import { dateToString } from "./../../../utils/dateToString"
 import { StatusChangePanel } from "./StatusChangePanel"
 import { StatusInfoPanel } from "./StatusInfoPanel"
@@ -8,17 +8,17 @@ import { expandOrHideOrderDetails } from "../utils/expandOrHideOrderDetails"
 
 export const TableRecord = ({ className, order, index }) => {
     const [isEditStatusActive, setIsEditStatusActive] = useState(false)
-    const [username, setUsername] = useState('')
+    const [userData, setUserData] = useState({})
 
     useEffect(() => {
-        getUsername(setUsername, order.userID)
-    }, [order.userID])
+        getUserData(setUserData, order.user.ID)
+    }, [order.user.ID])
 
     return (
         <div className={className} onClick={event => expandOrHideOrderDetails(event)} >
             <p>{index + 1}</p>
             <p>{dateToString(order.orderDate)}</p>
-            <p>{username}</p>
+            <p>{order.user.email}</p>
             <p>{order.orderValue}</p>
             {
                 isEditStatusActive ?
