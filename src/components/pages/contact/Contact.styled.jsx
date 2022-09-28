@@ -2,29 +2,28 @@ import styled from "styled-components";
 import background from "./img/background.jpg"
 
 export const StyledContainer = styled.div`
-position: absolute;
-left: 62%;
-top: 10%;
-font-family: Inter;
-font-size: 20px;
-font-weight: bold;
+    position: absolute;
+    left: 62%;
+    top: 10%;
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: bold;
 `;
 
 export const StyledInput = styled.input`
     display: block;
-    margin: 10px 0 0;
+    margin: 5px 0 10px;
     width: 300px;
     padding: 5px 20px;
     font-size: 16px;
     font-weight: bold;
     background-color: #FFF2E0;
     border: 2px solid black;
-
 `;
 
 export const StyledTextarea = styled.textarea`
     display: block;
-    margin: 10px 0 0;
+    margin: 5px 0 10px;
     height: 130px;
     width: 300px;
     padding: 5px 20px;
