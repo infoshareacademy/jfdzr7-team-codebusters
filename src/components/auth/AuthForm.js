@@ -1,5 +1,5 @@
 import React from "react";
-
+import { InputAuthText } from "./InputAuthText";
 export const AuthForm = ({
   submitText,
   isPasswordHidden = false,
@@ -8,15 +8,14 @@ export const AuthForm = ({
   return (
     <>
       <form onSubmit={onSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email" />
-        </div>
+        <InputAuthText value="Email" name="email" type="email" id="email" />
         {!isPasswordHidden && (
-          <div>
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" />
-          </div>
+          <InputAuthText
+            value="Password"
+            name="password"
+            type="password"
+            id="password"
+          />
         )}
         <button>{submitText}</button>
       </form>
