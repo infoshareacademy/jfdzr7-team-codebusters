@@ -1,24 +1,13 @@
 import React from "react";
 import { InputAuthText } from "./InputAuthText";
-export const AuthForm = ({
-  submitText,
-  isPasswordHidden = false,
-  onSubmit,
-}) => {
+export const AuthForm = ({ submitText, onSubmit, isPasswordHidden = false }) => {
   return (
-    <>
       <form onSubmit={onSubmit}>
-        <InputAuthText value="Email" name="email" type="email" id="email" />
+        <InputAuthText value="Email" id="email" />
         {!isPasswordHidden && (
-          <InputAuthText
-            value="Password"
-            name="password"
-            type="password"
-            id="password"
-          />
+        <InputAuthText value="Password" id="password" />
         )}
-        <button>{submitText}</button>
+        <button type="submit">{submitText}</button>
       </form>
-    </>
   );
 };
