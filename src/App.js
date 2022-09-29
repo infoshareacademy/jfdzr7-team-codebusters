@@ -1,7 +1,7 @@
-import './index.css'
-import { FootEr } from './footer/Footer'
+import "./index.css";
+import { FootEr } from "./footer/Footer";
 import { Contact } from "./components/contact/Contact";
-import './App.css';
+import "./App.css";
 
 export const App = () => {
   return (
@@ -10,4 +10,4 @@ export const App = () => {
       <FootEr />
     </div>
   );
-}
+};

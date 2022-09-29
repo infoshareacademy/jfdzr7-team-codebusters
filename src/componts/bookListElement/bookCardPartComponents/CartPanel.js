@@ -1,46 +1,69 @@
-import minus from '../../../img/icons/minus.png'
-import plus from '../../../img/icons/plus.png'
-import cart from '../../../img/icons/shopping-cart.png'
-import { useState } from "react"
-import { increaseCount, decreaseCount } from "./CartPanelFunctions"
-import { StyledButton } from "./StyledButton"
-import { StyledCountInput } from "./StyledCountInput"
-import { Wrapper } from "./Wrapper"
+import minus from "../../../img/icons/minus.png";
+import plus from "../../../img/icons/plus.png";
+import cart from "../../../img/icons/shopping-cart.png";
+import { useState } from "react";
+import { increaseCount, decreaseCount } from "./CartPanelFunctions";
+import { StyledButton } from "./StyledButton";
+import { StyledCountDiv, StyledCountInput } from "./StyledCountInput";
+import { Wrapper } from "./Wrapper";
+import { useShoppingCart } from "../../../context/CartContext";
 
-export const CartPanel = ({ className, quantity }) => {
-    const [count, setCount] = useState(0)
-    const handleCounterClickButton = (event, cb) => {
-        event.preventDefault()
-        cb(count, setCount, quantity)
-    }
-    const isPanelDisabled = quantity === 0;
-    return (
-        <form className={className}>
-            <Wrapper>
-                <StyledButton onClick={(event) => { handleCounterClickButton(event, decreaseCount) }} disabled={isPanelDisabled}>
-                    <img src={minus} alt='minus button' />
-                </StyledButton>
-                <StyledCountInput
+export const CartPanel = ({ id, className, quantity }) => {
+  // const [count, setCount] = useState(0)
+  const { getItemCount, increaseCartCount, decreaseCartCount, removeFromCart } =
+    useShoppingCart();
+  const count = getItemCount(id);
+
+  const handleCounterClickButton = (event) => {
+    event.preventDefault();
+  };
+  const isPanelDisabled = quantity === 0;
+  return (
+    <form className={className}>
+      <Wrapper>
+        <StyledButton
+          onClick={(event) => {
+            handleCounterClickButton(event, decreaseCartCount(id));
+          }}
+          disabled={isPanelDisabled}
+        >
+          <img src={minus} alt="minus button" />
+        </StyledButton>
+        <StyledCountDiv>{count}</StyledCountDiv>
+        {/* <StyledCountInput
                     type='text'
                     pattern="\d*"
-                    value={count}
-                    onChange={(event) => { setCount(event.currentTarget.value) }}
+                    // value={count}
+                    // onChange={(event) => { setCount(count) }}
                     onBlur={(event) => {
                         if (count >= quantity) {
-                            setCount(quantity)
+                            // setCount(quantity)
                             alert('w magazynie znajduje się tylko ' + quantity + ' sztuk')
                         }
                     }}
                     disabled={isPanelDisabled}
-                />
-                <StyledButton onClick={(event) => { handleCounterClickButton(event, increaseCount, count, setCount, quantity) }} disabled={isPanelDisabled}>
-                    <img src={plus} alt='plus button' />
-                </StyledButton>
-            </Wrapper>
-            <StyledButton type="submit" onClick={(event) => event.preventDefault()} disabled={isPanelDisabled}>
-                <img className={cart} src={cart} height={'20px'} alt='add to cart button' />
-            </StyledButton>
-        </form>
-    )
-
-} 
+                /> */}
+        <StyledButton
+          onClick={(event) =>
+            handleCounterClickButton(event, increaseCartCount(id))
+          }
+          disabled={isPanelDisabled}
+        >
+          <img src={plus} alt="plus button" />
+        </StyledButton>
+      </Wrapper>
+      <StyledButton
+        type="submit"
+        onClick={(event) => event.preventDefault()}
+        disabled={isPanelDisabled}
+      >
+        <img
+          className={cart}
+          src={cart}
+          height={"20px"}
+          alt="add to cart button"
+        />
+      </StyledButton>
+    </form>
+  );
+};
