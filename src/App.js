@@ -9,7 +9,11 @@ export const App = () => {
   return (
     <div className="App">
       {/* <Contact /> */}
-      <BookstorePage />
+      {/* <BookstorePage /> */}
+      {/* <Register /> */}
+      {/* <ForgotPassword /> */}
+      {/* <Login /> */}
+      <Footer />
     </div>
   );
 };
