@@ -7,7 +7,6 @@ import emailjs from '@emailjs/browser';
 
 export const Contact = () => {
     const form = useRef();
-
     const [formValues, setFormValues] = useState(FORM_INITIAL_VALUES);
 
     const sendEmail = () => {
@@ -22,7 +21,7 @@ export const Contact = () => {
             }, (error) => {
                 alert('Message hasn\'t been sent\nTry agin!');
             });
-    }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -31,8 +30,8 @@ export const Contact = () => {
 
     const onChangeHandler = (e) => {
         const inputName = e.target.name;
-        setFormValues({ ...formValues, [inputName]: e.target.value })
-    }
+        setFormValues({ ...formValues, [inputName]: e.target.value });
+    };
 
     return (
         <ContactBackground>

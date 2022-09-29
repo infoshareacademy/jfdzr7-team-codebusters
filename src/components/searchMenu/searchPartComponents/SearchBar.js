@@ -1,35 +1,26 @@
-import { StyledSearchContainer } from "./StyledSearchContainer"
 import magnifying from '../../../img/icons/magnifying.png'
 import { useContext } from "react"
-import { BooksSearchContext } from "../../../context/BooksSearchContext"
+import { BooksSearchContext } from "../../../providers/BooksSearchProvider"
+import { StyledSearchBar } from "./StyledSearchBar"
+import { TextInput } from "./TextInput"
+import { deboubceQuery } from "./utils/debouceQuery"
 
 export const SearchBar = ({ className }) => {
-    const { setSearchText } = useContext(BooksSearchContext)
-    const deboubceQuery = (query, wait) => {
-        let timeout
-        return searchTerm => {
-            const delay = () => {
-                clearTimeout(timeout)
-                query(searchTerm)
-            }
-            clearTimeout(timeout)
-            timeout = setTimeout(delay, wait)
-        }
-    }
+    const { searchConditions, setSearchConditions } = useContext(BooksSearchContext)
     const performQuery = deboubceQuery(searchTerm => {
-        setSearchText(searchTerm)
+        setSearchConditions({
+            ...searchConditions,
+            searchText: searchTerm
+        })
     }, 500)
     return (
-        <div className={className}>
-            <StyledSearchContainer htmlFor='serchBar'>
-                <p>Search: </p>
-                <input
-                    type='text'
-                    placeholder='e.g. Hello World!'
-                    onChange={event => performQuery(event.currentTarget.value)}
-                />
-                <img src={magnifying} height='20px' alt='' />
-            </StyledSearchContainer>
-        </div>
+        <StyledSearchBar>
+            <TextInput
+                name='searchAuthorOrTitle'
+                labelText='Search: '
+                callback={performQuery}
+            />
+            <img src={magnifying} height='20px' alt='' />
+        </StyledSearchBar>
     )
 }
