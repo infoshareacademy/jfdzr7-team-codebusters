@@ -41,7 +41,6 @@ export const StyledButton = styled.input`
     font-weight: bold;
     background-color: #FFF2E0;
     border: 2px solid black;
-
 `;
 
 export const StyledH2 = styled.h2`

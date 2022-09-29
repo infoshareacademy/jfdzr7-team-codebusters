@@ -2,7 +2,7 @@ import { StyledTextarea } from "./Contact.styled";
 
 export const TextareaField = ({ title, value, onChange, name }) => {
     return (
-        <label>{title}<br />
+        <label>{title}
             <StyledTextarea
                 value={value}
                 name={name}

@@ -17,17 +17,16 @@ export const Contact = () => {
             form.current,
             'ieDQU1btk6_-lNbJd')
             .then((result) => {
-                console.log(result.text);
+                setFormValues(FORM_INITIAL_VALUES);
+                alert('Message has been sent!');
             }, (error) => {
-                console.log(error.text);
+                alert('Message hasn\'t been sent\nTry agin!');
             });
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setFormValues(FORM_INITIAL_VALUES);
         sendEmail();
-        alert('Message has been sent!');
     };
 
     const onChangeHandler = (e) => {
