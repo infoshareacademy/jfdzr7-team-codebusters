@@ -6,7 +6,8 @@ export const getBookDetails = (setBookDetails, id) => {
     getDoc(docRef).then(querySnap => {
         setBookDetails({
             author: querySnap.data().author,
-            title: querySnap.data().title
+            title: querySnap.data().title,
+            price: querySnap.data().price
         })
     })
 }

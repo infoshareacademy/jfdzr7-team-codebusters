@@ -1,11 +1,11 @@
-import { StyledPositionHeader } from "./StyledPositionHeader"
-import { StyledPositionRecord } from "./StyledPositionRecord"
+import { StyledPositionsDetail } from "./StyledPositionsDetail"
+import { UserDataDetail } from "./UserDataDetail"
 
-export const OrderDetail = ({ className, positions }) => {
+export const OrderDetail = ({ className, positions, userID }) => {
     return (
         <div className={className}>
-            <StyledPositionHeader />
-            {positions.map((position, index) => <StyledPositionRecord key={index} position={position} index={index} />)}
+            <StyledPositionsDetail positions={positions} />
+            <UserDataDetail userID={userID} />
         </div>
     )
 }

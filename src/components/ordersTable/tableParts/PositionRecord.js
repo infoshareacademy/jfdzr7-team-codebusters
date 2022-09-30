@@ -14,6 +14,7 @@ export const PositionRecord = ({ className, position, index }) => {
             <p>{index + 1}</p>
             <p>{BookDetails.author}</p>
             <p>{BookDetails.title}</p>
+            <p>{BookDetails.price}</p>
             <p>{position.quantity}</p>
         </div>
     )
