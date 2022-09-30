@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import OpenBook from '../EnjoyContainer/pictures/open-book-800px.jpg'
+import OpenBook from './photos/open-book-800px.jpg'
 // 400px x 200px
 // 600px x 300px
 // 800px x 400px
@@ -11,6 +11,7 @@ export const MainWindow = styled.div`
     min-height: 400px;
     background-size: cover;
     padding: 60px;
+    margin: auto;
     `
 export const FlexColumns = styled.div`
     display: flex;
@@ -42,4 +43,19 @@ export const StyledButton = styled.button`
     &:hover {
         opacity: 0.8;
     }
+`
+export const StyledBestSellersData = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 20px 20px 60px 20px
+`
+
+export const StyledH2 = styled.h2`
+    display: flex;
+    justify-content: space-evenly;
+    margin: 30px;
+    font-size: 47px;
+    color: #FF902B;
 `
