@@ -1,26 +1,12 @@
-import { sendPasswordResetEmail } from "@firebase/auth";
 import { AuthForm } from "./AuthForm";
-import { firebaseErrors } from "../../utils/firebaseErrors"
-import { auth } from "../../api/firebase";
-
+import { handlePasswordReset } from "./authHandlers";
+import { StyledAuthHeader } from "./StyledAuth";
 
 export const ForgotPassword = () => {
-  const handlePasswordReset = (e) => {
-    e.preventDefault();
-    sendPasswordResetEmail(auth, e.target.email.value)
-      .then(() => {
-        e.target.reset();
-      })
-      .catch((e) => {
-        alert(firebaseErrors[e.code]);
-      });
-  };
-
   return (
-    <AuthForm
-      submitText="Remind password"
-      onSubmit={handlePasswordReset}
-      isPasswordHidden
-    />
+    <>
+      <StyledAuthHeader>Remid password:</StyledAuthHeader>
+      <AuthForm submitText="Remind password" onSubmit={(e) => handlePasswordReset(e)} isPasswordHidden />
+    </>
   );
 };

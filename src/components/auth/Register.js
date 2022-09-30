@@ -1,10 +1,12 @@
 import { AuthForm } from "./AuthForm";
 import { handleRegister } from "./authHandlers";
+import { StyledAuthPanel, StyledAuthHeader } from "./StyledAuth";
+
 export const Register = () => {
   return (
-    <>
-      <h2>Register:</h2>
+    <StyledAuthPanel>
+      <StyledAuthHeader>Register:</StyledAuthHeader>
       <AuthForm submitText="Register" onSubmit={(e) => handleRegister(e)} />
-    </>
+    </StyledAuthPanel>
   );
 };
