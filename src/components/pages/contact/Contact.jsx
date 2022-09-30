@@ -2,31 +2,35 @@ import { useState, useRef } from 'react';
 import { StyledButton, StyledContainer, StyledH2, ContactBackground } from './Contact.styled';
 import { InputField } from './InputField';
 import { TextareaField } from './TextareaField';
+import { FORM_INITIAL_VALUES } from './constants';
 import emailjs from '@emailjs/browser';
 
 export const Contact = () => {
     const form = useRef();
+    const [formValues, setFormValues] = useState(FORM_INITIAL_VALUES);
 
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const sendEmail = () => {
         emailjs.sendForm(
             'service_63ullf7',
             'template_6u0hm8a',
             form.current,
             'ieDQU1btk6_-lNbJd')
             .then((result) => {
-                console.log(result.text);
+                setFormValues(FORM_INITIAL_VALUES);
+                alert('Message has been sent!');
             }, (error) => {
-                console.log(error.text);
+                alert('Message hasn\'t been sent\nTry agin!');
             });
-        alert('Message has been sent!');
-        setEmail('');
-        setMessage('');
-        setName('');
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        sendEmail();
+    };
+
+    const onChangeHandler = (e) => {
+        const inputName = e.target.name;
+        setFormValues({ ...formValues, [inputName]: e.target.value });
     };
 
     return (
@@ -34,9 +38,9 @@ export const Contact = () => {
             <StyledContainer>
                 <StyledH2>If you have any <span className='orange__font'>question</span><br />send the <span className='orange__font'>message</span>!</StyledH2>
                 <form onSubmit={handleSubmit} ref={form}>
-                    <InputField title={'Name'} type={'text'} value={name} setValue={setName} name={'user_name'} />
-                    <InputField title={'Email'} type={'email'} value={email} setValue={setEmail} name={'user_email'} />
-                    <TextareaField title={'Message'} value={message} setValue={setMessage} name={'message'} />
+                    <InputField title={'Name'} type={'text'} value={formValues.user_name} onChange={onChangeHandler} name={'user_name'} />
+                    <InputField title={'Email'} type={'email'} value={formValues.user_email} onChange={onChangeHandler} name={'user_email'} />
+                    <TextareaField title={'Message'} value={formValues.message} onChange={onChangeHandler} name={'message'} />
                     <StyledButton type='submit' value='Send' />
                 </form>
             </StyledContainer >
