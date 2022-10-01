@@ -4,14 +4,13 @@ import { query, orderBy, limit } from "firebase/firestore";
 import { useEffect, useState } from 'react'
 import { BookCard } from '../bookListElement/BookCard';
 import { StyledBestSellersData, StyledH2 } from '../bestSellers/BestSellers.styled'
-import { TextAndButtons } from './BestSellers.styled'
 
 
 export const BestSellersData = () => {
     const [books, setBooks] = useState([])
     const getBooks = () => {
         const booksCollection = collection(db, 'books')
-        const q = query(booksCollection, orderBy("sold", "desc"), limit(31));
+        const q = query(booksCollection, orderBy("sold", "desc"), limit(4));
 
         getDocs(q).then(querySnapshot => {
             const books = querySnapshot.docs.map(doc => ({
