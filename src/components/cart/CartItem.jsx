@@ -1,6 +1,6 @@
-import { useShoppingCart } from "../context/CartContext";
+import { useShoppingCart } from "../../context/CartContext";
 import { collection, getDocs, query } from "firebase/firestore";
-import { db } from "../api/firebase";
+import { db } from "../../api/firebase";
 import { useState } from "react";
 
 export const CartItem = ({ id, count }) => {

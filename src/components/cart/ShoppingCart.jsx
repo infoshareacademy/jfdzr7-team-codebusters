@@ -1,4 +1,4 @@
-import { useShoppingCart } from "../context/CartContext";
+import { useShoppingCart } from "../../context/CartContext";
 import { CartItem } from "./CartItem";
 import { BooksListContext } from "../context/BooksListContext";
 import {
