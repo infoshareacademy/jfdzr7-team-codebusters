@@ -1,5 +1,5 @@
-import pencil from "./../../../img/icons/pencil.png"
-import { changeEditStatus } from "./../utils/statusChangeHandlers"
+import pencil from "./../../../../img/icons/pencil.png"
+import { changeEditStatus } from "./../../utils/statusChangeHandlers"
 import { Wrapper } from "./Wrapper"
 
 export const StatusInfoPanel = ({ status, isEditStatusActive, setIsEditStatusActive }) => {

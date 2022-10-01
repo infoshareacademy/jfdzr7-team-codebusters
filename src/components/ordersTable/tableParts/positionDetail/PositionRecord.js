@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useState } from "react"
-import { getBookDetails } from "./../../../utils/getBookDetails"
+import { getBookDetails } from "../../../../utils/getBookDetails"
 export const PositionRecord = ({ className, position, index }) => {
     const [BookDetails, setBookDetails] = useState({
         title: '',

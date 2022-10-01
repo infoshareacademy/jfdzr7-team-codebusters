@@ -15,8 +15,13 @@ export const DateInput = ({ className, name, date, labelText = "" }) => {
     }
     const today = new Date()
     return (
-        <label htmlFor={name}>
-            {labelText} <input name={name} type="date" max={dateToString(today)} value={dateToString(date)} onChange={(event) => handleChange(event)} />
+        <label htmlFor={name}>{labelText}
+            <input className={className}
+                name={name}
+                type="date"
+                max={dateToString(today)}
+                value={dateToString(date)}
+                onChange={(event) => handleChange(event)} />
         </label>
     )
 }

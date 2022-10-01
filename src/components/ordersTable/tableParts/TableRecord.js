@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { StyledOrderDetail } from "./StyledOrderDetail"
 import { dateToString } from "./../../../utils/dateToString"
-import { StatusChangePanel } from "./StatusChangePanel"
-import { StatusInfoPanel } from "./StatusInfoPanel"
+import { StatusChangePanel } from "./statusInfoPanel/StatusChangePanel"
+import { StatusInfoPanel } from "./statusInfoPanel/StatusInfoPanel"
 import { expandOrHideOrderDetails } from "../utils/expandOrHideOrderDetails"
 
 export const TableRecord = ({ className, order, index }) => {
