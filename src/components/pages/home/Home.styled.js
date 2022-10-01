@@ -4,6 +4,8 @@ import OpenBook from './photos/open-book-800px.jpg'
 // 600px x 300px
 // 800px x 400px
 
+import './home.css'
+
 export const MainWindow = styled.div`
     background-image: url(${OpenBook});
     min-width: 800px;    
@@ -12,6 +14,7 @@ export const MainWindow = styled.div`
     background-size: cover;
     padding: 60px;
     margin: auto;
+    font-family: 'Inter', sans-serif;
     `
 export const FlexColumns = styled.div`
     display: flex;
@@ -44,7 +47,7 @@ export const StyledButton = styled.button`
         opacity: 0.8;
     }
 `
-export const StyledBestSellersData = styled.div`
+export const StyledBestSellers = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

@@ -1,20 +1,19 @@
-import React from 'react'
-import { MainWindow, StyledButton, TextAndButtons, FlexColumns } from './BestSellers.styled'
-import { BrowserRouter as Router, NavLink, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Link } from 'react-router-dom'
+import { MainWindow, TextAndButtons, FlexColumns, StyledButton } from './Home.styled';
 
-export const BestSellers = () => {
+export const LoginOrRegister = () => {
     return (
         <Router>
             <MainWindow>
                 <TextAndButtons>
                     <h1>Enjoy your <span>book</span> everyday with us</h1>
                     <FlexColumns>
-                        <NavLink to="register">
+                        <Link to="register">
                             <StyledButton>Register</StyledButton>
-                        </NavLink>
-                        <NavLink to="login">
+                        </Link>
+                        <Link to="login">
                             <StyledButton bg='#FFF2E0' color='#220901' brd='#220901'>Login</StyledButton>
-                        </NavLink>
+                        </Link>
                     </FlexColumns>
                 </TextAndButtons>
             </MainWindow>

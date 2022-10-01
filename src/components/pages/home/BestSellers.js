@@ -1,12 +1,11 @@
-import { db } from '../../api/firebase'
-import { collection, getDocs } from 'firebase/firestore'
-import { query, orderBy, limit } from "firebase/firestore";
+import { db } from '../../../api/firebase'
+import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
-import { BookCard } from '../bookListElement/BookCard';
-import { StyledBestSellersData, StyledH2 } from '../bestSellers/BestSellers.styled'
+import { BookCard } from '../../bookListElement/BookCard'
+import { StyledH2, StyledBestSellers } from './Home.styled';
 
 
-export const BestSellersData = () => {
+export const BestSellers = () => {
     const [books, setBooks] = useState([])
     const getBooks = () => {
         const booksCollection = collection(db, 'books')
@@ -28,7 +27,7 @@ export const BestSellersData = () => {
     return (
         <>
             <StyledH2>We recommend our best-selling books</StyledH2>
-            <StyledBestSellersData>
+            <StyledBestSellers>
                 {books.map((book) => {
                     return (
                         <BookCard
@@ -41,7 +40,7 @@ export const BestSellersData = () => {
                         />
                     )
                 })}
-            </StyledBestSellersData>
+            </StyledBestSellers>
         </>
     )
 }
