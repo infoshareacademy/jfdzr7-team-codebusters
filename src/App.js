@@ -4,13 +4,14 @@ import { Header } from "./components/header/Header";
 import { AuthProvider } from "./providers/AuthProvider";
 import { Routing } from "./components/routing/Routing";
 import { NewBook } from "./components/pages/newBook/NewBook";
+import './App.css';
 
 export const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
         <AuthProvider>
-          {/* <NewBook /> */}
+          <NewBook />
           <Header />
           <Routing />
           <Footer />

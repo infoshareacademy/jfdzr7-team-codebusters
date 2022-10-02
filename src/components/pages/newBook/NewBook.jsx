@@ -1,17 +1,61 @@
 import { doc, setDoc, Timestamp } from "firebase/firestore";
 import { db } from "../../../api/firebase";
+import { useState } from 'react';
+import { StyledButton, StyledContainer, StyledH2, NewBookBackground } from './NewBook.styled';
+import { InputField } from './InputField';
+
+import { FORM_INITIAL_VALUES } from "./constants";
 
 export const NewBook = () => {
-    setDoc(doc(db, "books", "test2"), {
-        author: "test",
-        category: ['all', 'testCategory'],
-        cover: "testCover link",
-        isbn: 666666666,
-        pages: 365,
-        price: 66.6,
-        published: Timestamp.fromDate(new Date("December 10, 1815")),
-        quantity: 5,
-        sold: 5,
-        title: "Test Book Full Form"
-    });
+    // const id = firebase.firestore().collection('books').doc().id
+    const [formValues, setFormValues] = useState(FORM_INITIAL_VALUES);
+
+    const addNewBook = ({ author, category, cover, isbn, pages, price, published, quantity, sold, title }) => {
+        setDoc(doc(db, "books", 'id'), {
+            author: { author },
+            category: { category },
+            cover: { cover },
+            isbn: { isbn },
+            pages: { pages },
+            price: { price },
+            published: Timestamp.fromDate(new Date({ published })),
+            quantity: { quantity },
+            sold: { sold },
+            title: { title }
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // addNewBook();
+    };
+
+    const onChangeHandler = (e) => {
+        const inputName = e.target.name;
+        setFormValues({ ...formValues, [inputName]: e.target.value });
+    };
+
+    return (
+        <NewBookBackground>
+            <StyledContainer>
+                <StyledH2>You can add <span className='orange__font'>new book </span>here!</StyledH2>
+                <form onSubmit={handleSubmit}>
+                    <InputField title={'Author'} type={'text'} value={formValues.author} onChange={onChangeHandler} name={'author'} />
+                    <InputField title={'Title'} type={'text'} value={formValues.title} onChange={onChangeHandler} name={'title'} />
+                    <InputField title={'Category'} type={'text'} value={formValues.category} onChange={onChangeHandler} name={'category'} />
+                    <InputField title={'ISBN'} type={'number'} value={formValues.isbn} onChange={onChangeHandler} name={'isbn'} />
+                    <InputField title={'Pages'} type={'number'} value={formValues.pages} onChange={onChangeHandler} name={'pages'} />
+                    <InputField title={'Cover'} type={'text'} value={formValues.cover} onChange={onChangeHandler} name={'cover'} />
+                    <InputField title={'Published'} type={'date'} value={formValues.published} onChange={onChangeHandler} name={'published'} />
+                    <InputField title={'Price'} type={'number'} value={formValues.price} onChange={onChangeHandler} name={'price'} />
+                    <InputField title={'Quantity'} type={'number'} value={formValues.quantity} onChange={onChangeHandler} name={'quantity'} />
+                    <InputField title={'Sold'} type={'number'} value={formValues.sold} onChange={onChangeHandler} name={'sold'} />
+                    <StyledButton type='submit' value='Send' />
+                </form>
+            </StyledContainer >
+        </NewBookBackground >
+    );
+
+
+
 };
