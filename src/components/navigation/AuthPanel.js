@@ -1,6 +1,6 @@
 import { StyledNavLink } from "./StyledNavLink"
 
-export const LogInPanel = ({ className }) => {
+export const AuthPanel = ({ className }) => {
     return (
         <div className={className}>
             <StyledNavLink to="/login">Log In</StyledNavLink>

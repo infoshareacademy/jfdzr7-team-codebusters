@@ -4,7 +4,7 @@ import { StyledAccountManagmentPanel } from "./StyledAccountManagmentPanel"
 import { StyledLinksPanel } from "./StyledLinksPanel"
 import { userAccountMenuLinks, adminAccountMenuLinks } from "../utils/accauntMenuLinksList"
 
-export const MenuPanel = ({ className }) => {
+export const AccountMenuPanel = ({ className }) => {
     const { isAdmin } = useContext(AuthContext)
     return (
         <div className={className}>

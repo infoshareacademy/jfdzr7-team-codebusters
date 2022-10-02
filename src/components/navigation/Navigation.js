@@ -5,7 +5,7 @@ import shoppingCart from "../../img/icons/shopping-cart.png"
 import { StyledHeader } from "./StyledHeader"
 import { StyledNavigation } from "./StyledNavigation"
 import { StyledNavLink } from "./StyledNavLink"
-import { LogInPanel } from "./LogInPanel"
+import { AuthPanel } from "./AuthPanel"
 import { StyledAccountMenu } from "./StyledAccountMenu"
 
 export const Navigation = () => {
@@ -24,7 +24,7 @@ export const Navigation = () => {
             </StyledNavigation>
             {isAuth ?
                 <StyledAccountMenu /> :
-                <LogInPanel />}
+                <AuthPanel />}
             <img height="30px" src={shoppingCart} alt='shopping cart' className='shoppingCartIcon' />
         </StyledHeader>
     )

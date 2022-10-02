@@ -5,7 +5,7 @@ export const AuthContext = createContext(null)
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const isAuth = !!user
-    const isAdmin = user?.isAdmin
+    const isAdmin = !!user?.isAdmin
     const isUser = isAuth && !user?.isAdmin
     return (
         <AuthContext.Provider value={{

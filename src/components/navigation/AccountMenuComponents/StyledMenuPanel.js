@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { MenuPanel } from "./MenuPanel";
+import { AccountMenuPanel } from "./AccountMenuPanel";
 
-export const StyledMenuPanel = styled(MenuPanel)`
+export const StyledMenuPanel = styled(AccountMenuPanel)`
         position: absolute;
         display: none;
         padding: 10px 20px;
