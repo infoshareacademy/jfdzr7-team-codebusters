@@ -1,6 +1,6 @@
 import { doc, setDoc, Timestamp } from "firebase/firestore";
 import { db } from "../../../api/firebase";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { StyledButton, StyledContainer, StyledH2, NewBookBackground } from './NewBook.styled';
 import { InputField } from './InputField';
 
@@ -8,26 +8,28 @@ import { FORM_INITIAL_VALUES } from "./constants";
 
 export const NewBook = () => {
     // const id = firebase.firestore().collection('books').doc().id
+    const formRef = useRef();
     const [formValues, setFormValues] = useState(FORM_INITIAL_VALUES);
 
-    const addNewBook = ({ author, category, cover, isbn, pages, price, published, quantity, sold, title }) => {
-        setDoc(doc(db, "books", 'id'), {
-            author: { author },
-            category: { category },
-            cover: { cover },
-            isbn: { isbn },
-            pages: { pages },
-            price: { price },
-            published: Timestamp.fromDate(new Date({ published })),
-            quantity: { quantity },
-            sold: { sold },
-            title: { title }
+    // const addNewBook = ({ author, category, cover, isbn, pages, price, published, quantity, sold, title }) => {
+    const addNewBook = () => {
+        setDoc(doc(db, "books", 'test2'), {
+            author: formValues.author,
+            category: formValues.category,
+            cover: formValues.cover,
+            isbn: formValues.isbn,
+            pages: formValues.pages,
+            price: formValues.price,
+            published: Timestamp.fromDate(new Date(formValues.published)),
+            quantity: formValues.quantity,
+            sold: formValues.sold,
+            title: formValues.title
         });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // addNewBook();
+        addNewBook();
     };
 
     const onChangeHandler = (e) => {
@@ -39,7 +41,7 @@ export const NewBook = () => {
         <NewBookBackground>
             <StyledContainer>
                 <StyledH2>You can add <span className='orange__font'>new book </span>here!</StyledH2>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} ref={formRef}>
                     <InputField title={'Author'} type={'text'} value={formValues.author} onChange={onChangeHandler} name={'author'} />
                     <InputField title={'Title'} type={'text'} value={formValues.title} onChange={onChangeHandler} name={'title'} />
                     <InputField title={'Category'} type={'text'} value={formValues.category} onChange={onChangeHandler} name={'category'} />
