@@ -4,7 +4,7 @@ import { SearchOrderMenu } from "../../searchMenu/SearchOrderMenu"
 import { OrdersTable } from "../../ordersTable/OrdersTable"
 import { StyledOrdersPage } from "./OrdersPage.styled"
 
-export const OrdersPage = ({ className }) => {
+export const OrdersPage = () => {
     return (
         <StyledOrdersPage>
             <OrderListProvider>
