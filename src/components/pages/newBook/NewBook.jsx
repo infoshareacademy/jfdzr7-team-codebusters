@@ -1,20 +1,17 @@
-import { doc, setDoc, Timestamp } from "firebase/firestore";
+import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../../../api/firebase";
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { StyledButton, StyledContainer, StyledH2, NewBookBackground } from './NewBook.styled';
 import { InputField } from './InputField';
-
 import { FORM_INITIAL_VALUES } from "./constants";
 
 export const NewBook = () => {
-    // const id = firebase.firestore().collection('books').doc().id
-    const formRef = useRef();
     const [formValues, setFormValues] = useState(FORM_INITIAL_VALUES);
 
     const addNewBook = () => {
-        setDoc(doc(db, "books", 'test2'), {
+        addDoc(collection(db, "books"), {
             author: formValues.author,
-            category: formValues.category,
+            category: formValues.category.replace(/\s/g, '').split(','),
             cover: formValues.cover,
             isbn: parseInt(formValues.isbn),
             pages: parseInt(formValues.pages),
@@ -66,10 +63,10 @@ export const NewBook = () => {
         <NewBookBackground>
             <StyledContainer>
                 <StyledH2>You can add <span className='orange__font'>new book </span>here!</StyledH2>
-                <form onSubmit={handleSubmit} ref={formRef}>
+                <form onSubmit={handleSubmit}>
                     <InputField title={'Author'} type={'text'} value={formValues.author} onChange={onChangeHandler} name={'author'} />
                     <InputField title={'Title'} type={'text'} value={formValues.title} onChange={onChangeHandler} name={'title'} />
-                    <InputField title={'Category'} type={'text'} value={formValues.category} onChange={onChangeHandler} name={'category'} />
+                    <InputField title={'Category (separate by comas)'} type={'text'} value={formValues.category} onChange={onChangeHandler} name={'category'} />
                     <InputField title={'ISBN'} type={'number'} value={formValues.isbn} onChange={onChangeHandler} name={'isbn'} />
                     <InputField title={'Pages'} type={'number'} value={formValues.pages} onChange={onChangeHandler} name={'pages'} />
                     <InputField title={'Cover'} type={'text'} value={formValues.cover} onChange={onChangeHandler} name={'cover'} />
@@ -81,7 +78,4 @@ export const NewBook = () => {
             </StyledContainer >
         </NewBookBackground >
     );
-
-
-
 };
