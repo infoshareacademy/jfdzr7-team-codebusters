@@ -8,10 +8,9 @@ export const StyledDetailHeader = styled.div`
         padding: 10px 5px;
         height: 100%;
         border-right: solid 1px black;
-        
-    }
-    & h4:last-child{
-        border-right: none;
+        &:last-child{
+            border-right: none;
+        }
     }
 `
 
