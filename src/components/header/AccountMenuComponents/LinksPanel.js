@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom"
-export const LinksPanel = ({ className, linksList }) => {
+import { StyledLinksPanel } from "./AccountMenuPanel.styled"
+
+export const LinksPanel = ({ linksList }) => {
     return (
-        <div className={className}>
+        <StyledLinksPanel>
             {linksList.map((link, index) =>
                 <Link key={index} to={link.url}>{link.text}</Link>)}
-        </div>
+        </StyledLinksPanel>
     )
 }

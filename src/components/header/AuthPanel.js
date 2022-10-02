@@ -1,8 +1,8 @@
-import { StyledNavLink } from "./StyledNavLink"
+import { StyledNavLink } from "./Header.styled"
 
-export const AuthPanel = ({ className }) => {
+export const AuthPanel = () => {
     return (
-        <div className={className}>
+        <div>
             <StyledNavLink to="/login">Log In</StyledNavLink>
             <StyledNavLink to="/register">Register</StyledNavLink>
         </div>

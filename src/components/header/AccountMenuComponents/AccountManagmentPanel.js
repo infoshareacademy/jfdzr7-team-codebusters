@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom"
 import { LogoutButton } from "../../auth/LogoutButton"
+import { StyledAccountManagmentPanel } from "./AccountMenuPanel.styled"
 
-export const AccountManagmentPanel = ({ className }) => {
+export const AccountManagmentPanel = () => {
     return (
-        <div className={className}>
+        <StyledAccountManagmentPanel>
             <Link to='/account'>My account</Link>
             <LogoutButton />
-        </div>
+        </StyledAccountManagmentPanel>
     )
 }

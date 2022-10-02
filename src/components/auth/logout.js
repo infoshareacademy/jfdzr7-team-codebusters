@@ -4,6 +4,5 @@ export const logout = (setUser) => {
     const auth = getAuth();
     signOut(auth).then(() => {
         setUser(null)
-        alert('See you!')
     })
 }
