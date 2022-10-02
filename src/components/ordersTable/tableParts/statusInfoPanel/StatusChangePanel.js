@@ -8,7 +8,7 @@ export const StatusChangePanel = ({ order, isEditStatusActive, setIsEditStatusAc
     const [orderStatusSelectValue, setOrderStatusSelectValue] = useState(order.status)
     return (
         <Wrapper>
-            <SelectInput labelText=''
+            <SelectInput
                 name='orderStatus'
                 value={orderStatusSelectValue}
                 callback={event => setOrderStatusSelectValue(event.target.value)}
