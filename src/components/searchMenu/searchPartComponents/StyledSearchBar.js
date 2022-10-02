@@ -6,6 +6,7 @@ export const StyledSearchBar = styled(StyledSearchContainer)`
     label{
         display: flex;
         flex-grow: 1;
+        align-items: center;
     }
     label input{
         flex-grow: 1;

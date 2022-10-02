@@ -1,13 +1,13 @@
-import { categoriesOfBooks } from '../../../utils/categoriesOfBooks'
 import { StyledCategoryRadioButton } from './StyledCategoryRadioButton'
 
-export const CategoryBar = ({ className }) => {
+export const CategoryBar = ({ className, options, context }) => {
     return (
         <div className={className}>
-            {categoriesOfBooks.map(category =>
+            {options.map(option =>
                 <StyledCategoryRadioButton
-                    key={category}
-                    category={category}
+                    key={option}
+                    option={option}
+                    context={context}
                 />)}
         </div>
     )

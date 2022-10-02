@@ -5,12 +5,12 @@ const filterTitleAndAuthor = (searchText, booksList) => {
     return (booksList.filter(book => book.title.includes(searchText) || book.author.includes(searchText)))
 }
 
-export const getBooksList = ({ setBooksList, checkedCategoryOfBook, selectedSortOption, selectedPriceRange, searchText }) => {
+export const getBooksList = ({ setBooksList, checkedOption, selectedSortOption, selectedPriceRange, searchText }) => {
     const collectionRef = collection(db, 'books')
     getDocs(query(collectionRef,
         where('price', '>=', selectedPriceRange.minPrice),
         where('price', '<=', selectedPriceRange.maxPrice),
-        where('category', 'array-contains', checkedCategoryOfBook
+        where('category', 'array-contains', checkedOption
         ))).then(querySnapshot => {
             let booksList = querySnapshot.docs.map(doc => ({
                 ...doc.data(),
