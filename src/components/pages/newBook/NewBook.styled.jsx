@@ -3,7 +3,7 @@ import background from "./img/background.jpg"
 
 export const StyledContainer = styled.div`
     position: absolute;
-    left: 3%;
+    left: 10%;
     font-family: Inter;
     font-size: 20px;
     font-weight: bold;

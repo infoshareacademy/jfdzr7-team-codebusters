@@ -11,25 +11,50 @@ export const NewBook = () => {
     const formRef = useRef();
     const [formValues, setFormValues] = useState(FORM_INITIAL_VALUES);
 
-    // const addNewBook = ({ author, category, cover, isbn, pages, price, published, quantity, sold, title }) => {
     const addNewBook = () => {
         setDoc(doc(db, "books", 'test2'), {
             author: formValues.author,
             category: formValues.category,
             cover: formValues.cover,
-            isbn: formValues.isbn,
-            pages: formValues.pages,
-            price: formValues.price,
+            isbn: parseInt(formValues.isbn),
+            pages: parseInt(formValues.pages),
+            price: parseInt(formValues.price),
             published: Timestamp.fromDate(new Date(formValues.published)),
-            quantity: formValues.quantity,
-            sold: formValues.sold,
+            quantity: parseInt(formValues.quantity),
+            sold: 0,
             title: formValues.title
         });
     };
 
+    const fieldIsValid = () => {
+        if (!formValues.author) {
+            alert('Field \'Author\' can\'t be empty!')
+        } else if (!formValues.title) {
+            alert('Field \'Title\' can\'t be empty!')
+        } else if (!formValues.category) {
+            alert('Field \'Category\' can\'t be empty!')
+        } else if (!formValues.isbn) {
+            alert('Field \'ISBN\' can\'t be empty!')
+        } else if (!formValues.pages) {
+            alert('Field \'Pages\' can\'t be empty!')
+        } else if (!formValues.cover) {
+            alert('Field \'Cover\' can\'t be empty!')
+        } else if (Number.isNaN(new Date(formValues.published).getTime())) {
+            alert('Field \'Published\' can\'t be empty!')
+        } else if (!formValues.price) {
+            alert('Field \'Price\' can\'t be empty!')
+        } else if (!formValues.quantity) {
+            alert('Field \'Quantity\' can\'t be empty!')
+        } else {
+            addNewBook();
+            alert('Book has been added!');
+            setFormValues(FORM_INITIAL_VALUES);
+        };
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        addNewBook();
+        fieldIsValid();
     };
 
     const onChangeHandler = (e) => {
@@ -51,7 +76,6 @@ export const NewBook = () => {
                     <InputField title={'Published'} type={'date'} value={formValues.published} onChange={onChangeHandler} name={'published'} />
                     <InputField title={'Price'} type={'number'} value={formValues.price} onChange={onChangeHandler} name={'price'} />
                     <InputField title={'Quantity'} type={'number'} value={formValues.quantity} onChange={onChangeHandler} name={'quantity'} />
-                    <InputField title={'Sold'} type={'number'} value={formValues.sold} onChange={onChangeHandler} name={'sold'} />
                     <StyledButton type='submit' value='Send' />
                 </form>
             </StyledContainer >
