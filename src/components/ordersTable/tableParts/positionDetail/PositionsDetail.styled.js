@@ -25,9 +25,8 @@ export const StyledPositionRecord = styled.div`
         align-items: center;
         padding: 10px 5px;
         border-right: solid 1px black;
-
-    }
-    & p:last-child{
-        border-right: none;
+        &:last-child{
+            border-right: none;
+        }
     }
 `
