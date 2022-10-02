@@ -30,12 +30,12 @@ export const StyledTitle = styled.h2`
 export const StyledCartItem = styled.li`
   list-style-type: none;
   border: 1px solid black;
-  margin-right: 100px;
-  padding: 15px;
   display: flex;
   flex-flow: row;
   align-items: center;
-  justify-content: space-between;
+  margin-right: 100px;
+  padding: 15px;
+  justify-content: space-around;
   background-color: rgba(255, 242, 224, 0.9);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-top: 15px;
@@ -109,3 +109,7 @@ export const StyledEmptyCartDiv = styled.div`
   text-align: center;
   font-size: 30px;
 `;
+
+export const StyledBookCover = styled.img`
+   width: 50px;
+`

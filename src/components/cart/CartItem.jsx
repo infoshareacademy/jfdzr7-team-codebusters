@@ -1,38 +1,33 @@
-import { useShoppingCart } from "../../context/CartContext";
-import { collection, getDocs, query } from "firebase/firestore";
-import { db } from "../../api/firebase";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { StyledCartItem, StyledButton, StyledBookCover } from "./Cart.styled";
+import { getCover } from "../../utils/getCover";
 
-export const CartItem = ({ id, count }) => {
-  const [bookList, setBookList] = useState([]);
-  const getBooksList = () => {
-    const collectionRef = collection(db, "books");
-    getDocs(query(collectionRef)).then((querySnapshot) => {
-      let booksList = querySnapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setBookList(booksList);
-    });
-  };
-  getBooksList();
-
-  const { removeFromCart } = useShoppingCart();
-
-  const item = bookList.find((i) => i.id === id);
-
-  if (item == null) return null;
-
+export const CartItem = ({
+  id,
+  author,
+  count,
+  cover,
+  price,
+  quantity,
+  title,
+  handleRemoveFromCart,
+}) => {
+  const [coverURL, setCoverURL] = useState("");
+  useEffect(() => {
+    getCover({ cover, setCoverURL });
+  }, [cover]);
   return (
-    <div>
-      <div>{item.cover}</div>
+    <StyledCartItem>
+      <StyledBookCover src={coverURL} alt="cover" />
       <div>
-        {item.title}
+        {title}
         {count > 1 && <span>{count}x</span>}
       </div>
-      <div>{item.price}</div>
-      <div>{item.price * count}</div>
-      <button onClick={removeFromCart(item.id)}>Remove</button>
-    </div>
+      <div>{price}</div>
+      <div>{price * count}</div>
+      <StyledButton onClick={(e) => handleRemoveFromCart(e, id)}>
+        Remove
+      </StyledButton>
+    </StyledCartItem>
   );
 };
