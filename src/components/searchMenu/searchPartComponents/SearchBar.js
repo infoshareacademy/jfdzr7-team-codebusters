@@ -6,7 +6,7 @@ import { deboubceQuery } from "./utils/debouceQuery"
 
 import magnifying from "../../../img/icons/magnifying.png"
 
-export const SearchBar = ({ className, context }) => {
+export const SearchBar = ({ context }) => {
     const { searchConditions, setSearchConditions } = useContext(context)
     const performQuery = deboubceQuery(searchTerm => {
         setSearchConditions({
@@ -17,7 +17,7 @@ export const SearchBar = ({ className, context }) => {
     return (
         <StyledSearchBar>
             <TextInput
-                name='searchAuthorOrTitle'
+                name='searchText'
                 labelText='Search: '
                 callback={performQuery}
             />
