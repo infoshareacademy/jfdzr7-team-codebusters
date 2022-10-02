@@ -7,7 +7,7 @@ export const getUserData = (setUserData, uid) => {
         setUserData({
             email: querySnap.data().email,
             address: querySnap.data().address,
-            telefon: querySnap.data().telefon
+            phone: querySnap.data().phone
         })
     })
 }

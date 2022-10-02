@@ -20,7 +20,7 @@ export const UserDataDetail = ({ userID }) => {
             </div>
             <div>
                 <h4>Phone:</h4>
-                <p>{userData.telefon}</p>
+                <p>{userData.phone}</p>
             </div>
         </StyledUserDataDetail>
     )
