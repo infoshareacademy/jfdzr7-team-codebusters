@@ -6,7 +6,8 @@ import { StyledPositionRecord } from "./PositionsDetail.styled"
 export const PositionRecord = ({ position, index }) => {
     const [BookDetails, setBookDetails] = useState({
         title: '',
-        author: ''
+        author: '',
+        price: 0
     })
     useEffect(() => {
         getBookDetails(setBookDetails, position.bookID)
