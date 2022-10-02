@@ -1,9 +1,19 @@
-import { OrdersPage } from './components/pages/admin/OrdersPage';
+import { BrowserRouter } from "react-router-dom";
+import { Footer } from "./components/footer/Footer";
+import { Header } from "./components/header/Header";
+import { AuthProvider } from "./providers/AuthProvider";
+import { Routing } from "./components/routing/Routing";
 
 export const App = () => {
   return (
     <div className="App">
-      <OrdersPage />
+      <BrowserRouter>
+        <AuthProvider>
+          <Header />
+          <Routing />
+          <Footer />
+        </AuthProvider>
+      </BrowserRouter>
     </div>
   );
-}
+};
