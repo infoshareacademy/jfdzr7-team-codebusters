@@ -1,7 +1,8 @@
-import { useContext } from 'react'
-import { BooksSearchContext } from '../../../providers/BooksSearchProvider'
-import { PriceInput } from './PriceInput'
-import { StyledSearchContainer } from './StyledSearchContainer'
+import { useContext } from "react"
+
+import { BooksSearchContext } from "../../../providers/BooksSearchProvider"
+import { PriceInput } from "./PriceInput"
+import { StyledSearchContainer } from "./StyledSearchContainer"
 
 export const PriceBar = () => {
     const { searchConditions } = useContext(BooksSearchContext)

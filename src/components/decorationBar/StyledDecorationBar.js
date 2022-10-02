@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { DecorationBar } from "./DecorationBar";
 
 export const StyledDecorationBar = styled(DecorationBar)`

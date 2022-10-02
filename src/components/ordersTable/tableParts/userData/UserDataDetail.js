@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+
 import { getUserData } from '../../../../utils/getUserData'
 import { StyledUserDataDetail } from "./UserDataDetail.styled"
 

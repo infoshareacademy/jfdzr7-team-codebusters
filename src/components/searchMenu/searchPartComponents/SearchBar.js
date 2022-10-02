@@ -1,8 +1,10 @@
-import magnifying from '../../../img/icons/magnifying.png'
 import { useContext } from "react"
+
 import { StyledSearchBar } from "./StyledSearchBar"
 import { TextInput } from "./TextInput"
 import { deboubceQuery } from "./utils/debouceQuery"
+
+import magnifying from "../../../img/icons/magnifying.png"
 
 export const SearchBar = ({ className, context }) => {
     const { searchConditions, setSearchConditions } = useContext(context)

@@ -1,6 +1,7 @@
+import { cancelStatusChange, confirmStatusChange } from "../../utils/statusChangeHandlers"
+
 import cancel from "./../../../../img/icons/cancel.png"
 import check from "./../../../../img/icons/check.png"
-import { cancelStatusChange, confirmStatusChange } from "../../utils/statusChangeHandlers"
 
 export const StatusChangePanelIcons = ({ order, isEditStatusActive, setIsEditStatusActive, orderStatusSelectValue }) => {
     return (

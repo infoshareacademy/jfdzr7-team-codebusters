@@ -1,11 +1,13 @@
-import minus from '../../../img/icons/minus.png'
-import plus from '../../../img/icons/plus.png'
-import cart from '../../../img/icons/shopping-cart.png'
 import { useState } from "react"
+
 import { increaseCount, decreaseCount } from "./CartPanelFunctions"
 import { StyledButton } from "./StyledButton"
 import { StyledCountInput } from "./StyledCountInput"
 import { Wrapper } from "./Wrapper"
+
+import minus from '../../../img/icons/minus.png'
+import plus from '../../../img/icons/plus.png'
+import cart from '../../../img/icons/shopping-cart.png'
 
 export const CartPanel = ({ className, quantity }) => {
     const [count, setCount] = useState(0)

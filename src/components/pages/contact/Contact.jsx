@@ -1,9 +1,10 @@
-import { useState, useRef } from 'react';
-import { StyledButton, StyledContainer, StyledH2, ContactBackground } from './Contact.styled';
-import { InputField } from './InputField';
-import { TextareaField } from './TextareaField';
-import { FORM_INITIAL_VALUES } from './constants';
-import emailjs from '@emailjs/browser';
+import { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
+
+import { InputField } from "./InputField";
+import { TextareaField } from "./TextareaField";
+import { FORM_INITIAL_VALUES } from "./constants";
+import { StyledButton, StyledContainer, StyledH2, ContactBackground } from "./Contact.styled";
 
 export const Contact = () => {
     const form = useRef();

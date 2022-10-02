@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+
 import { getCover } from "../../../utils/getCover"
 
 export const Cover = ({ className, cover }) => {
