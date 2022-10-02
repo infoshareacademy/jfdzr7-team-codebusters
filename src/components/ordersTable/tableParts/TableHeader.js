@@ -1,7 +1,9 @@
-export const TableHeader = ({ className, headers }) => {
+import { StyledTableHeader } from "../OrdersTable.styled"
+
+export const TableHeader = ({ className, headers, numberOfColumns }) => {
     return (
-        <div className={className}>
+        <StyledTableHeader numberOfColumns={numberOfColumns}>
             {headers.map((header, index) => <h3 key={index}>{header}</h3>)}
-        </div>
+        </StyledTableHeader >
     )
 }

@@ -1,11 +1,12 @@
-import { StyledPositionsDetail } from "./positionDetail/StyledPositionsDetail"
-import { StyledUserDataDetail } from "./userData/StyledUserDataDetail"
+import { StyledOrderDetail } from "../../pages/admin/OrdersPage.styled"
+import { PositionsDetail } from "./positionDetail/PositionsDetail"
+import { UserDataDetail } from "./userData/UserDataDetail"
 
-export const OrderDetail = ({ className, positions, userID }) => {
+export const OrderDetail = ({ positions, userID }) => {
     return (
-        <div className={className}>
-            <StyledUserDataDetail userID={userID} />
-            <StyledPositionsDetail positions={positions} />
-        </div>
+        <StyledOrderDetail>
+            <UserDataDetail userID={userID} />
+            <PositionsDetail positions={positions} />
+        </StyledOrderDetail>
     )
 }

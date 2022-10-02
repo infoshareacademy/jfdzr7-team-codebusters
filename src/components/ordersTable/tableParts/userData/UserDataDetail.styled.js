@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { UserDataDetail } from "./UserDataDetail";
 
-export const StyledUserDataDetail = styled(UserDataDetail)`
+export const StyledUserDataDetail = styled.div`
     display: flex;
     justify-content: space-between;
     div {

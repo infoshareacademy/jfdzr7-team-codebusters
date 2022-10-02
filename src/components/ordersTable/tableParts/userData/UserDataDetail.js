@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react"
 import { getUserData } from '../../../../utils/getUserData'
+import { StyledUserDataDetail } from "./UserDataDetail.styled"
 
-export const UserDataDetail = ({ className, userID }) => {
+export const UserDataDetail = ({ userID }) => {
     const [userData, setUserData] = useState({})
     useEffect(() => {
         getUserData(setUserData, userID)
     }, [userID])
     return (
-        <div className={className}>
+        <StyledUserDataDetail>
             <div>
                 <h4>City:</h4>
                 <p>{userData.address?.city}</p>
@@ -20,6 +21,6 @@ export const UserDataDetail = ({ className, userID }) => {
                 <h4>Phone:</h4>
                 <p>{userData.telefon}</p>
             </div>
-        </div>
+        </StyledUserDataDetail>
     )
 }

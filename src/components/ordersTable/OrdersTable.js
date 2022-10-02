@@ -1,26 +1,27 @@
 import { useContext } from "react"
 import { OrderListContext } from "./../../providers/OrderListProvider"
-import { StyledTableHeader } from "./tableParts/StyledTableHeader"
-import { StyledTableRecord } from "./tableParts/StyledTableRecord"
+import { TableHeader } from "./tableParts/TableHeader"
+import { TableRecord } from "./tableParts/TableRecord"
+import { StyledOrdersTable } from "./OrdersTable.styled"
 
 export const OrdersTable = ({ className, headers }) => {
     const { orderList } = useContext(OrderListContext)
     const numberOfColumns = headers.length
     return (
-        <div className={className}>
-            <StyledTableHeader
+        <StyledOrdersTable>
+            <TableHeader
                 headers={headers}
                 numberOfColumns={numberOfColumns}
             />
             {
                 orderList.map((order, index) => {
-                    return <StyledTableRecord
+                    return <TableRecord
                         key={index}
                         order={order}
                         index={index}
                         numberOfColumns={numberOfColumns} />
                 })
             }
-        </div>
+        </StyledOrdersTable>
     )
 }

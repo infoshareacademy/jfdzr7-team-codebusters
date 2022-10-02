@@ -1,14 +1,18 @@
 import { useState } from "react"
-import { StyledOrderDetail } from "./StyledOrderDetail"
+import { OrderDetail } from "./OrderDetail"
 import { dateToString } from "./../../../utils/dateToString"
 import { StatusChangePanel } from "./statusInfoPanel/StatusChangePanel"
 import { StatusInfoPanel } from "./statusInfoPanel/StatusInfoPanel"
 import { expandOrHideOrderDetails } from "../utils/expandOrHideOrderDetails"
+import { StyledTableRecord } from "../OrdersTable.styled"
 
-export const TableRecord = ({ className, order, index }) => {
+export const TableRecord = ({ className, order, index, numberOfColumns }) => {
     const [isEditStatusActive, setIsEditStatusActive] = useState(false)
     return (
-        <div className={className} onClick={event => expandOrHideOrderDetails(event)} >
+        <StyledTableRecord
+            numberOfColumns={numberOfColumns}
+            index={index}
+            onClick={event => expandOrHideOrderDetails(event)} >
             <p>{index + 1}</p>
             <p>{dateToString(order.orderDate)}</p>
             <p>{order.user.email}</p>
@@ -26,7 +30,7 @@ export const TableRecord = ({ className, order, index }) => {
                         setIsEditStatusActive={setIsEditStatusActive}
                     />
             }
-            <StyledOrderDetail positions={order.positions} userID={order.user.ID} />
-        </div >
+            <OrderDetail positions={order.positions} userID={order.user.ID} />
+        </StyledTableRecord >
     )
 }

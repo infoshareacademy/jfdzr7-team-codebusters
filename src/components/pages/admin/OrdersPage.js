@@ -1,18 +1,19 @@
 import { OrderListProvider } from "../../../providers/OrderListProvider"
 import { StyledDecorationBar } from "../../decorationBar/StyledDecorationBar"
 import { SearchOrderMenu } from "../../searchMenu/SearchOrderMenu"
-import { StyledOrdersTable } from "../../ordersTable/StyledOrdersTable"
+import { OrdersTable } from "../../ordersTable/OrdersTable"
+import { StyledOrdersPage } from "./OrdersPage.styled"
 
 export const OrdersPage = ({ className }) => {
     return (
-        <div className={className}>
+        <StyledOrdersPage>
             <OrderListProvider>
                 <SearchOrderMenu />
                 <StyledDecorationBar />
-                <StyledOrdersTable
+                <OrdersTable
                     headers={['lp', 'date', 'user', 'cost', 'status']}
                 />
             </OrderListProvider>
-        </div>
+        </StyledOrdersPage>
     )
 }

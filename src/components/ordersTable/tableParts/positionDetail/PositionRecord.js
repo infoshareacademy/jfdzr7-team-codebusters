@@ -1,7 +1,8 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import { getBookDetails } from "../../../../utils/getBookDetails"
-export const PositionRecord = ({ className, position, index }) => {
+import { StyledPositionRecord } from "./PositionsDetail.styled"
+export const PositionRecord = ({ position, index }) => {
     const [BookDetails, setBookDetails] = useState({
         title: '',
         author: ''
@@ -10,12 +11,12 @@ export const PositionRecord = ({ className, position, index }) => {
         getBookDetails(setBookDetails, position.bookID)
     }, [position.bookID])
     return (
-        <div className={className}>
+        <StyledPositionRecord>
             <p>{index + 1}</p>
             <p>{BookDetails.author}</p>
             <p>{BookDetails.title}</p>
             <p>{BookDetails.price}</p>
             <p>{position.quantity}</p>
-        </div>
+        </StyledPositionRecord>
     )
 }
