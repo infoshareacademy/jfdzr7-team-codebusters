@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledOrdersPage = styled.div`
+    margin: 50px 0;
     display: grid;
     grid-template-columns: repeat(auto, 5);
 `
