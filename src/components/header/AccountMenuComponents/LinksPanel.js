@@ -5,8 +5,8 @@ import { StyledLinksPanel } from "./AccountMenuPanel.styled"
 export const LinksPanel = ({ linksList }) => {
     return (
         <StyledLinksPanel>
-            {linksList.map((link, index) =>
-                <Link key={index} to={link.url}>{link.text}</Link>)}
+            {linksList.map(link =>
+                <Link key={link.url} to={link.url}>{link.text}</Link>)}
         </StyledLinksPanel>
     )
 }
