@@ -7,7 +7,7 @@ import { StatusInfoPanel } from "./statusInfoPanel/StatusInfoPanel"
 import { expandOrHideOrderDetails } from "../utils/expandOrHideOrderDetails"
 import { StyledTableRecord } from "../OrdersTable.styled"
 
-export const TableRecord = ({ className, order, index, numberOfColumns }) => {
+export const TableRecord = ({ order, index, numberOfColumns }) => {
     const [isEditStatusActive, setIsEditStatusActive] = useState(false)
     return (
         <StyledTableRecord
