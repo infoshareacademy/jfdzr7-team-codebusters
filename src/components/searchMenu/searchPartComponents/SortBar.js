@@ -2,7 +2,7 @@ import { useContext } from "react"
 
 import { BooksSearchContext } from "../../../providers/BooksSearchProvider"
 import { SelectInput } from "./SelectInput"
-import { StyledSearchContainer } from "./StyledSearchContainer"
+import { StyledSearchContainer } from "./searchPartComponents.styled"
 import { sortOptions } from "./utils/sortOptions"
 
 export const SortBar = () => {

@@ -9,3 +9,8 @@ export const decreaseCount = (count, setCount) => {
         setCount(count - 1)
     }
 }
+
+export const handleCounterClickButton = (event, cb, count, setCount, quantity) => {
+    event.preventDefault()
+    cb(count, setCount, quantity)
+}

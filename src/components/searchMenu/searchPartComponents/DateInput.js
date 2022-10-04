@@ -3,7 +3,7 @@ import { useContext } from "react"
 import { OrderSearchContext } from "../../../providers/OrdersSearchProvider"
 import { dateToString } from "../../../utils/dateToString"
 
-export const DateInput = ({ className, name, date, labelText = "" }) => {
+export const DateInput = ({ name, date }) => {
     const { searchConditions, setSearchConditions } = useContext(OrderSearchContext)
     const handleChange = (event) => {
         setSearchConditions({
@@ -16,8 +16,8 @@ export const DateInput = ({ className, name, date, labelText = "" }) => {
     }
     const today = new Date()
     return (
-        <label htmlFor={name}>{labelText}
-            <input className={className}
+        <label htmlFor={name}>
+            <input
                 name={name}
                 type="date"
                 max={dateToString(today)}

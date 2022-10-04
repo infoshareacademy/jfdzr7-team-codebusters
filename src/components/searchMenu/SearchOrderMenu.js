@@ -1,16 +1,16 @@
 import { OrderSearchContext, OrderSearchProvider } from "../../providers/OrdersSearchProvider"
-import { Wrapper } from "./searchPartComponents/Wrapper"
+import { Wrapper } from "./searchPartComponents/searchPartComponents.styled"
 import { SearchBar } from "./searchPartComponents/SearchBar"
-import { StyledCategoryBar } from "./searchPartComponents/StyledCategoryBar"
-import { StyledDateBar } from "./searchPartComponents/StyledDateBar"
+import { CategoryBar } from "./searchPartComponents/CategoryBar"
+import { DateBar } from "./searchPartComponents/DateBar"
 import { statusOptions } from "./searchPartComponents/utils/statusOptions"
 
 export const SearchOrderMenu = () => {
     return (
         <OrderSearchProvider>
-            <StyledCategoryBar options={statusOptions} context={OrderSearchContext} />
+            <CategoryBar options={statusOptions} context={OrderSearchContext} />
             <Wrapper>
-                <StyledDateBar />
+                <DateBar />
                 <SearchBar context={OrderSearchContext} />
             </Wrapper>
         </OrderSearchProvider>

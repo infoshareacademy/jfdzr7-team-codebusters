@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
-import { DecorationBar } from "./DecorationBar";
-
-export const StyledDecorationBar = styled(DecorationBar)`
+export const StyledDecorationBar = styled.section`
     width: 100%;
     padding-bottom: 20px;
     position: relative;

@@ -1,6 +1,7 @@
 import { useContext } from "react"
+import { StyledCategoryRadioButton } from "./searchPartComponents.styled"
 
-export const CategoryRadioButton = ({ className, option, context }) => {
+export const CategoryRadioButton = ({ option, context }) => {
     const { searchConditions, setSearchConditions } = useContext(context)
     const inputID = 'option-' + option
     const handleChange = (event) => {
@@ -11,7 +12,7 @@ export const CategoryRadioButton = ({ className, option, context }) => {
     }
     return (
         <>
-            <input className={className} type={'radio'}
+            <StyledCategoryRadioButton
                 id={inputID}
                 name='option'
                 value={option}

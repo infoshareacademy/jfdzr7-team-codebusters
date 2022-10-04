@@ -1,6 +1,6 @@
 import { useContext } from "react"
 
-import { StyledSearchBar } from "./StyledSearchBar"
+import { StyledSearchBar } from "./searchPartComponents.styled"
 import { TextInput } from "./TextInput"
 import { deboubceQuery } from "./utils/debouceQuery"
 
@@ -21,7 +21,7 @@ export const SearchBar = ({ context }) => {
                 labelText='Search: '
                 callback={performQuery}
             />
-            <img src={magnifying} height='20px' alt='' />
+            <img src={magnifying} height='20px' alt='magnifying' />
         </StyledSearchBar>
     )
 }

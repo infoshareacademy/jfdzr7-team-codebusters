@@ -1,5 +1,5 @@
 import { OrderListProvider } from "../../../providers/OrderListProvider"
-import { StyledDecorationBar } from "../../decorationBar/StyledDecorationBar"
+import { DecorationBar } from "../../decorationBar/DecorationBar"
 import { SearchOrderMenu } from "../../searchMenu/SearchOrderMenu"
 import { OrdersTable } from "../../ordersTable/OrdersTable"
 import { StyledOrdersPage } from "./OrdersPage.styled"
@@ -9,7 +9,7 @@ export const OrdersPage = () => {
         <StyledOrdersPage>
             <OrderListProvider>
                 <SearchOrderMenu />
-                <StyledDecorationBar />
+                <DecorationBar />
                 <OrdersTable
                     headers={['lp', 'date', 'user', 'cost', 'status']}
                 />
