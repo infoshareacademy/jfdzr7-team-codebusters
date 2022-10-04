@@ -23,7 +23,7 @@ export const CartPanel = ({ quantity }) => {
                     pattern="[0-9]"
                     value={count}
                     onChange={(event) => {
-                        isNaN(+event.currentTarget.value) ? setCount(prev => prev) : setCount(+event.currentTarget.value)
+                        isNaN(+event.currentTarget.value) ? setCount(prevState => prevState) : setCount(+event.currentTarget.value)
                     }}
                     onBlur={(event) => {
                         if (count >= quantity) {

@@ -4,15 +4,15 @@ import { OrderSearchContext } from "../../../providers/OrdersSearchProvider"
 import { dateToString } from "../../../utils/dateToString"
 
 export const DateInput = ({ name, date }) => {
-    const { searchConditions, setSearchConditions } = useContext(OrderSearchContext)
+    const { setSearchConditions } = useContext(OrderSearchContext)
     const handleChange = (event) => {
-        setSearchConditions({
-            ...searchConditions,
+        setSearchConditions(prevState => ({
+            ...prevState,
             orderDate: {
-                ...searchConditions.orderDate,
+                ...prevState.orderDate,
                 [name]: new Date(event.target.value)
             }
-        })
+        }))
     }
     const today = new Date()
     return (

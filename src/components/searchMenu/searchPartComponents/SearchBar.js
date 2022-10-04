@@ -7,12 +7,12 @@ import { deboubceQuery } from "./utils/debouceQuery"
 import magnifying from "../../../img/icons/magnifying.png"
 
 export const SearchBar = ({ context }) => {
-    const { searchConditions, setSearchConditions } = useContext(context)
+    const { setSearchConditions } = useContext(context)
     const performQuery = deboubceQuery(searchTerm => {
-        setSearchConditions({
-            ...searchConditions,
+        setSearchConditions(prevState => ({
+            ...prevState,
             searchText: searchTerm
-        })
+        }))
     }, 500)
     return (
         <StyledSearchBar>
