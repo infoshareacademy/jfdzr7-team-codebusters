@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { StyledAccountMenuPanel } from "./AccountMenuComponents/AccountMenuPanel.styled.js";
+import { StyledAccountMenuPanel } from "./accountMenuComponents/AccountMenuPanel.styled";
 
 export const StyledHeader = styled.header`
     display: flex;
