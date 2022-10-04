@@ -4,7 +4,7 @@ import { Wrapper } from "./Wrapper"
 import { SelectInput } from "./SelectInput"
 import { StatusChangePanelIcons } from "./StatusChangePanelIcons"
 
-export const StatusChangePanel = ({ order, isEditStatusActive, setIsEditStatusActive }) => {
+export const StatusChangePanel = ({ order, setIsEditStatusActive }) => {
     const [orderStatusSelectValue, setOrderStatusSelectValue] = useState(order.status)
     return (
         <Wrapper>
@@ -13,11 +13,11 @@ export const StatusChangePanel = ({ order, isEditStatusActive, setIsEditStatusAc
                 value={orderStatusSelectValue}
                 callback={event => setOrderStatusSelectValue(event.target.value)}
                 statusOptions={['waiting', 'active', 'sent']}
-                onClickCallback={event => event.stopPropagation()}
+                onClickCallback={event => event.stopPropagation()
+                }
             />
             <StatusChangePanelIcons
                 order={order}
-                isEditStatusActive={isEditStatusActive}
                 setIsEditStatusActive={setIsEditStatusActive}
                 orderStatusSelectValue={orderStatusSelectValue}
             />

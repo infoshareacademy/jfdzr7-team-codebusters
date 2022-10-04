@@ -5,7 +5,7 @@ import { TableHeader } from "./tableParts/TableHeader"
 import { TableRecord } from "./tableParts/TableRecord"
 import { StyledOrdersTable } from "./OrdersTable.styled"
 
-export const OrdersTable = ({ className, headers }) => {
+export const OrdersTable = ({ headers }) => {
     const { orderList } = useContext(OrderListContext)
     const numberOfColumns = headers.length
     return (
@@ -17,8 +17,14 @@ export const OrdersTable = ({ className, headers }) => {
             {
                 orderList.map((order, index) => {
                     return <TableRecord
-                        key={order.ID}
-                        order={order}
+                        key={order.id}
+                        index={index}
+                        order={{
+                            ...order,
+                            changeStatus: function (newStatus) {
+                                this.status = newStatus
+                            }
+                        }}
                         numberOfColumns={numberOfColumns} />
                 })
             }
