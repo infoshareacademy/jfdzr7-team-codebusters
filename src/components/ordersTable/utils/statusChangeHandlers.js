@@ -1,4 +1,4 @@
-import { doc, updateDoc, increment, arrayUnion, Timestamp } from 'firebase/firestore'
+import { doc, addDoc, updateDoc, increment, Timestamp, collection } from 'firebase/firestore'
 import { dateToString } from '../../../utils/dateToString'
 import { db } from "./../../../api/firebase"
 
@@ -25,15 +25,16 @@ const updateOrderStatus = (order, orderStatusSelectValue) => {
 }
 
 const sendMessageToUser = (userID, orderDate, orderStatus) => {
-    const docRef = doc(db, 'users', userID)
+    const userDocRef = doc(db, 'users', userID)
+    const messageCollectionRef = collection(db, 'messages')
     const message = {
         isRead: false,
         content: `Your order form ${dateToString(orderDate)} change status on ${orderStatus}`,
         messageDate: Timestamp.now()
     }
-    const updateMessages = {
+    const updateUnreadMessagesCount = {
         unreadMessages: increment(1),
-        messages: arrayUnion(message)
     }
-    updateDoc(docRef, updateMessages)
+    addDoc(messageCollectionRef, message)
+    updateDoc(userDocRef, updateUnreadMessagesCount)
 }
