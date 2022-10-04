@@ -17,9 +17,8 @@ export const OrdersTable = ({ className, headers }) => {
             {
                 orderList.map((order, index) => {
                     return <TableRecord
-                        key={index}
+                        key={order.ID}
                         order={order}
-                        index={index}
                         numberOfColumns={numberOfColumns} />
                 })
             }

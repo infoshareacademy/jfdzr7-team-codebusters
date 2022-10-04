@@ -12,7 +12,6 @@ export const TableRecord = ({ order, index, numberOfColumns }) => {
     return (
         <StyledTableRecord
             numberOfColumns={numberOfColumns}
-            index={index}
             onClick={event => expandOrHideOrderDetails(event)} >
             <p>{index + 1}</p>
             <p>{dateToString(order.orderDate)}</p>
