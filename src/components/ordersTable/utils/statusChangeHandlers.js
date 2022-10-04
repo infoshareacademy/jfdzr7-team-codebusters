@@ -30,7 +30,8 @@ const sendMessageToUser = (userID, orderDate, orderStatus) => {
     const message = {
         isRead: false,
         content: `Your order form ${dateToString(orderDate)} change status on ${orderStatus}`,
-        messageDate: Timestamp.now()
+        messageDate: Timestamp.now(),
+        userID: userID
     }
     const updateUnreadMessagesCount = {
         unreadMessages: increment(1),
