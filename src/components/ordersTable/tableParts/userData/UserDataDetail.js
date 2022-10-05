@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+
 import { getUserData } from '../../../../utils/getUserData'
 import { StyledUserDataDetail } from "./UserDataDetail.styled"
 
@@ -19,7 +20,7 @@ export const UserDataDetail = ({ userID }) => {
             </div>
             <div>
                 <h4>Phone:</h4>
-                <p>{userData.telefon}</p>
+                <p>{userData.phone}</p>
             </div>
         </StyledUserDataDetail>
     )

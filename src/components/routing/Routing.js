@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
+
 import { Contact } from './../pages/contact/Contact'
 import { BookstorePage } from './../pages/bookstore/BookstorePage'
 import { Register } from './../auth/Register';

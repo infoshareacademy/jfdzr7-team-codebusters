@@ -1,4 +1,4 @@
-import { AccountMenuPanel } from "./AccountMenuComponents/AccountMenuPanel"
+import { AccountMenuPanel } from "./accountMenuComponents/AccountMenuPanel"
 import { StyledAccountMenu } from "./Header.styled"
 
 export const AccountMenu = () => {

@@ -1,8 +1,8 @@
-import { signInWithEmailAndPassword } from "@firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "@firebase/auth";
+
 import { auth } from "../../api/firebase";
 import { firebaseErrors } from "../../utils/firebaseErrors";
 import { getFormData } from "../../utils/getFormData";
-import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import { getUser } from "./../../utils/getUser"
 
 export const handleLogin = (e, setUser) => {
