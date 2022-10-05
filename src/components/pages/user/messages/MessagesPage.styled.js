@@ -23,6 +23,8 @@ export const StyledMessageContainer = styled.fieldset`
 `
 
 export const StyledIconPanel = styled.div`
+    display: flex;
+    flex-wrap: nowrap;
     img {
         height: 30px;
         padding: 10px;

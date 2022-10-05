@@ -1,23 +1,26 @@
+import { useContext } from "react"
 import { StyledIconPanel } from "./MessagesPage.styled"
+import { changeIsReadStatus, deleteMessage } from "./messagesHandlers"
+import { MessagesListContext } from "../../../../providers/MessagesListProvider"
+import { AuthContext } from "../../../../providers/AuthProvider"
+
 
 import messageClose from "../../../../img/icons/messageClose.png"
 import messageOpen from "../../../../img/icons/messageOpen.png"
 import bin from "../../../../img/icons/bin.png"
-import { deleteMessage } from "./messagesHandlers"
-import { useContext } from "react"
-import { MessagesListContext } from "../../../../providers/MessagesListProvider"
 
 export const IconPanel = ({ isRead, messageID }) => {
-    // setMessagesList, checkedOption, userID
-    const { messagesList, setMessagesList } = useContext(MessagesListContext)
-    console.log(messagesList)
+    const { setMessagesList } = useContext(MessagesListContext)
+    const { user } = useContext(AuthContext)
     return (
         <StyledIconPanel>
             {isRead ?
-                <img src={messageOpen} alt='message is read' /> :
-                <img src={messageClose} alt='message is unread' />}
+                <img src={messageOpen} alt='message is read'
+                    onClick={() => { changeIsReadStatus(setMessagesList, messageID, true) }} /> :
+                <img src={messageClose} alt='message is unread'
+                    onClick={() => { changeIsReadStatus(setMessagesList, messageID, false) }} />}
             <img src={bin} alt='throw out message'
-                onClick={() => deleteMessage(messageID, setMessagesList)} />
+                onClick={() => deleteMessage(messageID, user.id, isRead)} />
         </StyledIconPanel>
     )
 }

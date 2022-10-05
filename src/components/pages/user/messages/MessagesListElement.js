@@ -8,7 +8,7 @@ export const MessagesListElement = () => {
     return (
         <StyledMessagesListElement>
             {
-                messagesList.map(message => <MessageContainer key={message.date} message={message} />)
+                messagesList.map((message, index) => <MessageContainer key={index + '-' + message.date} message={message} />)
             }
         </StyledMessagesListElement>
     )

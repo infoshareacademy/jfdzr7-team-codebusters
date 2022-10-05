@@ -16,7 +16,7 @@ export const getMessagesList = ({ setMessagesList, checkedOption, userID }) => {
             return ({
                 ...message.data(),
                 date: message.data().date.toDate(),
-                id: message.id,
+                id: message.id
             })
         })
         setMessagesList(messagesList)
