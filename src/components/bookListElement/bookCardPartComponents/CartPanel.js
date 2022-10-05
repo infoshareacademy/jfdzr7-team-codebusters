@@ -21,25 +21,41 @@ export const CartPanel = ({ className, quantity, book }) => {
   const handleAddToCartClickButton = (e, book, count) => {
     e.preventDefault();
 
-    const isBookInCart = cart.some((item) => item.id == book.id);
+    const isBookInCart = cart.some((item) => item.id === book.id);
+    console.log(isBookInCart);
 
-    if (!isBookInCart) {
-      book.count = count;
-      if (book.count > 0) {
+    if (count > 0) {
+      if (!isBookInCart) {
+        book.count = count;
         cart.push(book);
         setCart([...cart]);
       } else {
-        alert("You need to select at least 1 item to add to cart!");
+        const found = cart.find((item) => item.id === book.id);
+        if (found.count + count <= book.quantity) {
+          found.count = found.count + count;
+        } else {
+          alert(
+            "There are " +
+              book.quantity +
+              " books in stock " +
+              "and you have already " +
+              found.count +
+              " pieces of this product in your cart. " +
+              "You can add maximum " +
+              (book.quantity - found.count) +
+              " pieces of this product more."
+          );
+        }
       }
     } else {
-      const found = cart.find((item) => item.id == book.id);
-      found.count = found.count + count;
+      alert("You need to select at least 1 item to add to cart!");
     }
 
     console.log(cart);
   };
 
   const isPanelDisabled = quantity === 0;
+
   return (
     <form className={className}>
       <Wrapper>
@@ -58,10 +74,10 @@ export const CartPanel = ({ className, quantity, book }) => {
           onChange={(event) => {
             setCount(event.currentTarget.value);
           }}
-          onBlur={(event) => {
+          onBlur={() => {
             if (count >= quantity) {
               setCount(quantity);
-              alert("There are " + quantity + " books in stock");
+              alert("Sorry! only " + quantity + " pieces left in stock");
             }
           }}
           disabled={isPanelDisabled}

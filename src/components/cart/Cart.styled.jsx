@@ -9,10 +9,12 @@ export const StyledCart = styled.div`
   font-family: "Inter", sans-serif;
   font-weight: 700;
   background-image: url(${background});
+  background-attachment: fixed;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
+  height: 100vw;
   margin-top: 0;
   padding-top: 0;
 `;
@@ -21,7 +23,7 @@ export const StyledTitle = styled.h2`
   font-style: normal;
   font-weight: 700;
   font-size: 40px;
-  color: #ff902b;
+  color: rgba(255, 242, 224, 0.9);
   text-align: center;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-top: 0;
@@ -41,10 +43,12 @@ export const StyledCartItem = styled.li`
   margin-top: 15px;
 `;
 export const StyledButton = styled.button`
-  background: #ff902b;
-  border: px solid #220901;
+  background-color: #ffce87;
+  border: 1px solid #220901;
   font-family: "Inter", sans-serif;
   margin: 3px;
+  height: 30px;
+  width: 100px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 export const StyledDeliveryButton = styled.button`
@@ -57,9 +61,9 @@ export const StyledDeliveryButton = styled.button`
   margin-bottom: 50px;
 `;
 export const StyledCounterButton = styled.button`
-  background: #ff902b;
-  border: px solid #220901;
-  border-radius: 50%;
+  background: #ffce87;
+  border: 1px solid #220901;
+  /* border-radius: 50%; */
   font-family: "Inter", sans-serif;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   width: 25px;
@@ -69,6 +73,15 @@ export const StyledInput = styled.input`
   background: rgba(255, 242, 224, 0.9);
   border: 1px solid #220901;
   margin: 3px;
+`;
+
+export const StyledCounterIput = styled.input`
+  background-color: transparent;
+  border: none;
+  width: 40px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
 `;
 
 export const StyledForm = styled.form`
@@ -84,6 +97,10 @@ export const StyledCartContainer = styled.div`
   padding-bottom: 20px;
 `;
 export const StyledSummary = styled.p`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   border: 1px solid black;
   margin-right: 100px;
   padding: 15px;
@@ -99,17 +116,37 @@ export const StyledCartList = styled.ul`
 `;
 
 export const StyledEmptyCartDiv = styled.div`
-  background-color: rgba(255, 242, 224, 0.9);
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 242, 224, 0.7);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: 1px solid #220901;
-  width: 90%;
+  width: 30%;
   margin-left: 40px;
   padding: 40px;
-  height: 100vw;
+  height: 15%;
+  margin: auto;
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
 `;
 
 export const StyledBookCover = styled.img`
-   width: 50px;
-`
+  width: 50px;
+`;
+
+export const Counter = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const StyledBookTitle = styled.div`
+  font-size: 19px;
+`;
+export const StyledBookAuthor = styled.div`
+  font-weight: normal;
+  font-size: 15px;
+`;
+export const StyledPrices = styled.div`
+  font-size: 19px;
+  font-weight: normal;
+`;
