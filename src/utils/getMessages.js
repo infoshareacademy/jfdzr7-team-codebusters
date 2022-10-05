@@ -7,6 +7,7 @@ export const getMessagesList = ({ setMessagesList, checkedOption, userID }) => {
         where('userID', '==', userID))
     const messageIsRead = checkedOption === 'read' ? true : false
     const checkedOptionQuery = query(collectionRef,
+        orderBy('date', 'desc'),
         where('userID', '==', userID),
         where('isRead', '==', messageIsRead)
     )
