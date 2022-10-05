@@ -4,7 +4,7 @@ import { Wrapper } from "./Wrapper"
 import { SelectInput } from "./SelectInput"
 import { StatusChangePanelIcons } from "./StatusChangePanelIcons"
 
-export const StatusChangePanel = ({ order, setIsEditStatusActive }) => {
+export const StatusChangePanel = ({ order, setIsEditStatusActive, changeStatus }) => {
     const [orderStatusSelectValue, setOrderStatusSelectValue] = useState(order.status)
     return (
         <Wrapper>
@@ -20,6 +20,7 @@ export const StatusChangePanel = ({ order, setIsEditStatusActive }) => {
                 order={order}
                 setIsEditStatusActive={setIsEditStatusActive}
                 orderStatusSelectValue={orderStatusSelectValue}
+                changeStatus={changeStatus}
             />
         </Wrapper>)
 }

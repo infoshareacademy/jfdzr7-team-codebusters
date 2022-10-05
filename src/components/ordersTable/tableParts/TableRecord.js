@@ -9,6 +9,9 @@ import { StyledTableRecord } from "../OrdersTable.styled"
 
 export const TableRecord = ({ order, index, numberOfColumns }) => {
     const [isEditStatusActive, setIsEditStatusActive] = useState(false)
+    const changeStatus = (newStatus) => {
+        order.status = newStatus
+    }
     return (
         <StyledTableRecord
             numberOfColumns={numberOfColumns}
@@ -23,6 +26,7 @@ export const TableRecord = ({ order, index, numberOfColumns }) => {
                         order={order}
                         isEditStatusActive={isEditStatusActive}
                         setIsEditStatusActive={setIsEditStatusActive}
+                        changeStatus={changeStatus}
                     /> :
                     <StatusInfoPanel
                         status={order.status}

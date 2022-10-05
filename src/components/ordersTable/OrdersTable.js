@@ -19,12 +19,7 @@ export const OrdersTable = ({ headers }) => {
                     return <TableRecord
                         key={order.id}
                         index={index}
-                        order={{
-                            ...order,
-                            changeStatus: function (newStatus) {
-                                this.status = newStatus
-                            }
-                        }}
+                        order={order}
                         numberOfColumns={numberOfColumns} />
                 })
             }
