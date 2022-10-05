@@ -14,9 +14,10 @@ export const StyledCart = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: 100vw;
+  height: 100%;
   margin-top: 0;
   padding-top: 0;
+  padding-bottom: 50px;
 `;
 export const StyledTitle = styled.h2`
   font-family: "Inter", sans-serif;
@@ -35,12 +36,15 @@ export const StyledCartItem = styled.li`
   display: flex;
   flex-flow: row;
   align-items: center;
-  margin-right: 100px;
   padding: 15px;
   justify-content: space-around;
   background-color: rgba(255, 242, 224, 0.9);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-top: 15px;
+  margin: auto;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
 `;
 export const StyledButton = styled.button`
   background-color: #ffce87;
@@ -50,15 +54,17 @@ export const StyledButton = styled.button`
   height: 30px;
   width: 100px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 `;
 export const StyledDeliveryButton = styled.button`
-  background: #ff902b;
-  border: px solid #220901;
+  background-color: #ffce87;
+  border: 1px solid #220901;
   font-family: "Inter", sans-serif;
   margin: 3px;
+  height: 30px;
+  width: 170px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-left: 40px;
-  margin-bottom: 50px;
+  cursor: pointer;
 `;
 export const StyledCounterButton = styled.button`
   background: #ffce87;
@@ -68,11 +74,13 @@ export const StyledCounterButton = styled.button`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   width: 25px;
   height: 25px;
+  cursor: pointer;
 `;
 export const StyledInput = styled.input`
   background: rgba(255, 242, 224, 0.9);
   border: 1px solid #220901;
   margin: 3px;
+  cursor: pointer;
 `;
 
 export const StyledCounterIput = styled.input`
@@ -85,16 +93,20 @@ export const StyledCounterIput = styled.input`
 `;
 
 export const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
   background-color: rgba(255, 242, 224, 0.9);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: 1px solid #220901;
-  width: 90%;
-  margin-left: 40px;
+  width: 85vw;
+  margin: auto;
   padding: 40px;
 `;
 export const StyledCartContainer = styled.div`
   padding-top: 10px;
   padding-bottom: 20px;
+  width: 90vw;
+  margin: auto;
 `;
 export const StyledSummary = styled.p`
   display: flex;
@@ -106,13 +118,16 @@ export const StyledSummary = styled.p`
   padding: 15px;
   background-color: rgba(255, 242, 224, 0.9);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-left: 40px;
+  margin: auto;
 `;
 
 export const StyledCartList = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  row-gap: 15px;
 `;
 
 export const StyledEmptyCartDiv = styled.div`

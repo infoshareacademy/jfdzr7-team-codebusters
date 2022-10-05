@@ -80,7 +80,9 @@ export const CartItem = ({
           onClick={(e) => {
             handleCountChange(e, decreaseCount);
           }}
-        ></StyledCounterButton>
+        >
+          -
+        </StyledCounterButton>
         <StyledCounterIput
           type="text"
           pattern="\d*"
@@ -103,7 +105,9 @@ export const CartItem = ({
           onClick={(e) => {
             handleCountChange(e, increaseCount);
           }}
-        ></StyledCounterButton>
+        >
+          +
+        </StyledCounterButton>
       </Counter>
       <StyledButton onClick={(e) => handleRemoveFromCart(e, id)}>
         Remove

@@ -1,4 +1,5 @@
 import { CartItem } from "./CartItem";
+import { Link } from "react-router-dom";
 import {
   StyledCart,
   StyledTitle,
@@ -7,6 +8,7 @@ import {
   StyledCartList,
   StyledEmptyCartDiv,
   StyledButton,
+  StyledDeliveryButton,
 } from "./Cart.styled";
 import { useContext, useEffect, useState } from "react";
 import { CartSummaryForm } from "./CartSummaryForm";
@@ -65,17 +67,19 @@ export const ShoppingCart = () => {
         )}
         {cart.length == 0 && (
           <StyledEmptyCartDiv>
-            Sorry, your cart is empty. You can choose your products here in our
-            shop:
-            <a href="">Click here</a>
+            <span>Sorry, your cart is empty.</span>
+            <span>Add products to your cart and buy quick and easy:</span>
+
+            <Link to="/books">Book Store</Link>
+            {/* <a href="">Click here</a> */}
           </StyledEmptyCartDiv>
         )}
         {cart.length > 0 && (
           <StyledSummary>
             Total:{total}
-            <StyledButton onClick={showCartSummaryForm}>
+            <StyledDeliveryButton onClick={showCartSummaryForm}>
               Delivery and Payment
-            </StyledButton>
+            </StyledDeliveryButton>
           </StyledSummary>
         )}
       </StyledCartContainer>

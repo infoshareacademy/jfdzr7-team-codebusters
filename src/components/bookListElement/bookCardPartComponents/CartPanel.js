@@ -22,7 +22,6 @@ export const CartPanel = ({ className, quantity, book }) => {
     e.preventDefault();
 
     const isBookInCart = cart.some((item) => item.id === book.id);
-    console.log(isBookInCart);
 
     if (count > 0) {
       if (!isBookInCart) {
@@ -50,8 +49,6 @@ export const CartPanel = ({ className, quantity, book }) => {
     } else {
       alert("You need to select at least 1 item to add to cart!");
     }
-
-    console.log(cart);
   };
 
   const isPanelDisabled = quantity === 0;
