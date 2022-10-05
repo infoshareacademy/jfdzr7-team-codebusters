@@ -3,23 +3,20 @@ import { db } from "../../../../api/firebase"
 
 export const deleteMessage = (messageID, userID, isRead) => {
     if (!isRead) {
-        console.log(userID)
-        const userDocRef = doc(db, 'users', userID)
-        const updateUnreadMessagesCount = {
-            unreadMessages: increment(-1),
-        }
-        updateDoc(userDocRef, updateUnreadMessagesCount)
+        changeUnreadMessagesCount(userID, isRead)
     }
     const messageDocRef = doc(db, 'messages', messageID)
     deleteDoc(messageDocRef)
 }
 
-export const changeIsReadStatus = (setMessagesList, messageID, isRead) => {
+export const changeIsReadStatus = (setMessagesList, messageID, userID, isRead) => {
     const messageDocRef = doc(db, 'messages', messageID)
     const messageIsReadStatusChange = {
         isRead: !isRead
     }
     updateDoc(messageDocRef, messageIsReadStatusChange)
+    changeUnreadMessagesCount(userID, isRead)
+
     setMessagesList(prevStateArray =>
         prevStateArray.map(message =>
             message.id === messageID ?
@@ -32,29 +29,40 @@ export const changeIsReadStatus = (setMessagesList, messageID, isRead) => {
     )
 }
 
-const selectUnreadMessagesID = (messagesList) => {
-    return messagesList.filter(message => message.isRead === false).map(message => message.id)
+export const changeAllIsReadStatus = (messagesList, setMessagesList, userID, isRead) => {
+    const selectedMessages = selectIsReadMessagesID(messagesList, isRead)
+    selectedMessages.forEach(messageID => changeIsReadStatus(setMessagesList, messageID, userID, isRead))
+
 }
 
-const selectReadMessagesID = (messagesList) => {
-    return messagesList.filter(message => message.isRead === true).map(message => message.id)
-}
-
-const selectAllMessagesID = (messagesList) => {
-    return messagesList.map(message => message.id)
-}
 
 export const deleteReadMessages = (messagesList, userID) => {
-    const selectedReadMessagesID = selectReadMessagesID(messagesList)
+    const selectedReadMessagesID = selectIsReadMessagesID(messagesList, true)
     selectedReadMessagesID.map(messageID => deleteMessage(messageID, userID, true))
 }
 
 export const deleteUnreadMessages = (messagesList, userID) => {
-    const selectedUnreadMessagesID = selectUnreadMessagesID(messagesList)
+    const selectedUnreadMessagesID = selectIsReadMessagesID(messagesList, false)
     selectedUnreadMessagesID.map(messageID => deleteMessage(messageID, userID, false))
 }
 
 export const deleteAllMessages = (messagesList, userID) => {
     const selectedAllMessagesID = selectAllMessagesID(messagesList)
     selectedAllMessagesID.map(messageID => deleteMessage(messageID, userID))
+}
+
+const changeUnreadMessagesCount = (userID, isRead) => {
+    const userDocRef = doc(db, 'users', userID)
+    const updateUnreadMessagesCount = {
+        unreadMessages: increment(isRead ? 1 : -1),
+    }
+    updateDoc(userDocRef, updateUnreadMessagesCount)
+}
+
+const selectIsReadMessagesID = (messagesList, isRead) => {
+    return messagesList.filter(message => message.isRead === isRead).map(message => message.id)
+}
+
+const selectAllMessagesID = (messagesList) => {
+    return messagesList.map(message => message.id)
 }

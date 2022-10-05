@@ -16,9 +16,9 @@ export const IconPanel = ({ isRead, messageID }) => {
         <StyledIconPanel>
             {isRead ?
                 <img src={messageOpen} alt='message is read'
-                    onClick={() => { changeIsReadStatus(setMessagesList, messageID, true) }} /> :
+                    onClick={() => { changeIsReadStatus(setMessagesList, messageID, user.id, true) }} /> :
                 <img src={messageClose} alt='message is unread'
-                    onClick={() => { changeIsReadStatus(setMessagesList, messageID, false) }} />}
+                    onClick={() => { changeIsReadStatus(setMessagesList, messageID, user.id, false) }} />}
             <img src={bin} alt='throw out message'
                 onClick={() => deleteMessage(messageID, user.id, isRead)} />
         </StyledIconPanel>
