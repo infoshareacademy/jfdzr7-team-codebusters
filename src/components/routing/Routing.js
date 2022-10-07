@@ -5,7 +5,7 @@ import { Contact } from './../pages/contact/Contact'
 import { BookstorePage } from './../pages/bookstore/BookstorePage'
 import { Register } from './../auth/Register';
 import { Login } from './../auth/Login';
-import { ProtectedRoute } from './../ProtectedRoute/ProtectedRoute';
+import { ProtectedRoute } from './ProtectedRoute';
 import { AuthContext } from './../../providers/AuthProvider';
 import { OrdersPage } from "./../pages/admin/OrdersPage"
 
