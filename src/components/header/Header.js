@@ -10,7 +10,7 @@ import { StyledNavLink } from "./Header.styled";
 import { CartContext } from "../../providers/CartProvider";
 
 export const Header = () => {
-  const { isAuth } = useContext(AuthContext);
+  const { isAuth, isUser, user } = useContext(AuthContext);
   const { cart } = useContext(CartContext);
 
   return (
@@ -22,16 +22,18 @@ export const Header = () => {
       <Navigation />
       {isAuth ? <AccountMenu /> : <AuthPanel />}
 
-      <StyledNavLink to="/cart">
-        <span>
-          <img
-            src={shoppingCart}
-            alt="shopping cart"
-            className="shoppingCartIcon"
-          />
-        </span>
-        <span>{cart.length}</span>
-      </StyledNavLink>
+      {isAuth ? (
+        <StyledNavLink to="/cart">
+          <span>
+            <img
+              src={shoppingCart}
+              alt="shopping cart"
+              className="shoppingCartIcon"
+            />
+          </span>
+          <span>{cart == undefined ? 0 : cart.length}</span>
+        </StyledNavLink>
+      ) : null}
     </StyledHeader>
   );
 };

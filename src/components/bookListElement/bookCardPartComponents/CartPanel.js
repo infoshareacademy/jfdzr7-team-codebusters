@@ -8,42 +8,59 @@ import { StyledCountInput } from "./StyledCountInput";
 import { Wrapper } from "./Wrapper";
 import { useContext } from "react";
 import { CartContext } from "../../../providers/CartProvider";
+import { getCart, updateCart, createCart } from "../../../utils/cartdbHandlers";
+import { AuthContext } from "../../../providers/AuthProvider";
+import { findCart } from "../../../utils/cartdbHandlers";
 
 export const CartPanel = ({ className, quantity, book }) => {
   const [count, setCount] = useState(0);
-  const { cart, setCart } = useContext(CartContext);
+  const { cart, cartId, setCart, setCartId } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
 
   const handleCounterClickButton = (event, cb) => {
     event.preventDefault();
     cb(count, setCount, quantity);
   };
 
-  const handleAddToCartClickButton = (e, book, count) => {
+  const handleAddToCartClickButton = (e, count, book) => {
     e.preventDefault();
 
-    const isBookInCart = cart.some((item) => item.id === book.id);
-
     if (count > 0) {
-      if (!isBookInCart) {
+      findCart(user, setCart, setCartId);
+
+      if (cart.length == 0) {
         book.count = count;
         cart.push(book);
         setCart([...cart]);
+        createCart(cart, user);
       } else {
-        const found = cart.find((item) => item.id === book.id);
-        if (found.count + count <= book.quantity) {
-          found.count = found.count + count;
+        const isBookInCart = cart.some((item) => item.id === book.id);
+        console.log("tu jestem", cart);
+        if (!isBookInCart) {
+          book.count = count;
+          cart.push(book);
+          setCart([...cart]);
+          updateCart(cartId, cart, user);
         } else {
-          alert(
-            "There are " +
-              book.quantity +
-              " books in stock " +
-              "and you have already " +
-              found.count +
-              " pieces of this product in your cart. " +
-              "You can add maximum " +
-              (book.quantity - found.count) +
-              " pieces of this product more."
-          );
+          console.log("jednak tu jestem");
+          const found = cart.find((item) => item.id === book.id);
+
+          if (found.count + count <= book.quantity) {
+            found.count = found.count + count;
+            updateCart(cartId, cart, user);
+          } else {
+            alert(
+              "There are " +
+                book.quantity +
+                " books in stock " +
+                "and you have already " +
+                found.count +
+                " pieces of this product in your cart. " +
+                "You can add maximum " +
+                (book.quantity - found.count) +
+                " pieces of this product more."
+            );
+          }
         }
       }
     } else {
@@ -96,7 +113,7 @@ export const CartPanel = ({ className, quantity, book }) => {
       </Wrapper>
       <StyledButton
         type="submit"
-        onClick={(e) => handleAddToCartClickButton(e, book, count)}
+        onClick={(e) => handleAddToCartClickButton(e, count, book)}
         disabled={isPanelDisabled}
       >
         <img

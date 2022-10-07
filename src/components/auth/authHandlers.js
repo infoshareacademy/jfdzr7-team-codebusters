@@ -3,15 +3,21 @@ import { auth } from "../../api/firebase";
 import { firebaseErrors } from "../../utils/firebaseErrors";
 import { getFormData } from "../../utils/getFormData";
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
-import { getUser } from "./../../utils/getUser"
+import { getUser } from "./../../utils/getUser";
+import { addDoc } from "firebase/firestore";
+import { db } from "../../api/firebase";
+import { collection } from "firebase/firestore";
+import { useState } from "react";
+import { findCart } from "../../utils/cartdbHandlers";
 
 export const handleLogin = (e, setUser) => {
   e.preventDefault();
+
   const { email, password } = getFormData(e);
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       e.target.reset();
-      getUser(setUser, userCredential.user.uid)
+      getUser(setUser, userCredential.user.uid);
     })
     .catch((e) => {
       alert(firebaseErrors[e.code]);
@@ -29,4 +35,13 @@ export const handleRegister = (e) => {
     .catch((e) => {
       alert(firebaseErrors[e.code]);
     });
+
+  const collectionRef = collection(db, "users");
+
+  const data = {
+    email: { email },
+    isAdmin: false,
+  };
+
+  addDoc(collectionRef, data);
 };

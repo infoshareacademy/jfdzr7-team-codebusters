@@ -34,7 +34,9 @@ export const Routing = () => {
           <Route path="/messages" element={<p>user message</p>} />
           <Route path="/orderHistory" element={<p>user orderHistory</p>} />
         </Route>
-        <Route path="/cart" element={<ShoppingCart />} />
+        <Route element={<ProtectedRoute isAllowed={isUser} />}>
+          <Route path="/cart" element={<ShoppingCart />} />
+        </Route>
       </Routes>
     </main>
   );

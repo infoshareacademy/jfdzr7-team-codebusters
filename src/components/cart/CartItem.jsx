@@ -13,6 +13,8 @@ import {
 import { getCover } from "../../utils/getCover";
 import { CartContext } from "../../providers/CartProvider";
 import { useContext } from "react";
+import { updateCart } from "../../utils/cartdbHandlers";
+import { AuthContext } from "../../providers/AuthProvider";
 
 export const CartItem = ({
   id,
@@ -27,7 +29,8 @@ export const CartItem = ({
 }) => {
   const [coverURL, setCoverURL] = useState("");
   const [bookCount, setbookCount] = useState(count);
-  const { cart } = useContext(CartContext);
+  const { cart, cartId, setCart, setCartId } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     getCover({ cover, setCoverURL });
@@ -49,6 +52,8 @@ export const CartItem = ({
       const found = cart.find((item) => item.id === id);
       found.count = bookCount + 1;
       console.log(cart);
+      setCart([...cart]);
+      updateCart(cartId, cart, user);
     } else {
       alert("Sorry! only " + quantity + " pieces left in stock");
     }
@@ -61,6 +66,8 @@ export const CartItem = ({
       const found = cart.find((item) => item.id === id);
       found.count = bookCount - 1;
       console.log(cart);
+      setCart([...cart]);
+      updateCart(cartId, cart, user);
     }
   };
 
@@ -73,7 +80,7 @@ export const CartItem = ({
         </StyledBookTitle>
         <StyledBookAuthor>by {author}</StyledBookAuthor>
       </div>
-      <StyledPrices>{price.toFixed(2)}</StyledPrices>
+      <StyledPrices>{price}</StyledPrices>
       <StyledPrices>{(price * bookCount).toFixed(2)}</StyledPrices>
       <Counter>
         <StyledCounterButton

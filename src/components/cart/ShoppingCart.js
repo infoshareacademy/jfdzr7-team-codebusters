@@ -7,22 +7,33 @@ import {
   StyledSummary,
   StyledCartList,
   StyledEmptyCartDiv,
-  StyledButton,
   StyledDeliveryButton,
 } from "./Cart.styled";
 import { useContext, useEffect, useState } from "react";
 import { CartSummaryForm } from "./CartSummaryForm";
 import { CartContext } from "../../providers/CartProvider";
+import {
+  findCart,
+  updateCart,
+  deleteBookFromCart,
+} from "../../utils/cartdbHandlers";
+import { AuthContext } from "../../providers/AuthProvider";
 
 export const ShoppingCart = () => {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart, cartId, setCart, setCartId } = useContext(CartContext);
   const [total, setTotal] = useState(0);
   const [showSummary, setshowSummary] = useState(false);
+  const { user } = useContext(AuthContext);
 
   const handleRemoveFromCart = (e, id) => {
     e.preventDefault();
     const arr = cart.filter((item) => item.id !== id);
+    const bookIndex = cart.indexOf(cart.find((item) => item.id == id));
+    console.log(bookIndex);
     setCart(arr);
+
+    deleteBookFromCart(bookIndex, cartId);
+    console.log("nowa arrayka", cart);
   };
 
   const calculateTotalPrice = () => {
@@ -37,7 +48,6 @@ export const ShoppingCart = () => {
       });
     }
     setTotal(totalPrice.toFixed(2));
-    console.log("elo");
   };
 
   useEffect(() => {
@@ -49,11 +59,25 @@ export const ShoppingCart = () => {
     setshowSummary((current) => !current);
   };
 
+  useEffect(() => {
+    if (findCart(user, setCart, setCartId) !== [])
+      findCart(user, setCart, setCartId);
+    console.log(cartId);
+    console.log(cart);
+  }, [user]);
+
   return (
     <StyledCart>
       <StyledTitle>Your cart:</StyledTitle>
       <StyledCartContainer>
-        {cart.length > 0 && (
+        {!cart.length || cart.length == 0 ? (
+          <StyledEmptyCartDiv>
+            <span>Sorry, your cart is empty.</span>
+            <span>Add products to your cart and buy quick and easy:</span>
+
+            <Link to="/books">Book Store</Link>
+          </StyledEmptyCartDiv>
+        ) : (
           <StyledCartList>
             {cart.map((item) => (
               <CartItem
@@ -65,15 +89,7 @@ export const ShoppingCart = () => {
             ))}
           </StyledCartList>
         )}
-        {cart.length == 0 && (
-          <StyledEmptyCartDiv>
-            <span>Sorry, your cart is empty.</span>
-            <span>Add products to your cart and buy quick and easy:</span>
 
-            <Link to="/books">Book Store</Link>
-            {/* <a href="">Click here</a> */}
-          </StyledEmptyCartDiv>
-        )}
         {cart.length > 0 && (
           <StyledSummary>
             Total:{total}
