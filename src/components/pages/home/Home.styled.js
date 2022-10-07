@@ -4,23 +4,22 @@ import OpenBook from './photos/open-book-800px.jpg'
 // 600px x 300px
 // 800px x 400px
 
-import './home.css'
-
 export const MainWindow = styled.div`
     background-image: url(${OpenBook});
     min-width: 800px;    
-    max-width: 870px;
+    max-width: 100%;
     min-height: 400px;
     background-size: cover;
     padding: 60px;
     margin: auto;
-    font-family: 'Inter', sans-serif;
     `
+
 export const FlexColumns = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 `
+
 export const TextAndButtons = styled.div`
     width: 470px;
     h1 {
@@ -28,7 +27,6 @@ export const TextAndButtons = styled.div`
         font-size: 37px;
         line-height: 70px;
     }
-    
     span {
         color: #FF902B;
     }
@@ -47,6 +45,7 @@ export const StyledButton = styled.button`
         opacity: 0.8;
     }
 `
+
 export const StyledBestSellers = styled.div`
     display: flex;
     flex-direction: row;
@@ -56,9 +55,8 @@ export const StyledBestSellers = styled.div`
 `
 
 export const StyledH2 = styled.h2`
-    display: flex;
-    justify-content: space-evenly;
-    margin: 30px;
+    margin: 30px auto;
+    text-align: center;
     font-size: 47px;
-    color: #FF902B;
+    span{ color: #FF902B; }
 `

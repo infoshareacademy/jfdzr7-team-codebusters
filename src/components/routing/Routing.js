@@ -11,13 +11,14 @@ import { OrdersPage } from "./../pages/admin/OrdersPage"
 import { MessagesPage } from '../pages/user/messages/MessagesPage';
 import { UserOrdersPage } from '../pages/user/ordersPage/UserOrdersPage';
 import { Warehouse } from '../pages/admin/warehouse/WarehousePage';
+import { Home } from '../pages/home/Home';
 
 export const Routing = () => {
     const { isAuth, isAdmin, isUser } = useContext(AuthContext)
     return (
         <main>
             <Routes>
-                <Route path="/" element={<p>Home Page</p>} />
+                <Route path="/" element={<Home />} />
                 <Route path="/about" element={<p>About us page</p>} />
                 <Route path="/books" element={<BookstorePage />} />
                 <Route path="/contact" element={<Contact />} />
