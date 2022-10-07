@@ -2,8 +2,7 @@ import { db } from '../../../api/firebase'
 import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 import { BookCard } from '../../bookListElement/BookCard'
-import { StyledH2, StyledBestSellers } from './Home.styled';
-
+import { StyledH2, StyledBestSellers } from './BestSellers.styled';
 
 export const BestSellers = () => {
     const [books, setBooks] = useState([])
