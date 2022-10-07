@@ -10,6 +10,7 @@ import { AuthContext } from './../../providers/AuthProvider';
 import { OrdersPage } from "./../pages/admin/OrdersPage"
 import { MessagesPage } from '../pages/user/messages/MessagesPage';
 import { UserOrdersPage } from '../pages/user/ordersPage/UserOrdersPage';
+import { Warehouse } from '../pages/admin/warehouse/WarehousePage';
 
 export const Routing = () => {
     const { isAuth, isAdmin, isUser } = useContext(AuthContext)
@@ -29,7 +30,7 @@ export const Routing = () => {
                 </Route>
                 <Route element={<ProtectedRoute isAllowed={isAdmin} />}>
                     <Route path="/orders" element={<OrdersPage />} />
-                    <Route path="/warehouse" element={<p>Admin Warehouse</p>} />
+                    <Route path="/warehouse" element={<Warehouse />} />
                     <Route path="/addNewBook" element={<p>Admin add new book</p>} />
                 </Route>
                 <Route element={<ProtectedRoute isAllowed={isUser} />}>
