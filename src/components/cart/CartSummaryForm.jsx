@@ -1,13 +1,6 @@
 import React from "react";
 import { StyledButton, StyledInput, StyledForm } from "./Cart.styled";
-import { addDoc } from "firebase/firestore";
-import { db } from "../../api/firebase";
-import { collection } from "firebase/firestore";
 
-// const collectionRef = collection(db, "orders");
-// addDoc(collectionRef, data);
-
-// const data = {};
 export const CartSummaryForm = () => {
   return (
     <>

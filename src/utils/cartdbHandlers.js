@@ -1,4 +1,5 @@
 import { db } from "../api/firebase";
+
 import {
   doc,
   updateDoc,
@@ -8,8 +9,6 @@ import {
   deleteDoc,
   query,
   where,
-  arrayRemove,
-  deleteField,
 } from "firebase/firestore";
 
 const collectionName = "carts";
@@ -18,7 +17,7 @@ export const createCart = (cart, user) => {
   const collectionRef = collection(db, collectionName);
 
   const data = {
-    positions: { cart },
+    positions: cart,
     user: {
       email: user.email,
     },
@@ -48,17 +47,11 @@ export const findCart = (user, setCart, setCartId) => {
       setCartId(cartId[0]);
     }
 
-    if (foundCart[0] !== undefined) {
-      console.log(foundCart[0].positions.cart);
-      setCart(foundCart[0].positions.cart);
-    } else {
+    if (foundCart[0] == undefined) {
       setCart([]);
+    } else {
+      setCart(foundCart[0].positions);
     }
-
-    // return {
-    //   positions: foundCart[0].positions,
-    //   cartId: cartId,
-    // };
   });
 };
 
@@ -66,9 +59,7 @@ export const updateCart = (cartId, cart, user) => {
   const docRef = doc(db, collectionName, cartId);
 
   const data = {
-    positions: {
-      cart,
-    },
+    positions: cart,
     user: {
       email: user.email,
     },
@@ -77,17 +68,18 @@ export const updateCart = (cartId, cart, user) => {
 };
 
 export const deleteCart = () => {
-  const docId = "cfas";
+  const docId = "ID";
   const docRef = doc(db, collectionName, docId);
   deleteDoc(docRef);
 };
 
-export const deleteBookFromCart = (bookIndex, cartId) => {
-  const cartRef = doc(db, collectionName, cartId[0].positions);
-  console.log();
-  updateDoc(cartRef, {
-    cart: deleteField(bookIndex),
-  });
+// In progress
 
-  console.log("zrobione");
-};
+// export const deleteBookFromCart = (bookToDelete, cartId) => {
+//   console.log(cartId);
+//   const cartRef = doc(db, collectionName, cartId);
+
+//   updateDoc(cartRef, {
+//     positions: arrayRemove(bookToDelete.id),
+//   });
+// };

@@ -25,15 +25,14 @@ export const ShoppingCart = () => {
   const [showSummary, setshowSummary] = useState(false);
   const { user } = useContext(AuthContext);
 
-  const handleRemoveFromCart = (e, id) => {
-    e.preventDefault();
+  const handleRemoveFromCart = (id) => {
     const arr = cart.filter((item) => item.id !== id);
-    const bookIndex = cart.indexOf(cart.find((item) => item.id == id));
-    console.log(bookIndex);
-    setCart(arr);
+    // const bookIndex = cart.indexOf(cart.find((item) => item.id == id));
+    // const bookToDelete = cart.filter((item) => item.id == id);
+    // const bookId = id;
+    // deleteBookFromCart(bookToDelete, cartId);
 
-    deleteBookFromCart(bookIndex, cartId);
-    console.log("nowa arrayka", cart);
+    setCart(arr);
   };
 
   const calculateTotalPrice = () => {

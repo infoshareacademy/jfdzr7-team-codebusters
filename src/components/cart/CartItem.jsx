@@ -59,8 +59,14 @@ export const CartItem = ({
     }
   };
 
+  const confirmDeleteFromCart = () => {
+    let text = "Delete this position from cart?";
+    if (window.confirm(text) == true) {
+      handleRemoveFromCart(id);
+    }
+  };
   const decreaseCount = (bookCount, setbookCount) => {
-    if (bookCount !== 0) {
+    if (bookCount > 1) {
       setbookCount(bookCount - 1);
 
       const found = cart.find((item) => item.id === id);
@@ -68,6 +74,8 @@ export const CartItem = ({
       console.log(cart);
       setCart([...cart]);
       updateCart(cartId, cart, user);
+    } else if (bookCount == 1) {
+      confirmDeleteFromCart();
     }
   };
 
@@ -116,7 +124,7 @@ export const CartItem = ({
           +
         </StyledCounterButton>
       </Counter>
-      <StyledButton onClick={(e) => handleRemoveFromCart(e, id)}>
+      <StyledButton onClick={(e) => handleRemoveFromCart(id)}>
         Remove
       </StyledButton>
     </StyledCartItem>
