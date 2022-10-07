@@ -12,11 +12,7 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { CartSummaryForm } from "./CartSummaryForm";
 import { CartContext } from "../../providers/CartProvider";
-import {
-  findCart,
-  updateCart,
-  deleteBookFromCart,
-} from "../../utils/cartdbHandlers";
+import { findCart, updateCart } from "../../utils/cartdbHandlers";
 import { AuthContext } from "../../providers/AuthProvider";
 
 export const ShoppingCart = () => {
@@ -27,11 +23,7 @@ export const ShoppingCart = () => {
 
   const handleRemoveFromCart = (id) => {
     const arr = cart.filter((item) => item.id !== id);
-    // const bookIndex = cart.indexOf(cart.find((item) => item.id == id));
-    // const bookToDelete = cart.filter((item) => item.id == id);
-    // const bookId = id;
-    // deleteBookFromCart(bookToDelete, cartId);
-
+    updateCart(cartId, arr, user);
     setCart(arr);
   };
 

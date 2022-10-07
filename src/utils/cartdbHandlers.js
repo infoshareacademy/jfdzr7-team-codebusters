@@ -72,14 +72,3 @@ export const deleteCart = () => {
   const docRef = doc(db, collectionName, docId);
   deleteDoc(docRef);
 };
-
-// In progress
-
-// export const deleteBookFromCart = (bookToDelete, cartId) => {
-//   console.log(cartId);
-//   const cartRef = doc(db, collectionName, cartId);
-
-//   updateDoc(cartRef, {
-//     positions: arrayRemove(bookToDelete.id),
-//   });
-// };
