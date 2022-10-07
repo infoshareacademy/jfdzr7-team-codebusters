@@ -11,7 +11,7 @@ export const UserOrdersPage = () => {
                 <SearchOrderMenu />
                 <DecorationBar />
                 <OrdersTable
-                    headers={['lp', 'date', 'user', 'cost', 'status']}
+                    headers={['lp', 'date', 'cost', 'status']}
                 />
             </OrderListProvider>
         </StyledUserOrdersPage>
