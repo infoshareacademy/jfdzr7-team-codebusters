@@ -8,6 +8,7 @@ import { Login } from './../auth/Login';
 import { ProtectedRoute } from './../ProtectedRoute/ProtectedRoute';
 import { AuthContext } from './../../providers/AuthProvider';
 import { OrdersPage } from "./../pages/admin/OrdersPage"
+import { UserOrdersPage } from '../pages/user/ordersPage/UserOrdersPage';
 
 export const Routing = () => {
     const { isAuth, isAdmin, isUser } = useContext(AuthContext)
@@ -32,7 +33,7 @@ export const Routing = () => {
                 </Route>
                 <Route element={<ProtectedRoute isAllowed={isUser} />}>
                     <Route path="/messages" element={<p>user message</p>} />
-                    <Route path="/orderHistory" element={<p>user orderHistory</p>} />
+                    <Route path="/orderHistory" element={<UserOrdersPage />} />
                 </Route>
                 <Route path="/cart" element={<p>cos napewno kupie</p>} />
             </Routes>
