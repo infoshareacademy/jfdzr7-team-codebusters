@@ -9,6 +9,10 @@ export const StyledContainer = styled.div`
     font-weight: bold;
 `;
 
+export const StyledFormulars = styled.div`
+display: inline-flex;
+flex-wrap: wrap;`;
+
 export const StyledInput = styled.input`
     display: block;
     margin: 5px 0 10px;
@@ -23,6 +27,16 @@ export const StyledInput = styled.input`
 export const StyledButton = styled.input`
     margin-top: 10px;
     width: 100px;
+    padding: 5px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #FFF2E0;
+    border: 2px solid black;
+`;
+
+export const StyledCoverButton = styled.input`
+    margin-top: 10px;
+    width: 200px;
     padding: 5px 20px;
     font-size: 16px;
     font-weight: bold;
