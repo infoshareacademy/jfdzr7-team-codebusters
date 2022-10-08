@@ -12,6 +12,9 @@ import { MessagesPage } from '../pages/user/messages/MessagesPage';
 import { UserOrdersPage } from '../pages/user/ordersPage/UserOrdersPage';
 import { Warehouse } from '../pages/admin/warehouse/WarehousePage';
 import { Home } from '../pages/home/Home';
+import { ShoppingCart } from "../cart/ShoppingCart";
+import { OrderSummary } from "../cart/OrderSummary";
+import { CartSummaryForm } from "../cart/CartSummaryForm";
 
 export const Routing = () => {
     const { isAuth, isAdmin, isUser } = useContext(AuthContext)
@@ -37,6 +40,9 @@ export const Routing = () => {
                 <Route element={<ProtectedRoute isAllowed={isUser} />}>
                     <Route path="/messages" element={<MessagesPage />} />
                     <Route path="/orderHistory" element={<UserOrdersPage />} />
+                    <Route path="/cart" element={<ShoppingCart />} />
+                    <Route path="/summary" element={<OrderSummary />} />
+                    <Route path="/delivery" element={<CartSummaryForm />} />
                 </Route>
                 <Route path="/cart" element={<p>cos napewno kupie</p>} />
             </Routes>

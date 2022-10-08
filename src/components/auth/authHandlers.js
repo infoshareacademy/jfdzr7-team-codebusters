@@ -1,18 +1,19 @@
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "@firebase/auth";
-import { doc, setDoc } from 'firebase/firestore'
+import { addDoc, collection, doc, setDoc  } from "firebase/firestore";
 
 import { auth, db } from "../../api/firebase";
 import { firebaseErrors } from "../../utils/firebaseErrors";
 import { getFormData } from "../../utils/getFormData";
-import { getUser } from "./../../utils/getUser"
+import { getUser } from "./../../utils/getUser";
 
 export const handleLogin = (e, setUser) => {
   e.preventDefault();
+
   const { email, password } = getFormData(e);
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       e.target.reset();
-      getUser(setUser, userCredential.user.uid)
+      getUser(setUser, userCredential.user.uid);
     })
     .catch((e) => {
       alert(firebaseErrors[e.code]);
@@ -30,6 +31,15 @@ export const handleRegister = (e) => {
     .catch((e) => {
       alert(firebaseErrors[e.code]);
     });
+
+  const collectionRef = collection(db, "users");
+
+  const data = {
+    email: { email },
+    isAdmin: false,
+  };
+
+  addDoc(collectionRef, data);
 };
 
 const createUserInFirebase = (user, auth) => {
