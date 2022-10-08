@@ -9,7 +9,6 @@ import { AuthContext } from "../../providers/AuthProvider";
 import {
   StyledInput,
   StyledForm,
-  StyledLink,
   StyledFormWrapper,
   StyledDeliveryContainer,
   StyledOrderTotal,
@@ -45,11 +44,11 @@ export const CartSummaryForm = () => {
 
   const handleOrderSubmit = (e) => {
     e.preventDefault();
-
     createOrder(cart, orderData, totalCost);
     cart.forEach((book) => changeBookQuantity(book.id, book.count));
     deleteCart(cartId);
     findCart(user, setCart, setCartId);
+    window.location.replace("/summary");
   };
 
   const updateOrderFormState = (e) => {
@@ -81,7 +80,7 @@ export const CartSummaryForm = () => {
               id="name"
               value={orderData.name}
               onChange={updateOrderFormState}
-              required
+              required={true}
             />
           </label>
           <label htmlFor="surname">
@@ -92,7 +91,7 @@ export const CartSummaryForm = () => {
               id="surname"
               value={orderData.surname}
               onChange={updateOrderFormState}
-              required
+              required={true}
             />
           </label>
           <label htmlFor="email">
@@ -103,8 +102,7 @@ export const CartSummaryForm = () => {
               id="email"
               value={orderData.email}
               onChange={updateOrderFormState}
-              required
-              isEmail
+              required={true}
             />
           </label>
           <label htmlFor="phone">
@@ -115,7 +113,7 @@ export const CartSummaryForm = () => {
               id="phone"
               value={orderData.phone}
               onChange={updateOrderFormState}
-              required
+              required={true}
             />
           </label>
           <p>Address</p>
@@ -127,7 +125,7 @@ export const CartSummaryForm = () => {
               id="city"
               value={orderData.city}
               onChange={updateOrderFormState}
-              required
+              required={true}
             />
           </label>
           <label htmlFor="street">
@@ -138,7 +136,7 @@ export const CartSummaryForm = () => {
               id="street"
               value={orderData.street}
               onChange={updateOrderFormState}
-              required
+              required={true}
             />
           </label>
           <div>
@@ -151,6 +149,7 @@ export const CartSummaryForm = () => {
                 id="payment"
                 onChange={updateOrderFormState}
                 value="Blik"
+                required={true}
               />
             </label>
             <label htmlFor="payment">
@@ -161,6 +160,7 @@ export const CartSummaryForm = () => {
                 value="Card"
                 id="payment"
                 onChange={updateOrderFormState}
+                required={true}
               />
             </label>
           </div>
@@ -174,6 +174,7 @@ export const CartSummaryForm = () => {
                 value="InPost"
                 id="delivery"
                 onChange={updateOrderFormState}
+                required={true}
               />
             </label>
             <label htmlFor="delivery">
@@ -184,12 +185,11 @@ export const CartSummaryForm = () => {
                 value="DHL"
                 id="delivery"
                 onChange={updateOrderFormState}
+                required={true}
               />
             </label>
           </div>
-          <StyledSubmitButton onClick={(e) => handleOrderSubmit(e)}>
-            <StyledLink to="/summary">Submit order</StyledLink>
-          </StyledSubmitButton>
+          <StyledSubmitButton type="submit">Submit order</StyledSubmitButton>
         </StyledForm>
       </StyledDeliveryContainer>
     </StyledFormWrapper>
