@@ -1,8 +1,7 @@
 import { useContext } from "react"
-import { BooksSearchContext } from "../../../providers/BooksSearchProvider"
 
-export const PriceInput = ({ name, labelText, value, partOfPrice }) => {
-    const { searchConditions, setSearchConditions } = useContext(BooksSearchContext)
+export const PriceInput = ({ name, labelText, value, partOfPrice, context }) => {
+    const { searchConditions, setSearchConditions } = useContext(context)
     const selectedPriceRange = searchConditions.selectedPriceRange
     const checkPriceChange = (currentValue, partOfPrice) => {
         if (partOfPrice === 'minPrice' &&

@@ -1,8 +1,9 @@
 import { useContext } from "react"
 
 import { OrderSearchContext } from "../../../providers/OrdersSearchProvider"
-import { StyledSearchContainer } from "./searchPartComponents.styled"
+
 import { DateInput } from "./DateInput"
+import { StyledSearchContainer } from "./searchPartComponents.styled"
 
 export const DateBar = () => {
     const { searchConditions } = useContext(OrderSearchContext)

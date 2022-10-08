@@ -5,6 +5,7 @@ import { SortBar } from "./searchPartComponents/SortBar"
 import { CategoryBar } from "./searchPartComponents/CategoryBar"
 import { BookSearchProvider, BooksSearchContext } from "../../providers/BooksSearchProvider"
 import { categoriesOfBooks } from "../../utils/categoriesOfBooks"
+import { sortBookstoreOptions } from "./searchPartComponents/utils/constans"
 
 export const SearchMenu = () => {
     return (
@@ -12,8 +13,8 @@ export const SearchMenu = () => {
             <form>
                 <CategoryBar options={categoriesOfBooks} context={BooksSearchContext} />
                 <Wrapper>
-                    <SortBar />
-                    <PriceBar />
+                    <SortBar sortOptions={sortBookstoreOptions} context={BooksSearchContext} />
+                    <PriceBar context={BooksSearchContext} />
                     <SearchBar context={BooksSearchContext} />
                 </Wrapper>
             </form>
