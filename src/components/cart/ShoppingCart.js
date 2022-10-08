@@ -1,5 +1,9 @@
+import { useContext, useEffect } from "react";
 import { CartItem } from "./CartItem";
-import { Link } from "react-router-dom";
+import { CartContext } from "../../providers/CartProvider";
+import { AuthContext } from "../../providers/AuthProvider";
+import { findCart, updateCart } from "../../utils/cartdbHandlers";
+import { deleteCart } from "../../utils/cartdbHandlers";
 import {
   StyledCart,
   StyledTitle,
@@ -11,16 +15,10 @@ import {
   StyledLink,
   StyledOrangeLink,
 } from "./Cart.styled";
-import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../../providers/CartProvider";
-import { findCart, updateCart } from "../../utils/cartdbHandlers";
-import { AuthContext } from "../../providers/AuthProvider";
-import { deleteCart } from "../../utils/cartdbHandlers";
 
 export const ShoppingCart = () => {
   const { cart, cartId, setCart, setCartId, total, setTotal } =
     useContext(CartContext);
-
   const { user } = useContext(AuthContext);
 
   const handleRemoveFromCart = (id) => {
@@ -40,7 +38,6 @@ export const ShoppingCart = () => {
     let totalPrice = cart.reduce((prevBook, currBook) => {
       return prevBook + currBook.price * currBook.count;
     }, 0);
-
     setTotal(totalPrice.toFixed(2));
   };
 

@@ -10,7 +10,7 @@ import { StyledNavLink } from "./Header.styled";
 import { CartContext } from "../../providers/CartProvider";
 
 export const Header = () => {
-  const { isAuth, isUser, user } = useContext(AuthContext);
+  const { isAuth } = useContext(AuthContext);
   const { cart } = useContext(CartContext);
 
   return (

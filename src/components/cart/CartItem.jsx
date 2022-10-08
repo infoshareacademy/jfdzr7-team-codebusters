@@ -1,4 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { getCover } from "../../utils/getCover";
+import { CartContext } from "../../providers/CartProvider";
+import { updateCart } from "../../utils/cartdbHandlers";
+import { AuthContext } from "../../providers/AuthProvider";
 import {
   StyledCartItem,
   StyledButton,
@@ -10,11 +14,6 @@ import {
   StyledBookTitle,
   StyledPrices,
 } from "./Cart.styled";
-import { getCover } from "../../utils/getCover";
-import { CartContext } from "../../providers/CartProvider";
-import { useContext } from "react";
-import { updateCart } from "../../utils/cartdbHandlers";
-import { AuthContext } from "../../providers/AuthProvider";
 
 export const CartItem = ({
   id,
@@ -31,14 +30,6 @@ export const CartItem = ({
   const [bookCount, setbookCount] = useState(count);
   const { cart, cartId, setCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
-
-  useEffect(() => {
-    getCover({ cover, setCoverURL });
-  }, [cover]);
-
-  useEffect(() => {
-    setbookCount(count);
-  }, []);
 
   const handleCountChange = (e, cb) => {
     e.preventDefault();
@@ -65,10 +56,10 @@ export const CartItem = ({
       handleRemoveFromCart(id);
     }
   };
+
   const decreaseCount = (bookCount, setbookCount) => {
     if (bookCount > 1) {
       setbookCount(bookCount - 1);
-
       const found = cart.find((item) => item.id === id);
       found.count = bookCount - 1;
       console.log(cart);
@@ -78,6 +69,14 @@ export const CartItem = ({
       confirmDeleteFromCart();
     }
   };
+
+  useEffect(() => {
+    getCover({ cover, setCoverURL });
+  }, [cover]);
+
+  useEffect(() => {
+    setbookCount(count);
+  }, []);
 
   return (
     <StyledCartItem>

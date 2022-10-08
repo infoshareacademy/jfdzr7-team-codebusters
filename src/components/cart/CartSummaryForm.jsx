@@ -1,8 +1,10 @@
 import React from "react";
-import { deleteCart } from "../../utils/cartdbHandlers";
+import { useState, useContext } from "react";
+import { db } from "../../api/firebase";
+import { increment, doc, updateDoc } from "firebase/firestore";
+import { findCart, deleteCart } from "../../utils/cartdbHandlers";
+import { createOrder } from "../../utils/ordersHandlers";
 import { CartContext } from "../../providers/CartProvider";
-import { useContext } from "react";
-import { findCart } from "../../utils/cartdbHandlers";
 import { AuthContext } from "../../providers/AuthProvider";
 import {
   StyledInput,
@@ -16,13 +18,10 @@ import {
   StyledDeliveryInfo,
   StyledSubmitButton,
 } from "./Cart.styled";
-import { useState } from "react";
 
 export const CartSummaryForm = () => {
-  const { setCart, cartId, setCartId, total } = useContext(CartContext);
+  const { cart, setCart, cartId, setCartId, total } = useContext(CartContext);
   const { user } = useContext(AuthContext);
-
-  const [orderData, setOrderData] = useState([]);
 
   const defaultFormState = {
     name: "",
@@ -34,28 +33,30 @@ export const CartSummaryForm = () => {
     payment: "",
     delivery: "",
   };
-  const [orderFormValues, setOrderFormValues] = useState(defaultFormState);
+  const [orderData, setorderData] = useState(defaultFormState);
+
+  const changeBookQuantity = (bookID, count) => {
+    const userDocRef = doc(db, "books", bookID);
+    const updateBookQuantity = {
+      quantity: increment(-count),
+    };
+    updateDoc(userDocRef, updateBookQuantity);
+  };
 
   const handleOrderSubmit = (e) => {
     e.preventDefault();
 
-    setOrderData([...orderData, orderFormValues]);
-    // setOrderFormValues(defaultFormState);
-    console.log([...orderData, orderFormValues]);
-    console.log("form", orderFormValues);
-    console.log("order", orderData);
-
-    // createOrder(orderData);
-    // deleteCart(cartId);
-    // findCart(user, setCart, setCartId);
+    createOrder(cart, orderData, totalCost);
+    cart.forEach((book) => changeBookQuantity(book.id, book.count));
+    deleteCart(cartId);
+    findCart(user, setCart, setCartId);
   };
 
   const updateOrderFormState = (e) => {
-    setOrderFormValues({
-      ...orderFormValues,
+    setorderData({
+      ...orderData,
       [e.target.name]: e.target.value,
     });
-    console.log("zmieniono", orderFormValues);
   };
 
   const delivery = 15;
@@ -70,7 +71,7 @@ export const CartSummaryForm = () => {
           <StyledDeliveryInfo>Delivery: 15zł</StyledDeliveryInfo>
           <StyledTotalCost>Total cost: {totalCost} zł</StyledTotalCost>
         </StyledOrderTotal>
-        <StyledForm>
+        <StyledForm onSubmit={(e) => handleOrderSubmit(e)}>
           <h1>Delivery information</h1>
           <label htmlFor="name">
             Name
@@ -78,7 +79,7 @@ export const CartSummaryForm = () => {
               type="text"
               name="name"
               id="name"
-              value={orderFormValues.name}
+              value={orderData.name}
               onChange={updateOrderFormState}
               required
             />
@@ -89,7 +90,7 @@ export const CartSummaryForm = () => {
               type="text"
               name="surname"
               id="surname"
-              value={orderFormValues.surname}
+              value={orderData.surname}
               onChange={updateOrderFormState}
               required
             />
@@ -100,9 +101,10 @@ export const CartSummaryForm = () => {
               type="email"
               name="email"
               id="email"
-              value={orderFormValues.email}
+              value={orderData.email}
               onChange={updateOrderFormState}
               required
+              isEmail
             />
           </label>
           <label htmlFor="phone">
@@ -111,7 +113,7 @@ export const CartSummaryForm = () => {
               type="tel"
               name="phone"
               id="phone"
-              value={orderFormValues.phone}
+              value={orderData.phone}
               onChange={updateOrderFormState}
               required
             />
@@ -123,7 +125,7 @@ export const CartSummaryForm = () => {
               type="text"
               name="city"
               id="city"
-              value={orderFormValues.city}
+              value={orderData.city}
               onChange={updateOrderFormState}
               required
             />
@@ -134,7 +136,7 @@ export const CartSummaryForm = () => {
               type="text"
               name="street"
               id="street"
-              value={orderFormValues.street}
+              value={orderData.street}
               onChange={updateOrderFormState}
               required
             />
@@ -148,7 +150,7 @@ export const CartSummaryForm = () => {
                 name="payment"
                 id="payment"
                 onChange={updateOrderFormState}
-                value={orderFormValues.payment}
+                value="Blik"
               />
             </label>
             <label htmlFor="payment">
@@ -156,7 +158,7 @@ export const CartSummaryForm = () => {
               <input
                 type="radio"
                 name="payment"
-                value={orderFormValues.payment}
+                value="Card"
                 id="payment"
                 onChange={updateOrderFormState}
               />
@@ -169,7 +171,7 @@ export const CartSummaryForm = () => {
               <input
                 type="radio"
                 name="delivery"
-                value={orderFormValues.delivery}
+                value="InPost"
                 id="delivery"
                 onChange={updateOrderFormState}
               />
@@ -179,7 +181,7 @@ export const CartSummaryForm = () => {
               <input
                 type="radio"
                 name="delivery"
-                value={orderFormValues.delivery}
+                value="DHL"
                 id="delivery"
                 onChange={updateOrderFormState}
               />

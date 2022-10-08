@@ -1,5 +1,4 @@
 import { db } from "../api/firebase";
-
 import {
   doc,
   updateDoc,
@@ -15,7 +14,7 @@ const collectionName = "carts";
 
 export const createCart = (cart, user) => {
   const collectionRef = collection(db, collectionName);
-  console.log("dodaje koszyk", user.ID);
+
   const data = {
     positions: cart,
     user: {
@@ -23,7 +22,6 @@ export const createCart = (cart, user) => {
       ID: user.ID,
     },
   };
-
   addDoc(collectionRef, data);
 };
 

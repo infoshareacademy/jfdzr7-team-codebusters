@@ -39,9 +39,6 @@ export const Routing = () => {
           <Route path="/summary" element={<OrderSummary />} />
           <Route path="/delivery" element={<CartSummaryForm />} />
         </Route>
-        {/* <Route element={<ProtectedRoute isAllowed={isUser} />}>
-      
-        </Route> */}
       </Routes>
     </main>
   );

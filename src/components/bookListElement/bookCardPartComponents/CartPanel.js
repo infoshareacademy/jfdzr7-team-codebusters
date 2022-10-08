@@ -1,14 +1,13 @@
 import minus from "../../../img/icons/minus.png";
 import plus from "../../../img/icons/plus.png";
 import cartImg from "../../../img/icons/shopping-cart.png";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { increaseCount, decreaseCount } from "./CartPanelFunctions";
 import { StyledButton } from "./StyledButton";
 import { StyledCountInput } from "./StyledCountInput";
 import { Wrapper } from "./Wrapper";
-import { useContext } from "react";
 import { CartContext } from "../../../providers/CartProvider";
-import { getCart, updateCart, createCart } from "../../../utils/cartdbHandlers";
+import { updateCart, createCart } from "../../../utils/cartdbHandlers";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { findCart } from "../../../utils/cartdbHandlers";
 
@@ -27,7 +26,6 @@ export const CartPanel = ({ className, quantity, book }) => {
     console.log("user", user);
     if (count > 0) {
       findCart(user, setCart, setCartId);
-
       if (cart.length == 0) {
         book.count = count;
         cart.push(book);
@@ -35,24 +33,21 @@ export const CartPanel = ({ className, quantity, book }) => {
         createCart(cart, user);
       } else {
         const isBookInCart = cart.some((item) => item.id === book.id);
-        console.log("tu jestem", cart);
         if (!isBookInCart) {
           book.count = count;
           cart.push(book);
           setCart([...cart]);
           updateCart(cartId, cart, user);
         } else {
-          console.log("jednak tu jestem");
           const found = cart.find((item) => item.id === book.id);
-
           if (found.count + count <= book.quantity) {
             found.count = found.count + count;
             updateCart(cartId, cart, user);
           } else {
             alert(
-              "There are " +
+              "Sorry! only " +
                 book.quantity +
-                " books in stock " +
+                " pieces left in stock " +
                 "and you have already " +
                 found.count +
                 " pieces of this product in your cart. " +

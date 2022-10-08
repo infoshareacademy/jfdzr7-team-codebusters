@@ -1,20 +1,24 @@
 import { db } from "../api/firebase";
+import { addDoc, collection, Timestamp } from "firebase/firestore";
 
-import { addDoc, collection } from "firebase/firestore";
-import { dateToString } from "./dateToString";
-
-export const createOrder = (orderData) => {
+export const createOrder = (cart, orderData, total) => {
   const collectionRef = collection(db, "orders");
-  const today = new Date();
+
   const data = {
-    orderDate: dateToString(today),
-    orderValue: Number(cart.total) + 15,
+    orderDate: Timestamp.now(),
+    orderValue: Number(total),
     positions: cart,
     status: "waiting",
     user: {
-      email: user.email,
+      name: orderData.name,
+      surname: orderData.surname,
+      email: orderData.email,
+      phone: orderData.phone,
+      city: orderData.city,
+      street: orderData.street,
+      payment: orderData.payment,
+      delivery: orderData.delivery,
     },
   };
-
   addDoc(collectionRef, data);
 };
