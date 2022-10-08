@@ -16,8 +16,8 @@ export const footerInformation = [
         subGroups: [
             {
                 Id: 1,
-                subject: 'Classics',
-                link: 'classics'
+                subject: 'Classic',
+                link: 'classic'
             },
             {
                 Id: 2,
