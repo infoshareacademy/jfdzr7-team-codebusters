@@ -7,7 +7,7 @@ export const BooksSearchContext = createContext({})
 export const BookSearchProvider = ({ children }) => {
     const { setBooksList } = useContext(BooksListContext)
     const [searchConditions, setSearchConditions] = useState({
-        checkedCategoryOfBook: 'all',
+        checkedOption: 'all',
         selectedSortOption: 'title',
         selectedPriceRange: {
             minPrice: 0,

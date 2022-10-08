@@ -1,8 +1,9 @@
-import { useContext } from 'react'
-import { BooksSearchContext } from '../../../providers/BooksSearchProvider'
-import { SelectInput } from './SelectInput'
-import { StyledSearchContainer } from './StyledSearchContainer'
-import { sortOptions } from './utils/sortOptions'
+import { useContext } from "react"
+
+import { BooksSearchContext } from "../../../providers/BooksSearchProvider"
+import { SelectInput } from "./SelectInput"
+import { StyledSearchContainer } from "./searchPartComponents.styled"
+import { sortOptions } from "./utils/sortOptions"
 
 export const SortBar = () => {
     const { searchConditions, setSearchConditions } = useContext(BooksSearchContext)

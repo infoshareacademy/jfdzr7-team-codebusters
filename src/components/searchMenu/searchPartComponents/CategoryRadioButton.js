@@ -1,22 +1,24 @@
-import { BooksSearchContext } from "../../../providers/BooksSearchProvider"
 import { useContext } from "react"
-export const CategoryRadioButton = ({ className, category }) => {
-    const { searchConditions, setSearchConditions } = useContext(BooksSearchContext)
+import { StyledCategoryRadioButton } from "./searchPartComponents.styled"
+
+export const CategoryRadioButton = ({ option, context }) => {
+    const { searchConditions, setSearchConditions } = useContext(context)
+    const inputID = 'option-' + option
     const handleChange = (event) => {
         setSearchConditions({
             ...searchConditions,
-            checkedCategoryOfBook: event.currentTarget.value
+            checkedOption: event.currentTarget.value
         })
     }
     return (
         <>
-            <input className={className} type={'radio'}
-                id={'categoryOfBook-' + category}
-                name={'CategoryOfBook'}
-                value={category}
-                checked={searchConditions.checkedCategoryOfBook === category}
+            <StyledCategoryRadioButton
+                id={inputID}
+                name='option'
+                value={option}
+                checked={searchConditions.checkedOption === option}
                 onChange={(event) => handleChange(event)} />
-            <label htmlFor={'categoryOfBook-' + category}>{category}</label>
+            <label htmlFor={inputID}>{option}</label>
         </>
     )
 }

@@ -1,21 +1,22 @@
-import { Wrapper } from "./searchPartComponents/Wrapper"
+import { Wrapper } from "./searchPartComponents/searchPartComponents.styled"
 import { SearchBar } from "./searchPartComponents/SearchBar"
 import { PriceBar } from "./searchPartComponents/PriceBar"
 import { SortBar } from "./searchPartComponents/SortBar"
-import { StyledCategoryBar } from "./searchPartComponents/StyledCategoryBar"
-import { BookSearchProvider } from "../../providers/BooksSearchProvider"
+import { CategoryBar } from "./searchPartComponents/CategoryBar"
+import { BookSearchProvider, BooksSearchContext } from "../../providers/BooksSearchProvider"
+import { categoriesOfBooks } from "../../utils/categoriesOfBooks"
 
 export const SearchMenu = () => {
     return (
-        < BookSearchProvider >
+        <BookSearchProvider>
             <form>
-                <StyledCategoryBar />
+                <CategoryBar options={categoriesOfBooks} context={BooksSearchContext} />
                 <Wrapper>
                     <SortBar />
                     <PriceBar />
-                    <SearchBar />
+                    <SearchBar context={BooksSearchContext} />
                 </Wrapper>
             </form>
-        </BookSearchProvider >
+        </BookSearchProvider>
     )
 }

@@ -1,0 +1,1 @@
+export const statusOptions = ['all', 'waiting', 'active', 'sent']
