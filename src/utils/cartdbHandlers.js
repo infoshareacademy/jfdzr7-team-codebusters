@@ -19,7 +19,7 @@ export const createCart = (cart, user) => {
     positions: cart,
     user: {
       email: user.email,
-      ID: user.ID,
+      ID: user.id,
     },
   };
   addDoc(collectionRef, data);
@@ -27,7 +27,7 @@ export const createCart = (cart, user) => {
 
 export const findCart = (user, setCart, setCartId) => {
   const collectionRef = collection(db, collectionName);
-  const conditions = query(collectionRef, where("user.ID", "==", user.ID));
+  const conditions = query(collectionRef, where("user.ID", "==", user.id));
 
   getDocs(conditions, collectionRef).then((querySnapshot) => {
     let foundCart = querySnapshot.docs.map((cart) => {
@@ -43,7 +43,7 @@ export const findCart = (user, setCart, setCartId) => {
       setCartId(cartId[0]);
     }
 
-    if (foundCart[0] == undefined) {
+    if (foundCart[0] === undefined) {
       setCart([]);
     } else {
       setCart(foundCart[0].positions);
@@ -57,7 +57,7 @@ export const updateCart = (cartId, cart, user) => {
   const data = {
     positions: cart,
     user: {
-      ID: user.ID,
+      ID: user.id,
       email: user.email,
     },
   };

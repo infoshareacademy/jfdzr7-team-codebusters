@@ -65,7 +65,7 @@ export const CartItem = ({
       console.log(cart);
       setCart([...cart]);
       updateCart(cartId, cart, user);
-    } else if (bookCount == 1) {
+    } else if (bookCount === 1) {
       confirmDeleteFromCart();
     }
   };

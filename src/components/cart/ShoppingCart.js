@@ -22,7 +22,7 @@ export const ShoppingCart = () => {
   const { user } = useContext(AuthContext);
 
   const handleRemoveFromCart = (id) => {
-    if (cart.length == 1) {
+    if (cart.length === 1) {
       deleteCart(cartId);
       const arr = cart.filter((item) => item.id !== id);
       updateCart(cartId, arr, user);
@@ -43,21 +43,18 @@ export const ShoppingCart = () => {
 
   useEffect(() => {
     calculateTotalPrice();
-    console.log("tak");
   }, [cart]);
 
   useEffect(() => {
     if (findCart(user, setCart, setCartId) !== [])
       findCart(user, setCart, setCartId);
-    console.log(cartId);
-    console.log(cart);
   }, [user]);
 
   return (
     <StyledCart>
       <StyledTitle>Your cart:</StyledTitle>
       <StyledCartContainer>
-        {!cart.length || cart.length == 0 ? (
+        {!cart.length || cart.length === 0 ? (
           <StyledEmptyCartDiv>
             <div>
               <span>Sorry, your cart is empty.</span>
