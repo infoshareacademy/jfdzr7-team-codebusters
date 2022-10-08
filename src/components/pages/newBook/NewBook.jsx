@@ -30,7 +30,7 @@ export const NewBook = (e) => {
     const newBookConstructor = () => {
         addDoc(collection(db, "books"), {
             author: formValues.author,
-            category: formValues.category.replace(/\s/g, '').split(','),
+            category: (formValues.category.replace(/\s/g, '').replace('all', '') + ',all').split(','),
             cover: formValues.cover,
             isbn: parseInt(formValues.isbn),
             pages: parseInt(formValues.pages),

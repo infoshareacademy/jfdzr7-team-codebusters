@@ -1,6 +1,6 @@
 import { StyledInput } from "./NewBook.styled";
 
-export const InputField = ({ title, type, value, onChange, name }) => {
+export const InputField = ({ title, type, value, onChange, name, min }) => {
     return (
         <label>{title}
             <StyledInput
@@ -8,6 +8,7 @@ export const InputField = ({ title, type, value, onChange, name }) => {
                 value={value}
                 name={name}
                 onChange={onChange}
+                min={min}
             />
         </label>
     );
