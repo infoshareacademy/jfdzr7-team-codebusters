@@ -1,25 +1,20 @@
+import { useState, useContext } from "react";
+import { increaseCount, decreaseCount, handleCounterClickButton } from "./CartPanelFunctions";
+import { StyledButton, StyledCountInput, Wrapper } from "./BookCardPartComponents.styled";
+
+import { updateCart, createCart, findCart } from "../../../utils/cartdbHandlers";
+import { CartContext } from "../../../providers/CartProvider";
+import { AuthContext } from "../../../providers/AuthProvider";
+
 import minus from "../../../img/icons/minus.png";
 import plus from "../../../img/icons/plus.png";
 import cartImg from "../../../img/icons/shopping-cart.png";
-import { useState, useContext } from "react";
-import { increaseCount, decreaseCount } from "./CartPanelFunctions";
-import { StyledButton } from "./StyledButton";
-import { StyledCountInput } from "./StyledCountInput";
-import { Wrapper } from "./Wrapper";
-import { CartContext } from "../../../providers/CartProvider";
-import { updateCart, createCart } from "../../../utils/cartdbHandlers";
-import { AuthContext } from "../../../providers/AuthProvider";
-import { findCart } from "../../../utils/cartdbHandlers";
 
-export const CartPanel = ({ className, quantity, book }) => {
+export const CartPanel = ({ quantity, book }) => {
   const [count, setCount] = useState(0);
   const { cart, cartId, setCart, setCartId } = useContext(CartContext);
   const { user } = useContext(AuthContext);
 
-  const handleCounterClickButton = (event, cb) => {
-    event.preventDefault();
-    cb(count, setCount, quantity);
-  };
 
   const handleAddToCartClickButton = (e, count, book) => {
     e.preventDefault();
@@ -66,7 +61,7 @@ export const CartPanel = ({ className, quantity, book }) => {
   const isPanelDisabled = quantity === 0;
 
   return (
-    <form className={className}>
+    <StyledCartPanel>
       <Wrapper>
         <StyledButton
           onClick={(event) => {
@@ -81,7 +76,7 @@ export const CartPanel = ({ className, quantity, book }) => {
           pattern="\d*"
           value={count}
           onChange={(event) => {
-            setCount(event.currentTarget.value);
+             isNaN(+event.currentTarget.value) ? setCount(prevState => prevState) : setCount(+event.currentTarget.value)
           }}
           onBlur={() => {
             if (count >= quantity) {
@@ -118,6 +113,6 @@ export const CartPanel = ({ className, quantity, book }) => {
           alt="add to cart button"
         />
       </StyledButton>
-    </form>
+    </StyledCartPanel>
   );
 };

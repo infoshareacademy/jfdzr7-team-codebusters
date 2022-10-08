@@ -1,25 +1,25 @@
-import { useContext } from "react";
-import { BooksListContext } from "../../providers/BooksListProvider";
-import { BookCard } from "./BookCard";
+import { useContext } from "react"
 
-export const BooksListElement = ({ className }) => {
-  const { booksList } = useContext(BooksListContext);
+import { BooksListContext } from "../../providers/BooksListProvider"
+import { BookCard } from "./BookCard"
+import { StyledBooksListElement } from "./BooksListElement.styled"
 
-  return (
-    <section className={className}>
-      {booksList.map((book) => {
-        return (
-          <BookCard
-            key={book.id}
-            id={book.id}
-            title={book.title}
-            author={book.author}
-            price={book.price}
-            cover={book.cover}
-            quantity={book.quantity}
-          />
-        );
-      })}
-    </section>
-  );
-};
+export const BooksListElement = () => {
+    const { booksList } = useContext(BooksListContext)
+    return (
+        <StyledBooksListElement>
+            {booksList.map((book) => {
+                return (
+                    <BookCard
+                        key={book.id}
+                        title={book.title}
+                        author={book.author}
+                        price={book.price}
+                        cover={book.cover}
+                        quantity={book.quantity}
+                    />
+                )
+            })}
+        </StyledBooksListElement>
+    )
+}
