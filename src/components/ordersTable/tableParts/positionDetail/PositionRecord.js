@@ -7,7 +7,7 @@ export const PositionRecord = ({ position, index }) => {
             <p>{position.author}</p>
             <p>{position.title}</p>
             <p>{position.price}</p>
-            <p>{position.quantity}</p>
+            <p>{position.count}</p>
         </StyledPositionRecord>
     )
 }
