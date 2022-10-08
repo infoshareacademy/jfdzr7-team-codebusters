@@ -22,7 +22,7 @@ export const Header = () => {
       <Navigation />
       {isAuth ? <AccountMenu /> : <AuthPanel />}
 
-      {isAuth ? (
+      {isAuth && (
         <StyledNavLink to="/cart">
           <span>
             <img
@@ -33,7 +33,7 @@ export const Header = () => {
           </span>
           <span>{cart == undefined ? 0 : cart.length}</span>
         </StyledNavLink>
-      ) : null}
+      )}
     </StyledHeader>
   );
 };

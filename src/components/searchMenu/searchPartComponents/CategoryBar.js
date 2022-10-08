@@ -1,14 +1,15 @@
-import { StyledCategoryRadioButton } from './StyledCategoryRadioButton'
+import { StyledCategoryBar } from "./searchPartComponents.styled"
+import { CategoryRadioButton } from "./CategoryRadioButton"
 
-export const CategoryBar = ({ className, options, context }) => {
+export const CategoryBar = ({ options, context }) => {
     return (
-        <div className={className}>
+        <StyledCategoryBar>
             {options.map(option =>
-                <StyledCategoryRadioButton
+                <CategoryRadioButton
                     key={option}
                     option={option}
                     context={context}
                 />)}
-        </div>
+        </StyledCategoryBar>
     )
 }

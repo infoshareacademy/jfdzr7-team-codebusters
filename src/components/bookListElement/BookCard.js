@@ -1,30 +1,19 @@
-import { StyledCover } from "./bookCardPartComponents/StyledCover";
-import { StyledInfoPanel } from "./bookCardPartComponents/StyledInfoPanel";
-import { StyledCartPanel } from "./bookCardPartComponents/StyledCartPanel";
-import { StyledArticle } from "./bookCardPartComponents/StyledArticle";
-import { AuthContext } from "../../providers/AuthProvider";
 import { useContext } from "react";
 
-export const BookCard = ({
-  className,
-  id,
-  title,
-  author,
-  price,
-  cover,
-  quantity,
-}) => {
-  const book = { id, title, author, price, cover, quantity };
-  const { isAuth } = useContext(AuthContext);
-  const checkIfQuantityIsEqualZero = (quantity) => quantity === 0;
-  return (
-    <StyledArticle
-      className={className}
-      isDisable={checkIfQuantityIsEqualZero(quantity)}
-    >
-      <StyledCover cover={cover} />
-      <StyledInfoPanel title={title} author={author} price={price} />
-      {isAuth && <StyledCartPanel quantity={quantity} book={book} />}
-    </StyledArticle>
-  );
-};
+import { Cover } from "./bookCardPartComponents/Cover"
+import { InfoPanel } from "./bookCardPartComponents/InfoPanel"
+import { CartPanel } from "./bookCardPartComponents/CartPanel"
+import { StyledArticle } from "./BooksListElement.styled"
+import { AuthContext } from "../../providers/AuthProvider";
+
+export const BookCard = ({ title, author, price, cover, quantity }) => {
+    const checkIfQuantityIsEqualZero = quantity => quantity === 0
+    const { isAuth } = useContext(AuthContext);
+    return (
+        <StyledArticle isDisable={checkIfQuantityIsEqualZero(quantity)}>
+            <Cover cover={cover} />
+            <InfoPanel title={title} author={author} price={price} />
+            {isAuth && <StyledCartPanel quantity={quantity} book={book} />}
+        </StyledArticle >
+    )
+}

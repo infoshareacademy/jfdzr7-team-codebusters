@@ -1,5 +1,6 @@
 import { AuthForm } from "./AuthForm";
 import { handleRegister } from "./authHandlers";
+
 export const Register = () => {
   return (
     <>

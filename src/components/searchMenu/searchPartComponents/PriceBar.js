@@ -1,10 +1,10 @@
-import { useContext } from 'react'
-import { BooksSearchContext } from '../../../providers/BooksSearchProvider'
-import { PriceInput } from './PriceInput'
-import { StyledSearchContainer } from './StyledSearchContainer'
+import { useContext } from "react"
 
-export const PriceBar = () => {
-    const { searchConditions } = useContext(BooksSearchContext)
+import { PriceInput } from "./PriceInput"
+import { StyledSearchContainer } from "./searchPartComponents.styled"
+
+export const PriceBar = ({ context }) => {
+    const { searchConditions } = useContext(context)
     const selectedPriceRange = searchConditions.selectedPriceRange
     return (
         <div>
@@ -15,12 +15,14 @@ export const PriceBar = () => {
                     labelText='from '
                     value={selectedPriceRange.minPrice}
                     partOfPrice='minPrice'
+                    context={context}
                 />
                 <PriceInput
                     name='MaxPriceInput'
                     labelText='to '
                     value={selectedPriceRange.maxPrice}
                     partOfPrice='maxPrice'
+                    context={context}
                 />
             </StyledSearchContainer>
         </div>
