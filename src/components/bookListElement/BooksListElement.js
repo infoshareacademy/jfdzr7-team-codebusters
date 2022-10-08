@@ -1,11 +1,13 @@
 import { useContext } from "react"
+
 import { BooksListContext } from "../../providers/BooksListProvider"
 import { BookCard } from "./BookCard"
+import { StyledBooksListElement } from "./BooksListElement.styled"
 
-export const BooksListElement = ({ className }) => {
+export const BooksListElement = () => {
     const { booksList } = useContext(BooksListContext)
     return (
-        <section className={className}>
+        <StyledBooksListElement>
             {booksList.map((book) => {
                 return (
                     <BookCard
@@ -15,9 +17,10 @@ export const BooksListElement = ({ className }) => {
                         price={book.price}
                         cover={book.cover}
                         quantity={book.quantity}
+                        book={book}
                     />
                 )
             })}
-        </section>
+        </StyledBooksListElement>
     )
 }

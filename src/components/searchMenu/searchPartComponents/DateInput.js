@@ -1,22 +1,23 @@
 import { useContext } from "react"
+
 import { OrderSearchContext } from "../../../providers/OrdersSearchProvider"
 import { dateToString } from "../../../utils/dateToString"
 
-export const DateInput = ({ className, name, date, labelText = "" }) => {
-    const { searchConditions, setSearchConditions } = useContext(OrderSearchContext)
+export const DateInput = ({ name, date }) => {
+    const { setSearchConditions } = useContext(OrderSearchContext)
     const handleChange = (event) => {
-        setSearchConditions({
-            ...searchConditions,
+        setSearchConditions(prevState => ({
+            ...prevState,
             orderDate: {
-                ...searchConditions.orderDate,
+                ...prevState.orderDate,
                 [name]: new Date(event.target.value)
             }
-        })
+        }))
     }
     const today = new Date()
     return (
-        <label htmlFor={name}>{labelText}
-            <input className={className}
+        <label htmlFor={name}>
+            <input
                 name={name}
                 type="date"
                 max={dateToString(today)}

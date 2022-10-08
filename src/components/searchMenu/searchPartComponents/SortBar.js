@@ -1,11 +1,10 @@
-import { useContext } from 'react'
-import { BooksSearchContext } from '../../../providers/BooksSearchProvider'
-import { SelectInput } from './SelectInput'
-import { StyledSearchContainer } from './StyledSearchContainer'
-import { sortOptions } from './utils/sortOptions'
+import { useContext } from "react"
 
-export const SortBar = () => {
-    const { searchConditions, setSearchConditions } = useContext(BooksSearchContext)
+import { SelectInput } from "./SelectInput"
+import { StyledSearchContainer } from "./searchPartComponents.styled"
+
+export const SortBar = ({ sortOptions, context }) => {
+    const { searchConditions, setSearchConditions } = useContext(context)
     const selectedSortOption = searchConditions.selectedSortOption
     const handleOptionChange = (event) => {
         setSearchConditions({

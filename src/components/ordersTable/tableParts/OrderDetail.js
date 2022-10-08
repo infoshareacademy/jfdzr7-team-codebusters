@@ -2,10 +2,10 @@ import { StyledOrderDetail } from "../../pages/admin/OrdersPage.styled"
 import { PositionsDetail } from "./positionDetail/PositionsDetail"
 import { UserDataDetail } from "./userData/UserDataDetail"
 
-export const OrderDetail = ({ positions, userID }) => {
+export const OrderDetail = ({ positions, userData }) => {
     return (
         <StyledOrderDetail>
-            <UserDataDetail userID={userID} />
+            <UserDataDetail userData={userData} />
             <PositionsDetail positions={positions} />
         </StyledOrderDetail>
     )

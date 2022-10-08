@@ -1,4 +1,3 @@
-
 export const footerInformation = [
     {
         id: 1,

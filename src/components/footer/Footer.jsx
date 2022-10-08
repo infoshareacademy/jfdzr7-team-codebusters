@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { StyledFooter, FooterRows, FooterColumns, Subject, SubSubject, FooterLine, SubjectCopyright } from './Footer.styled.js'
 import { footerInformation } from './footerInformations'
 
