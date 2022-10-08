@@ -36,7 +36,7 @@ export const TableRecord = ({ order, index, numberOfColumns }) => {
                         setIsEditStatusActive={setIsEditStatusActive}
                     />
             }
-            <OrderDetail positions={order.positions} userID={order.user.ID} />
+            <OrderDetail positions={order.positions} userData={order.user} />
         </StyledTableRecord >
     )
 }

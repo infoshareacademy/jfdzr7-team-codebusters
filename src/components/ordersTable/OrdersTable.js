@@ -8,6 +8,7 @@ import { StyledOrdersTable } from "./OrdersTable.styled"
 export const OrdersTable = ({ headers }) => {
     const { orderList } = useContext(OrderListContext)
     const numberOfColumns = headers.length
+    console.log(orderList)
     return (
         <StyledOrdersTable>
             <TableHeader
