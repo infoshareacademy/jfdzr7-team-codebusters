@@ -29,7 +29,7 @@ export const CartItem = ({
 }) => {
   const [coverURL, setCoverURL] = useState("");
   const [bookCount, setbookCount] = useState(count);
-  const { cart, cartId, setCart, setCartId } = useContext(CartContext);
+  const { cart, cartId, setCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
@@ -88,8 +88,8 @@ export const CartItem = ({
         </StyledBookTitle>
         <StyledBookAuthor>by {author}</StyledBookAuthor>
       </div>
-      <StyledPrices>{price}</StyledPrices>
-      <StyledPrices>{(price * bookCount).toFixed(2)}</StyledPrices>
+      <StyledPrices>{price} zł</StyledPrices>
+      <StyledPrices>{(price * bookCount).toFixed(2)} zł</StyledPrices>
       <Counter>
         <StyledCounterButton
           onClick={(e) => {

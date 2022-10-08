@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "./../../providers/AuthProvider";
 
 export const Login = () => {
-  const { user, setUser } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
   return (
     <>
       <h2>Log in:</h2>

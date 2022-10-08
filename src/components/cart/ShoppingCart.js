@@ -8,36 +8,39 @@ import {
   StyledCartList,
   StyledEmptyCartDiv,
   StyledDeliveryButton,
+  StyledLink,
+  StyledOrangeLink,
 } from "./Cart.styled";
 import { useContext, useEffect, useState } from "react";
-import { CartSummaryForm } from "./CartSummaryForm";
 import { CartContext } from "../../providers/CartProvider";
 import { findCart, updateCart } from "../../utils/cartdbHandlers";
 import { AuthContext } from "../../providers/AuthProvider";
+import { deleteCart } from "../../utils/cartdbHandlers";
 
 export const ShoppingCart = () => {
-  const { cart, cartId, setCart, setCartId } = useContext(CartContext);
-  const [total, setTotal] = useState(0);
-  const [showSummary, setshowSummary] = useState(false);
+  const { cart, cartId, setCart, setCartId, total, setTotal } =
+    useContext(CartContext);
+
   const { user } = useContext(AuthContext);
 
   const handleRemoveFromCart = (id) => {
-    const arr = cart.filter((item) => item.id !== id);
-    updateCart(cartId, arr, user);
-    setCart(arr);
+    if (cart.length == 1) {
+      deleteCart(cartId);
+      const arr = cart.filter((item) => item.id !== id);
+      updateCart(cartId, arr, user);
+      setCart(arr);
+    } else if (cart.length > 1) {
+      const arr = cart.filter((item) => item.id !== id);
+      updateCart(cartId, arr, user);
+      setCart(arr);
+    }
   };
 
   const calculateTotalPrice = () => {
-    let totalPrice = 0;
-    if (cart.length == 1) {
-      totalPrice = cart[0].price * cart[0].count;
-    } else if (cart.length > 1) {
-      totalPrice = cart.reduce((prevBook, currBook) => {
-        return (
-          prevBook.price * prevBook.count + currBook.price * currBook.count
-        );
-      });
-    }
+    let totalPrice = cart.reduce((prevBook, currBook) => {
+      return prevBook + currBook.price * currBook.count;
+    }, 0);
+
     setTotal(totalPrice.toFixed(2));
   };
 
@@ -45,10 +48,6 @@ export const ShoppingCart = () => {
     calculateTotalPrice();
     console.log("tak");
   }, [cart]);
-
-  const showCartSummaryForm = () => {
-    setshowSummary((current) => !current);
-  };
 
   useEffect(() => {
     if (findCart(user, setCart, setCartId) !== [])
@@ -63,10 +62,11 @@ export const ShoppingCart = () => {
       <StyledCartContainer>
         {!cart.length || cart.length == 0 ? (
           <StyledEmptyCartDiv>
-            <span>Sorry, your cart is empty.</span>
-            <span>Add products to your cart and buy quick and easy:</span>
-
-            <Link to="/books">Book Store</Link>
+            <div>
+              <span>Sorry, your cart is empty.</span>
+              <span>Add products to your cart and buy quick and easy:</span>
+            </div>
+            <StyledOrangeLink to="/books">Book Store</StyledOrangeLink>
           </StyledEmptyCartDiv>
         ) : (
           <StyledCartList>
@@ -83,14 +83,13 @@ export const ShoppingCart = () => {
 
         {cart.length > 0 && (
           <StyledSummary>
-            Total:{total}
-            <StyledDeliveryButton onClick={showCartSummaryForm}>
-              Delivery and Payment
+            Total price: {total} zł
+            <StyledDeliveryButton>
+              <StyledLink to="/delivery"> Delivery and Payment</StyledLink>
             </StyledDeliveryButton>
           </StyledSummary>
         )}
       </StyledCartContainer>
-      {showSummary && <CartSummaryForm />}
     </StyledCart>
   );
 };

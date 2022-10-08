@@ -7,8 +7,6 @@ import { getUser } from "./../../utils/getUser";
 import { addDoc } from "firebase/firestore";
 import { db } from "../../api/firebase";
 import { collection } from "firebase/firestore";
-import { useState } from "react";
-import { findCart } from "../../utils/cartdbHandlers";
 
 export const handleLogin = (e, setUser) => {
   e.preventDefault();

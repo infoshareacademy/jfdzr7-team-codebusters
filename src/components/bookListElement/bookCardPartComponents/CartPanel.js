@@ -24,7 +24,7 @@ export const CartPanel = ({ className, quantity, book }) => {
 
   const handleAddToCartClickButton = (e, count, book) => {
     e.preventDefault();
-
+    console.log("user", user);
     if (count > 0) {
       findCart(user, setCart, setCartId);
 

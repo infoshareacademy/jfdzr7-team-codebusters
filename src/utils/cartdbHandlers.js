@@ -15,11 +15,12 @@ const collectionName = "carts";
 
 export const createCart = (cart, user) => {
   const collectionRef = collection(db, collectionName);
-
+  console.log("dodaje koszyk", user.ID);
   const data = {
     positions: cart,
     user: {
       email: user.email,
+      ID: user.ID,
     },
   };
 
@@ -28,10 +29,7 @@ export const createCart = (cart, user) => {
 
 export const findCart = (user, setCart, setCartId) => {
   const collectionRef = collection(db, collectionName);
-  const conditions = query(
-    collectionRef,
-    where("user.email", "==", user.email)
-  );
+  const conditions = query(collectionRef, where("user.ID", "==", user.ID));
 
   getDocs(conditions, collectionRef).then((querySnapshot) => {
     let foundCart = querySnapshot.docs.map((cart) => {
@@ -61,14 +59,14 @@ export const updateCart = (cartId, cart, user) => {
   const data = {
     positions: cart,
     user: {
+      ID: user.ID,
       email: user.email,
     },
   };
   updateDoc(docRef, data);
 };
 
-export const deleteCart = () => {
-  const docId = "ID";
-  const docRef = doc(db, collectionName, docId);
-  deleteDoc(docRef);
+export const deleteCart = (cartId) => {
+  const cartRef = doc(db, collectionName, cartId);
+  deleteDoc(cartRef);
 };
