@@ -9,11 +9,12 @@ export const PositionsDetail = ({ positions }) => {
             <DetailHeader
                 headers={headers}
                 numberOfColumns={numberOfColumns} />
-            {positions.map((position, index) =>
-                <PositionRecord
-                    key={index}
+            {positions.map((position, index) => {
+                return <PositionRecord
+                    key={position.bookID}
                     position={position}
                     index={index} />
+            }
             )}
         </div>
     )

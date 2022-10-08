@@ -1,14 +1,14 @@
 import { BooksListProvider } from "../../../providers/BooksListProvider"
 import { SearchMenu } from "../../searchMenu/SearchMenu"
-import { StyledBooksListElement } from "./StyledBooksListElement"
-import { StyledDecorationBar } from "../../decorationBar/StyledDecorationBar"
+import { BooksListElement } from "../../bookListElement/BooksListElement"
+import { DecorationBar } from "../../decorationBar/DecorationBar"
 
 export const BookstorePage = () => {
     return (
         <BooksListProvider>
             <SearchMenu />
-            <StyledDecorationBar />
-            <StyledBooksListElement />
+            <DecorationBar />
+            <BooksListElement />
         </BooksListProvider>
     )
 }

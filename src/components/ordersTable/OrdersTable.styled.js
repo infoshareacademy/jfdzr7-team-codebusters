@@ -12,8 +12,8 @@ export const StyledTableHeader = styled.div`
     font-size: 18px;
     grid-template-columns: 40px 130px repeat(${(props) => props.numberOfColumns - 2}, 1fr);
     padding: 10px;
-    background-color: rgba(34,9,1,1);
     color: #FF902B;
+    background-color: rgba(34,9,1,1);
     h3{
         margin: 10px 0;
     }
@@ -25,5 +25,10 @@ export const StyledTableRecord = styled.div`
     border: 2px solid black;
     grid-template-columns: 40px 130px repeat(${(props) => props.numberOfColumns - 2}, 1fr);
     padding: 5px 10px;
-    background-color: ${(props) => props.index % 2 ? '#FFF2E0' : '#b5ada1'};
+    &:nth-child(even){
+        background-color: #FFF2E0;
+    }
+    &:nth-child(odd){
+        background-color: #b5ada1;
+    }
 `

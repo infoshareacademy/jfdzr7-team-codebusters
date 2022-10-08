@@ -1,7 +1,8 @@
+import { useContext } from "react"
+
 import { AuthForm } from "./AuthForm";
 import { handleLogin } from "./authHandlers";
-import { useContext } from "react"
-import { AuthContext } from "./../../providers/AuthProvider"
+import { AuthContext } from "./../../providers/AuthProvider";
 
 export const Login = () => {
   const { setUser } = useContext(AuthContext);
