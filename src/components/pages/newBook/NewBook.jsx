@@ -87,12 +87,12 @@ export const NewBook = (e) => {
                         <InputField title={'Author'} type={'text'} value={formValues.author} onChange={onChangeHandler} name={'author'} />
                         <InputField title={'Title'} type={'text'} value={formValues.title} onChange={onChangeHandler} name={'title'} />
                         <InputField title={'Category (separate by comas)'} type={'text'} value={formValues.category} onChange={onChangeHandler} name={'category'} />
-                        <InputField title={'ISBN'} type={'number'} value={formValues.isbn} onChange={onChangeHandler} name={'isbn'} />
-                        <InputField title={'Pages'} type={'number'} value={formValues.pages} onChange={onChangeHandler} name={'pages'} />
+                        <InputField title={'ISBN'} type={'number'} min='0' value={formValues.isbn} onChange={onChangeHandler} name={'isbn'} />
+                        <InputField title={'Pages'} type={'number'} min='1' value={formValues.pages} onChange={onChangeHandler} name={'pages'} />
                         <InputField title={'Cover'} type={'text'} value={formValues.cover} onChange={onChangeHandler} name={'cover'} />
                         <InputField title={'Published'} type={'date'} value={formValues.published} onChange={onChangeHandler} name={'published'} />
-                        <InputField title={'Price'} type={'number'} value={formValues.price} onChange={onChangeHandler} name={'price'} />
-                        <InputField title={'Quantity'} type={'number'} value={formValues.quantity} onChange={onChangeHandler} name={'quantity'} />
+                        <InputField title={'Price'} type={'number'} min='0' value={formValues.price} onChange={onChangeHandler} name={'price'} />
+                        <InputField title={'Quantity'} type={'number'} min='0' value={formValues.quantity} onChange={onChangeHandler} name={'quantity'} />
                         <StyledButton type='submit' value='Send' />
                     </form>
                     <form onSubmit={imageHandleSubmit} className='cover__form'>
