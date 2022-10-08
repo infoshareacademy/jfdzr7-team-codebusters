@@ -13,8 +13,6 @@ export const AccountMenu = () => {
   useEffect(() => {
     if (findCart(user, setCart, setCartId) !== [])
       findCart(user, setCart, setCartId);
-    console.log(cartId);
-    console.log(cart);
   }, [user]);
 
   return (

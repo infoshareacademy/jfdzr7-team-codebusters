@@ -31,7 +31,7 @@ export const Header = () => {
               className="shoppingCartIcon"
             />
           </span>
-          <span>{cart == undefined ? 0 : cart.length}</span>
+          <span>{cart === undefined ? 0 : cart.length}</span>
         </StyledNavLink>
       )}
     </StyledHeader>
