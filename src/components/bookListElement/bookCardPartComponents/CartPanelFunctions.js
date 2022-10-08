@@ -5,7 +5,7 @@ export const increaseCount = (count, setCount, quantity) => {
 }
 
 export const decreaseCount = (count, setCount) => {
-    if (count !== 0) {
+    if (count > 0) {
         setCount(count - 1)
     }
 }
