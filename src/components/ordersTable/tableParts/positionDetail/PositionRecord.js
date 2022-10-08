@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react"
-
-import { getBookDetails } from "../../../../utils/getBookDetails"
 import { StyledPositionRecord } from "./PositionsDetail.styled"
 
 export const PositionRecord = ({ position, index }) => {
