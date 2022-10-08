@@ -9,9 +9,9 @@ export const MessagesMenagmentPanel = () => {
     const { user } = useContext(AuthContext)
     return (
         <StyledMessagesMenagmentPanel>
-            <StyledButton onClick={() => deleteAllMessages(messagesList, user.id)}>delate all</StyledButton>
-            <StyledButton onClick={() => deleteReadMessages(messagesList, user.id)}>delate read</StyledButton>
-            <StyledButton onClick={() => deleteUnreadMessages(messagesList, user.id)}>delate unread</StyledButton>
+            <StyledButton onClick={() => deleteAllMessages(messagesList, setMessagesList, user.id)}>delate all</StyledButton>
+            <StyledButton onClick={() => deleteReadMessages(messagesList, setMessagesList, user.id)}>delate read</StyledButton>
+            <StyledButton onClick={() => deleteUnreadMessages(messagesList, setMessagesList, user.id)}>delate unread</StyledButton>
             <StyledButton onClick={() => changeAllIsReadStatus(messagesList, setMessagesList, user.id, false)}>set all messages read</StyledButton>
             <StyledButton onClick={() => changeAllIsReadStatus(messagesList, setMessagesList, user.id, true)}>set all messages unread</StyledButton>
         </StyledMessagesMenagmentPanel>
