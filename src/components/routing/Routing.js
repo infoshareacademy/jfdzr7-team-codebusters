@@ -30,6 +30,7 @@ export const Routing = () => {
                 <Route element={<ProtectedRoute isAllowed={!isAuth} />} >
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/forgotPassword" element={<ForgotPassword />} />
                 </Route>
                 <Route element={<ProtectedRoute isAllowed={isAuth} />} >
                     <Route path="/account" element={<AccountPage />} />
