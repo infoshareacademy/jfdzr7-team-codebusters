@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
+html,
+body {
+    margin: 0;
+
+}
+
 .orange__font {
     color: #FF902B
 }
