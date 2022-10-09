@@ -16,6 +16,7 @@ import { ShoppingCart } from "../cart/ShoppingCart";
 import { OrderSummary } from "../cart/OrderSummary";
 import { CartSummaryForm } from "../cart/CartSummaryForm";
 import { AccountPage } from "../pages/account/AccountPage";
+import { NewBook } from "../pages/newBook/NewBook";
 
 export const Routing = () => {
     const { isAuth, isAdmin, isUser } = useContext(AuthContext)
@@ -23,7 +24,6 @@ export const Routing = () => {
         <main>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/about" element={<p>About us page</p>} />
                 <Route path="/books" element={<BookstorePage />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route element={<ProtectedRoute isAllowed={!isAuth} />} >
@@ -32,18 +32,16 @@ export const Routing = () => {
                 </Route>
                 <Route element={<ProtectedRoute isAllowed={isAuth} />} >
                     <Route path="/account" element={<AccountPage />} />
-                </Route>
-                <Route element={<ProtectedRoute isAllowed={isAdmin} />}>
-                    <Route path="/orders" element={<OrdersPage />} />
-                    <Route path="/warehouse" element={<Warehouse />} />
-                    <Route path="/addNewBook" element={<p>Admin add new book</p>} />
-                </Route>
-                <Route element={<ProtectedRoute isAllowed={isUser} />}>
                     <Route path="/messages" element={<MessagesPage />} />
                     <Route path="/orderHistory" element={<UserOrdersPage />} />
                     <Route path="/cart" element={<ShoppingCart />} />
                     <Route path="/summary" element={<OrderSummary />} />
                     <Route path="/delivery" element={<CartSummaryForm />} />
+                </Route>
+                <Route element={<ProtectedRoute isAllowed={isAdmin} />}>
+                    <Route path="/orders" element={<OrdersPage />} />
+                    <Route path="/warehouse" element={<Warehouse />} />
+                    <Route path="/addNewBook" element={<NewBook />} />
                 </Route>
             </Routes>
         </main>

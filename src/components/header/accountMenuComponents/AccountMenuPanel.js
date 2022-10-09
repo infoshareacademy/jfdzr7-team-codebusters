@@ -11,7 +11,8 @@ export const AccountMenuPanel = () => {
     return (
         <StyledAccountMenuPanel>
             <AccountManagmentPanel />
-            <LinksPanel linksList={isAdmin ? adminAccountMenuLinks : userAccountMenuLinks} />
+            <LinksPanel linksList={userAccountMenuLinks} />
+            {isAdmin && <LinksPanel linksList={adminAccountMenuLinks} />}
         </StyledAccountMenuPanel>
     )
 }
