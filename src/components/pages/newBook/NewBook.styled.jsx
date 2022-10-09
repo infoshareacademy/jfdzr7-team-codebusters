@@ -59,5 +59,5 @@ export const NewBookBackground = styled.div`
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 140vh;    
+    min-height: 120vh;    
 `;
