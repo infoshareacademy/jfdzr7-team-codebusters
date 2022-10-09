@@ -42,7 +42,6 @@ export const CartItem = ({
       setbookCount(bookCount + 1);
       const found = cart.find((item) => item.id === id);
       found.count = bookCount + 1;
-      console.log(cart);
       setCart([...cart]);
       updateCart(cartId, cart, user);
     } else {
@@ -62,7 +61,6 @@ export const CartItem = ({
       setbookCount(bookCount - 1);
       const found = cart.find((item) => item.id === id);
       found.count = bookCount - 1;
-      console.log(cart);
       setCart([...cart]);
       updateCart(cartId, cart, user);
     } else if (bookCount === 1) {
@@ -106,7 +104,6 @@ export const CartItem = ({
             const found = cart.find((item) => item.id === id);
             found.count = Number(e.currentTarget.value);
             calculateTotalPrice();
-            console.log(cart);
           }}
           onBlur={() => {
             if (bookCount >= quantity) {

@@ -11,11 +11,19 @@ export function Footer() {
                     return (
                         <FooterColumns key={item.id}>
                             <Subject >{item.Group}</Subject>
-                            {item.subGroups.map((element) => {
+
+                            {item.Group === 'Books' ? item.subGroups.map((element) => {
                                 return (
-                                    <SubSubject key={item.id + element.Id} href={element.link}>{element.subject}</SubSubject>
+                                    <SubSubject key={item.id + element.Id} to={{
+                                        pathname: '/books',
+                                    }} state={element.link}>{element.subject}</SubSubject>
                                 )
-                            })
+                            }) :
+                                item.subGroups.map((element) => {
+                                    return (
+                                        <SubSubject as='a' key={item.id + element.Id} href={element.link}>{element.subject}</SubSubject>
+                                    )
+                                })
                             }
                         </FooterColumns>
                     )

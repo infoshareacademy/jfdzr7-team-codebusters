@@ -1,9 +1,6 @@
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut,
-} from "@firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "@firebase/auth";
 import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+
 import { auth, db } from "../../api/firebase";
 import { firebaseErrors } from "../../utils/firebaseErrors";
 import { getFormData } from "../../utils/getFormData";
@@ -63,6 +60,14 @@ const createUserInFirebase = (user, auth) => {
     email: user.email,
     unreadMessages: 0,
     isAdmin: false,
-  };
-  setDoc(docRef, newUser).finally(() => signOut(auth));
-};
+    address: {
+      city: '',
+      street: ''
+    },
+    name: '',
+    surname: '',
+    phone: ''
+  }
+  setDoc(docRef, newUser)
+    .finally(() => signOut(auth))
+}

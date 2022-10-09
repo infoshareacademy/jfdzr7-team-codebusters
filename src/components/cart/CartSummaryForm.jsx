@@ -1,5 +1,6 @@
-import React from "react";
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom"
+
 import { db } from "../../api/firebase";
 import { increment, doc, updateDoc } from "firebase/firestore";
 import { findCart, deleteCart } from "../../utils/cartdbHandlers";
@@ -48,7 +49,7 @@ export const CartSummaryForm = () => {
     cart.forEach((book) => changeBookQuantity(book.id, book.count));
     deleteCart(cartId);
     findCart(user, setCart, setCartId);
-    window.location.replace("/summary");
+    navigate("/summary");
   };
 
   const updateOrderFormState = (e) => {
@@ -60,7 +61,7 @@ export const CartSummaryForm = () => {
 
   const delivery = 15;
   const totalCost = Number(total) + delivery;
-
+  const navigate = useNavigate();
   return (
     <StyledFormWrapper>
       <StyledDeliveryContainer>

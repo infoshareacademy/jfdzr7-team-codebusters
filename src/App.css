@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+html,
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+
+}
+
+.orange__font {
+    color: #FF902B
+}
+
+
+.cover__form {
+    margin-left: 50px;
+}

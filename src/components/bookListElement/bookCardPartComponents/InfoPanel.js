@@ -5,7 +5,7 @@ export const InfoPanel = ({ title, author, price }) => {
         <StyledInfoPanel>
             <h3>{title}</h3>
             <p>by {author}</p>
-            <p className="price">{price}</p>
+            <p className="price">{price} zł</p>
         </StyledInfoPanel>
     )
 }
