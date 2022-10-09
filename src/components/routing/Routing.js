@@ -15,6 +15,7 @@ import { Home } from "../pages/home/Home";
 import { ShoppingCart } from "../cart/ShoppingCart";
 import { OrderSummary } from "../cart/OrderSummary";
 import { CartSummaryForm } from "../cart/CartSummaryForm";
+import { ForgotPassword } from "../auth/ForgotPassword";
 import { AccountPage } from "../pages/account/AccountPage";
 import { NewBook } from "../pages/newBook/NewBook";
 
