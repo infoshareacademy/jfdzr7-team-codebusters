@@ -58,5 +58,6 @@ export const StyledH2 = styled.h2`
     margin: 30px auto;
     text-align: center;
     font-size: 47px;
+    color: white;
     span{ color: #FF902B; }
 `

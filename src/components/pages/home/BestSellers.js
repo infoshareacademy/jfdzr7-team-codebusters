@@ -20,6 +20,7 @@ export const BestSellers = () => {
                     return (
                         <BookCard
                             key={book.id}
+                            book={book}
                             title={book.title}
                             author={book.author}
                             price={book.price}
