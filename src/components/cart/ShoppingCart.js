@@ -20,7 +20,6 @@ export const ShoppingCart = () => {
   const { cart, cartId, setCart, setCartId, total, setTotal } =
     useContext(CartContext);
   const { user } = useContext(AuthContext);
-
   const handleRemoveFromCart = (id) => {
     if (cart.length === 1) {
       deleteCart(cartId);

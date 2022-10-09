@@ -38,8 +38,20 @@ export const StyledNavLink = styled(NavLink)`
     color: #ff902b;
   }
 `;
+export const StyledDummyNavLink = styled.a`
+  visibility: hidden;
+  color: #220901;
+  font-weight: bold;
+  font-size: 28px;
+  text-decoration: none;
+  padding: 20px;
+  &.active {
+    color: #ff902b;
+  }
+`;
 
 export const StyledAccountMenu = styled.div`
+  margin-left: 30px;
   a {
     color: black;
     text-decoration: none;
