@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledAccountManagmentPanel = styled.div`
     display: flex;
     gap: 20px;
+    align-items: center;
 `
 
 export const StyledLinksPanel = styled.div`

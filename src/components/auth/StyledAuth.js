@@ -76,3 +76,14 @@ export const StyledLink = styled(Link)`
     font-size: 10px;
   }
 `;
+
+export const StyledButton = styled.button`
+  background-color: #ffce87;
+  border: 1px solid #220901;
+  font-family: "Inter", sans-serif;
+  margin: 3px;
+  height: 30px;
+  width: 130px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+`;
