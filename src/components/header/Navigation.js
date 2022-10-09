@@ -4,7 +4,6 @@ export const Navigation = () => {
     return (
         <StyledNavigation>
             <StyledNavLink end to="/">Home</StyledNavLink>
-            <StyledNavLink to="/about">About us</StyledNavLink>
             <StyledNavLink to="/books">Books</StyledNavLink>
             <StyledNavLink to="/contact">Contact</StyledNavLink>
         </StyledNavigation>

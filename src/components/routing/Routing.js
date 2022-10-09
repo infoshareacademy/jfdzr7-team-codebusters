@@ -24,7 +24,6 @@ export const Routing = () => {
         <main>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/about" element={<p>About us page</p>} />
                 <Route path="/books" element={<BookstorePage />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route element={<ProtectedRoute isAllowed={!isAuth} />} >
@@ -44,7 +43,6 @@ export const Routing = () => {
                     <Route path="/warehouse" element={<Warehouse />} />
                     <Route path="/addNewBook" element={<NewBook />} />
                 </Route>
-
             </Routes>
         </main>
     )
