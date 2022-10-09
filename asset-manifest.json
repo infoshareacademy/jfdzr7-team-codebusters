@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/jfdzr7-team-codebusters/static/css/main.ba67276d.css",
+    "main.js": "/jfdzr7-team-codebusters/static/js/main.a8f2be5a.js",
+    "static/media/background.jpg": "/jfdzr7-team-codebusters/static/media/background.8c584b3ae94af9fba6d7.jpg",
+    "static/media/package-backgroung.jpg": "/jfdzr7-team-codebusters/static/media/package-backgroung.b6daf252f76ba5aabdc2.jpg",
+    "static/media/open-book-800px.jpg": "/jfdzr7-team-codebusters/static/media/open-book-800px.027d8252a025a1d999b2.jpg",
+    "static/media/ghostbusters.png": "/jfdzr7-team-codebusters/static/media/ghostbusters.b6c69c6e8889b1d65269.png",
+    "static/media/book.png": "/jfdzr7-team-codebusters/static/media/book.90fb8866d443b17dd50f.png",
+    "static/media/plus.png": "/jfdzr7-team-codebusters/static/media/plus.9c9c320c0b2c6557453d.png",
+    "static/media/minus.png": "/jfdzr7-team-codebusters/static/media/minus.6c3ed9ae139a48b74718.png",
+    "static/media/messageClose.png": "/jfdzr7-team-codebusters/static/media/messageClose.51b08bcbb5af7a861c31.png",
+    "index.html": "/jfdzr7-team-codebusters/index.html",
+    "main.ba67276d.css.map": "/jfdzr7-team-codebusters/static/css/main.ba67276d.css.map",
+    "main.a8f2be5a.js.map": "/jfdzr7-team-codebusters/static/js/main.a8f2be5a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ba67276d.css",
+    "static/js/main.a8f2be5a.js"
+  ]
+}
