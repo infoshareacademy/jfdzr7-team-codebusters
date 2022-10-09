@@ -17,11 +17,9 @@ import {
 } from "./Cart.styled";
 
 export const ShoppingCart = () => {
-  console.log("jesteśmy w shopping cart");
   const { cart, cartId, setCart, setCartId, total, setTotal } =
     useContext(CartContext);
   const { user } = useContext(AuthContext);
-  console.log(user);
   const handleRemoveFromCart = (id) => {
     if (cart.length === 1) {
       deleteCart(cartId);

@@ -11,19 +11,17 @@ export const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuth, setIsAuth] = useState(!!user);
-  // let isAuth = !!user;
   const isAdmin = !!user?.isAdmin;
   const isUser = isAuth && !user?.isAdmin;
 
   useEffect(() => {
     onAuthStateChanged(auth, (userData) => {
-      console.log(userData);
       if (userData) {
         getDoc(doc(db, "users", userData.uid)).then((querySnapshot) => {
           getUser(setUser, userData.uid, setIsAuth);
         });
       } else {
-        setUser(null);
+        setUser(false);
         setIsAuth(false);
       }
     });
@@ -36,6 +34,7 @@ export const AuthProvider = ({ children }) => {
         isAuth,
         isAdmin,
         isUser,
+        setIsAuth,
       }}
     >
       {children}

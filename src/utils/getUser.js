@@ -8,7 +8,6 @@ export const getUser = (setUser, uid, setIsAuth) => {
       ...querySnap.data(),
       id: uid,
     });
-    console.log(setIsAuth);
     setIsAuth(true);
   });
 };
