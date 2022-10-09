@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 
 import { OrderDetail } from "./OrderDetail"
 import { dateToString } from "./../../../utils/dateToString"
@@ -6,9 +6,11 @@ import { StatusChangePanel } from "./statusInfoPanel/StatusChangePanel"
 import { StatusInfoPanel } from "./statusInfoPanel/StatusInfoPanel"
 import { expandOrHideOrderDetails } from "../utils/expandOrHideOrderDetails"
 import { StyledTableRecord } from "../OrdersTable.styled"
+import { AuthContext } from "../../../providers/AuthProvider"
 
 export const TableRecord = ({ order, index, numberOfColumns }) => {
     const [isEditStatusActive, setIsEditStatusActive] = useState(false)
+    const { isAdmin } = useContext(AuthContext)
     const changeStatus = (newStatus) => {
         order.status = newStatus
     }
@@ -18,7 +20,7 @@ export const TableRecord = ({ order, index, numberOfColumns }) => {
             onClick={event => expandOrHideOrderDetails(event)} >
             <p>{index + 1}</p>
             <p>{dateToString(order.orderDate)}</p>
-            <p>{order.user.email}</p>
+            {isAdmin && <p>{order.user.email}</p>}
             <p>{order.orderValue}</p>
             {
                 isEditStatusActive ?
@@ -34,7 +36,7 @@ export const TableRecord = ({ order, index, numberOfColumns }) => {
                         setIsEditStatusActive={setIsEditStatusActive}
                     />
             }
-            <OrderDetail positions={order.positions} userID={order.user.ID} />
+            <OrderDetail positions={order.positions} userData={order.user} />
         </StyledTableRecord >
     )
 }

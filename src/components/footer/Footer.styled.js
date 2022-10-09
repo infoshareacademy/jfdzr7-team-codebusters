@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledFooter = styled.div`
     font-family: "Inter", sans-serif;
     background-color: #FFCE87;
     padding: 20px;
+    margin: auto;
 `
 
 export const FooterRows = styled.div`
@@ -31,7 +33,7 @@ export const Subject = styled.p`
     margin: 5px;
 `
 
-export const SubSubject = styled.a`
+export const SubSubject = styled(Link)`
     font-weight: 400;
     margin: 5px;
     text-decoration: none;

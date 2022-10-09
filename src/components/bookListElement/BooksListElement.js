@@ -17,6 +17,7 @@ export const BooksListElement = () => {
                         price={book.price}
                         cover={book.cover}
                         quantity={book.quantity}
+                        book={book}
                     />
                 )
             })}

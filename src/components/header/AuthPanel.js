@@ -1,10 +1,19 @@
-import { StyledNavLink } from "./Header.styled"
+import { StyledNavLink, StyledDummyNavLink } from "./Header.styled";
 
-export const AuthPanel = () => {
-    return (
+export const AuthPanel = (user) => {
+  return (
+    <>
+      {user === null ? (
         <div>
-            <StyledNavLink to="/login">Log In</StyledNavLink>
-            <StyledNavLink to="/register">Register</StyledNavLink>
+          <StyledDummyNavLink>Log In</StyledDummyNavLink>
+          <StyledDummyNavLink>Register</StyledDummyNavLink>
         </div>
-    )
-}
+      ) : (
+        <div>
+          <StyledNavLink to="/login">Log In</StyledNavLink>
+          <StyledNavLink to="/register">Register</StyledNavLink>
+        </div>
+      )}
+    </>
+  );
+};
