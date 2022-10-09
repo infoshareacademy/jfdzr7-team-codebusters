@@ -7,9 +7,9 @@ import { BookSearchProvider, BooksSearchContext } from "../../providers/BooksSea
 import { categoriesOfBooks } from "../../utils/categoriesOfBooks"
 import { sortBookstoreOptions } from "./searchPartComponents/utils/constans"
 
-export const SearchMenu = () => {
+export const SearchMenu = ({ checkedOption }) => {
     return (
-        <BookSearchProvider>
+        <BookSearchProvider checkedOption={checkedOption}>
             <form>
                 <CategoryBar options={categoriesOfBooks} context={BooksSearchContext} />
                 <Wrapper>

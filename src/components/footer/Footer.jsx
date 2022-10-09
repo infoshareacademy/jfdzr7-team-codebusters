@@ -13,7 +13,9 @@ export function Footer() {
                             <Subject >{item.Group}</Subject>
                             {item.subGroups.map((element) => {
                                 return (
-                                    <SubSubject key={item.id + element.Id} href={element.link}>{element.subject}</SubSubject>
+                                    <SubSubject key={item.id + element.Id} to={{
+                                        pathname: '/books',
+                                    }} state={element.link}>{element.subject}</SubSubject>
                                 )
                             })
                             }
