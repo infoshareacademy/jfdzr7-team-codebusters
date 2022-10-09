@@ -20,32 +20,32 @@ import { AccountPage } from "../pages/account/AccountPage";
 import { NewBook } from "../pages/newBook/NewBook";
 
 export const Routing = () => {
-    const { isAuth, isAdmin, isUser } = useContext(AuthContext)
-    return (
-        <main>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/books" element={<BookstorePage />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route element={<ProtectedRoute isAllowed={!isAuth} />} >
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/forgotPassword" element={<ForgotPassword />} />
-                </Route>
-                <Route element={<ProtectedRoute isAllowed={isAuth} />} >
-                    <Route path="/account" element={<AccountPage />} />
-                    <Route path="/messages" element={<MessagesPage />} />
-                    <Route path="/orderHistory" element={<UserOrdersPage />} />
-                    <Route path="/cart" element={<ShoppingCart />} />
-                    <Route path="/summary" element={<OrderSummary />} />
-                    <Route path="/delivery" element={<CartSummaryForm />} />
-                </Route>
-                <Route element={<ProtectedRoute isAllowed={isAdmin} />}>
-                    <Route path="/orders" element={<OrdersPage />} />
-                    <Route path="/warehouse" element={<Warehouse />} />
-                    <Route path="/addNewBook" element={<NewBook />} />
-                </Route>
-            </Routes>
-        </main>
-    )
-}
+  const { isAuth, isAdmin, isUser } = useContext(AuthContext);
+  return (
+    <main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/books" element={<BookstorePage />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route element={<ProtectedRoute isAllowed={!isAuth} />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgotPassword" element={<ForgotPassword />} />
+        </Route>
+        <Route element={<ProtectedRoute isAllowed={isAuth} />}>
+          <Route path="/account" element={<AccountPage />} />
+          <Route path="/messages" element={<MessagesPage />} />
+          <Route path="/orderHistory" element={<UserOrdersPage />} />
+          <Route path="/cart" element={<ShoppingCart />} />
+          <Route path="/summary" element={<OrderSummary />} />
+          <Route path="/delivery" element={<CartSummaryForm />} />
+        </Route>
+        <Route element={<ProtectedRoute isAllowed={isAdmin} />}>
+          <Route path="/orders" element={<OrdersPage />} />
+          <Route path="/warehouse" element={<Warehouse />} />
+          <Route path="/addNewBook" element={<NewBook />} />
+        </Route>
+      </Routes>
+    </main>
+  );
+};
