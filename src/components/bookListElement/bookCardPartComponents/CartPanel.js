@@ -64,7 +64,9 @@ export const CartPanel = ({ quantity, book }) => {
             <Wrapper>
                 <StyledButton
                     onClick={(event) => {
-                        handleCounterClickButton(event, decreaseCount);
+                        handleCounterClickButton(event, decreaseCount, count,
+                            setCount,
+                            quantity);
                     }}
                     disabled={isPanelDisabled}
                 >
@@ -81,6 +83,9 @@ export const CartPanel = ({ quantity, book }) => {
                         if (count >= quantity) {
                             setCount(quantity);
                             alert("Sorry! only " + quantity + " pieces left in stock");
+                        }
+                        if (count < 0) {
+                            setCount(0)
                         }
                     }}
                     disabled={isPanelDisabled}
