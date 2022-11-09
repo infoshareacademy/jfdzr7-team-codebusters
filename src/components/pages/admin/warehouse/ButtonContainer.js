@@ -8,12 +8,16 @@ import { StyledButtonContainer, StyledButton, } from "./WarehousePage.styled";
 const addBooksHandler = (setQuantityComponent, bookID) => {
     const addQuantity = prompt('Enter quantity of new books in the storage')
     if (checkQuantity(addQuantity)) {
-        setQuantityComponent(prevState => +prevState + +addQuantity)
-        const bookDocRef = doc(db, 'books', bookID)
-        const updateBookQuantity = {
-            quantity: increment(addQuantity),
-        }
-        updateDoc(bookDocRef, updateBookQuantity)
+        setQuantityComponent(prevState => {
+            const checkIfIsStillAvailale = +prevState + +addQuantity > 0
+            const bookDocRef = doc(db, 'books', bookID)
+            const updateBookQuantity = {
+                quantity: increment(addQuantity),
+                available: checkIfIsStillAvailale
+            }
+            updateDoc(bookDocRef, updateBookQuantity)
+            return +prevState + +addQuantity
+        })
     }
     else {
         alert('Entered wrong quantity. Try again')
@@ -22,20 +26,27 @@ const addBooksHandler = (setQuantityComponent, bookID) => {
 }
 const subtractBooksHandler = (quantityComponent, setQuantityComponent, bookID) => {
     const substractQuantity = prompt('Enter quantity of new books in the storage')
-    if (!checkQuantity(substractQuantity)) {
+    if (checkQuantity(substractQuantity)) {
+        setQuantityComponent(prevState => {
+            const checkIfIsStillAvailale = +prevState - +substractQuantity > 0
+            const bookDocRef = doc(db, 'books', bookID)
+            const updateBookQuantity = {
+                quantity: increment(-substractQuantity),
+                available: checkIfIsStillAvailale
+            }
+            updateDoc(bookDocRef, updateBookQuantity)
+
+            return +prevState - +substractQuantity
+        })
+    }
+    else if (!checkQuantity(substractQuantity)) {
         alert('Entered wrong quantity. Try again')
     }
     else if (substractQuantity > quantityComponent) {
         alert('You tried remove more books then you have, try again')
     }
-    else {
-        setQuantityComponent(prevState => +prevState - +substractQuantity)
-        const bookDocRef = doc(db, 'books', bookID)
-        const updateBookQuantity = {
-            quantity: increment(-substractQuantity),
-        }
-        updateDoc(bookDocRef, updateBookQuantity)
-    }
+
+
 }
 
 const checkQuantity = (quantity) => {
