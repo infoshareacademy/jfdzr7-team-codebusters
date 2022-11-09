@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { db } from "../../api/firebase";
-import { increment, doc, updateDoc } from "firebase/firestore";
+import { increment, doc, updateDoc, getDoc } from "firebase/firestore";
 import { findCart, deleteCart } from "../../utils/cartdbHandlers";
 import { createOrder } from "../../utils/ordersHandlers";
 import { CartContext } from "../../providers/CartProvider";
@@ -35,12 +35,21 @@ export const CartSummaryForm = () => {
   };
   const [orderData, setorderData] = useState(defaultFormState);
 
-  const changeBookQuantity = (bookID, count) => {
-    const userDocRef = doc(db, "books", bookID);
-    const updateBookQuantity = {
-      quantity: increment(-count),
-    };
-    updateDoc(userDocRef, updateBookQuantity);
+  const changeBookQuantity = (bookID, count, available) => {
+    const docRef = doc(db, "books", bookID);
+    getDoc(docRef).then((querySnap) => {
+      const actualQuantity = querySnap.data().quantity
+      console.log(actualQuantity)
+      const checkIfIsStillAvailable = actualQuantity - count !== 0
+      console.log(checkIfIsStillAvailable)
+      const userDocRef = doc(db, "books", bookID);
+      const updateBookQuantity = {
+        quantity: increment(-count),
+        sold: increment(count),
+        available: checkIfIsStillAvailable
+      };
+      updateDoc(userDocRef, updateBookQuantity);
+    });
   };
 
   const handleOrderSubmit = (e) => {
