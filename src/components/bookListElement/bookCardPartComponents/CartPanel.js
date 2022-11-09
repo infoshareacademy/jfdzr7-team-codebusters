@@ -15,7 +15,6 @@ export const CartPanel = ({ quantity, book }) => {
     const { cart, cartId, setCart, setCartId } = useContext(CartContext);
     const { user } = useContext(AuthContext);
 
-
     const handleAddToCartClickButton = (e, count, book) => {
         e.preventDefault();
         if (count > 0) {

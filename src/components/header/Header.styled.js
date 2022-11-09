@@ -57,6 +57,9 @@ export const StyledAccountMenu = styled.div`
     text-decoration: none;
   }
   &:hover ${StyledAccountMenuPanel} {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1000;
   }
 `;

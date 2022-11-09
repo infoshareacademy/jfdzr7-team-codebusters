@@ -24,11 +24,11 @@ export const AccountInfoPanel = () => {
             <h3>Address:</h3>
             <Wrapper>
                 <h4>City:</h4>
-                <p>{user.address.city}</p>
+                <p>{user.address?.city}</p>
             </Wrapper>
             <Wrapper>
                 <h4>Street:</h4>
-                <p>{user.address.street}</p>
+                <p>{user.address?.street}</p>
             </Wrapper>
         </>
     )

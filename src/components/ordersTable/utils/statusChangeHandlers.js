@@ -14,7 +14,7 @@ export const cancelStatusChange = (event, setIsEditStatusActive) => {
 export const confirmStatusChange = (event, orderStatusSelectValue, setIsEditStatusActive, order, changeStatus) => {
     changeEditStatus(event, setIsEditStatusActive, changeStatus)
     order.status !== orderStatusSelectValue && updateOrderStatus(orderStatusSelectValue, order, changeStatus)
-    sendMessageToUser(order.user.ID, order.orderDate, orderStatusSelectValue)
+    sendMessageToUser(order.user.userID, order.orderDate, orderStatusSelectValue)
 }
 
 const updateOrderStatus = (orderStatusSelectValue, order, changeStatus) => {

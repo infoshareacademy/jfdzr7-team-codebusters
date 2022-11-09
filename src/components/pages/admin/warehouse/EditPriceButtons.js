@@ -5,11 +5,11 @@ import { StyledButtonContainer, StyledButton, } from "./WarehousePage.styled";
 const updatePrice = (bookID, newPrice, setIsEditPriceActive, setPriceComponent) => {
     const bookDocRef = doc(db, 'books', bookID)
     const updateBookPrice = {
-        price: newPrice
+        price: +newPrice
     }
     updateDoc(bookDocRef, updateBookPrice)
     setIsEditPriceActive(false)
-    setPriceComponent(newPrice)
+    setPriceComponent(+newPrice)
 }
 
 const cancelPriceChange = (setIsEditPriceActive, setNewPrice, priceBeforeEdit) => {

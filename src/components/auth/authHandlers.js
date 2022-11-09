@@ -9,6 +9,7 @@ import { auth, db } from "../../api/firebase";
 import { firebaseErrors } from "../../utils/firebaseErrors";
 import { getFormData } from "../../utils/getFormData";
 import { getUser } from "./../../utils/getUser";
+import { sendPasswordResetEmail } from "@firebase/auth";
 
 export const handleLogin = (e, setUser, setIsAuth) => {
   e.preventDefault();
@@ -18,6 +19,17 @@ export const handleLogin = (e, setUser, setIsAuth) => {
     .then((userCredential) => {
       e.target.reset();
       getUser(setUser, userCredential.user.uid, setIsAuth);
+    })
+    .catch((e) => {
+      alert(firebaseErrors[e.code]);
+    });
+};
+
+export const handlePasswordReset = (e) => {
+  e.preventDefault();
+  sendPasswordResetEmail(auth, e.target.email.value)
+    .then(() => {
+      e.target.reset();
     })
     .catch((e) => {
       alert(firebaseErrors[e.code]);
@@ -52,6 +64,14 @@ const createUserInFirebase = (user, auth) => {
     email: user.email,
     unreadMessages: 0,
     isAdmin: false,
-  };
-  setDoc(docRef, newUser).finally(() => signOut(auth));
-};
+    address: {
+      city: '',
+      street: ''
+    },
+    name: '',
+    surname: '',
+    phone: ''
+  }
+  setDoc(docRef, newUser)
+    .finally(() => signOut(auth))
+}

@@ -1,8 +1,5 @@
+import { StyledAuthInput } from "./StyledAuth";
+
 export const InputAuthText = ({ value, id }) => {
-  return (
-      <label htmlFor={id}>
-        {value}
-      <input type={id} name={id} id={id} />
-      </label>
-  );
+  return <StyledAuthInput placeholder={value} type={id} name={id} id={id} />;
 };
