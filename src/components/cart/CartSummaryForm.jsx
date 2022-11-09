@@ -45,6 +45,7 @@ export const CartSummaryForm = () => {
       const userDocRef = doc(db, "books", bookID);
       const updateBookQuantity = {
         quantity: increment(-count),
+        sold: increment(count),
         available: checkIfIsStillAvailable
       };
       updateDoc(userDocRef, updateBookQuantity);
