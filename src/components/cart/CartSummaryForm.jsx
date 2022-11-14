@@ -39,9 +39,7 @@ export const CartSummaryForm = () => {
     const docRef = doc(db, "books", bookID);
     getDoc(docRef).then((querySnap) => {
       const actualQuantity = querySnap.data().quantity
-      console.log(actualQuantity)
       const checkIfIsStillAvailable = actualQuantity - count !== 0
-      console.log(checkIfIsStillAvailable)
       const userDocRef = doc(db, "books", bookID);
       const updateBookQuantity = {
         quantity: increment(-count),
