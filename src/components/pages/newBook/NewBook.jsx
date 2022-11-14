@@ -20,7 +20,7 @@ export const NewBook = (e) => {
             .then((snapshot) => {
                 e.target[0].value = ''
                 getDownloadURL(snapshot.ref).then((downloadURL) => {
-                    console.log(downloadURL)
+                    // todo - set url in new book form 
                 })
             })
         alert('Image has been uploaded!');
