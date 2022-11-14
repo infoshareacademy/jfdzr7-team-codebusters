@@ -24,12 +24,12 @@ export const CartSummaryForm = () => {
   const { user } = useContext(AuthContext);
 
   const defaultFormState = {
-    name: "",
-    surname: "",
-    email: "",
-    phone: "",
-    city: "",
-    street: "",
+    name: user?.name || "",
+    surname: user?.surname || "",
+    email: user?.email || "",
+    phone: user?.phone || "",
+    city: user?.address?.city || "",
+    street: user?.address?.street || "",
     payment: "",
     delivery: "",
   };
