@@ -24,7 +24,7 @@ const updateOrderStatus = (orderStatusSelectValue, order, changeStatus) => {
     updateDoc(docRef, updateStatus)
 }
 
-const sendMessageToUser = (userID, orderDate, orderStatus) => {
+export const sendMessageToUser = (userID, orderDate, orderStatus) => {
     const userDocRef = doc(db, 'users', userID)
     const messageCollectionRef = collection(db, 'messages')
     const message = {
