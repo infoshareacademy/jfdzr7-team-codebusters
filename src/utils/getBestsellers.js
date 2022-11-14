@@ -13,7 +13,6 @@ export const getBestsellers = (setBooks) => {
             id: doc.id,
             ...doc.data(),
         }))
-        console.log(books)
         setBooks(books)
     })
 }
